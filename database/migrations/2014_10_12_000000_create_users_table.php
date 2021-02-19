@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
+            $table->enum('user_type', ['Student', 'Teacher', 'Admin'])->default('Student');
+            $table->enum('register_ref', ['Normal', 'FB', 'Gmail'])->default('Normal');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
