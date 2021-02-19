@@ -18,12 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->comment('Alpha Numeric PW');
-            $table->enum('user_type', ['Student', 'Teacher', 'Admin'])->default('Student');
-            $table->enum('register_ref', ['Normal', 'FB', 'Gmail'])->default('Normal');
-            $table->string('avatar')->nullable();
+            $table->string('password');
             $table->rememberToken();
-            $table->softDeletes();
             $table->timestamps();
         });
     }
