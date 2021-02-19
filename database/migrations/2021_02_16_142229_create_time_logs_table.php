@@ -23,6 +23,10 @@ class CreateTimeLogsTable extends Migration
             $table->string('student_email')->nullable();
             $table->string('teacher_name')->nullable();
             $table->string('teacher_email')->nullable();
+            $table->text('description')->nullable()->comment('Description of lesson');
+            $table->text('summery')->nullable()->comment('Summary of the session');
+            $table->tinyInteger('motivational')->nullable()->comment('Motivational Ranking of the student [scale of 1-10]');
+            $table->tinyInteger('understanding')->nullable()->comment('Understanding Ranking of the student [scale of 1-10]');
             $table->foreignId('subject_id')->nullable()->constrained()->onDelete('Set Null')->onUpdate('No Action');
             $table->foreignId('student_id')->nullable()->constrained('users')->onDelete('Set Null')->onUpdate('No Action');
             $table->foreignId('teacher_id')->nullable()->constrained('users')->onDelete('Set Null')->onUpdate('No Action');

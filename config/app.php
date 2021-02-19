@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Spatie\Permission\PermissionServiceProvider::class, //Role Permission
+
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class, //Auto Model Generator in dev dependency
+
     ],
 
     /*
