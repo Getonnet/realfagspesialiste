@@ -73,13 +73,9 @@
 <script src="{{asset('assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 <script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 <!--end::Global Theme Bundle-->
-<!--begin::Page Vendors(used by this page)-->
-<script src="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
-<!--<script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM"></script>-->
-<script src="{{asset('assets/plugins/custom/gmaps/gmaps.js')}}"></script>
-<!--end::Page Vendors-->
+
 <!--begin::Page Scripts(used by this page)-->
-<script src="{{asset('assets/js/pages/widgets.js')}}"></script>
+<script src="{{asset('assets/js/pages/crud/ktdatatable/base/html-table.js')}}"></script>
 <!--end::Page Scripts-->
 @yield('script')
 </body>

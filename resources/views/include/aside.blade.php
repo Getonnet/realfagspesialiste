@@ -33,7 +33,7 @@
 
                 <li class="menu-item {{request()->routeIs('dashboard') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
                     <a href="{{route('dashboard')}}" class="menu-link">
-                        <i class="menu-icon flaticon-home"></i>
+                        <i class="menu-icon flaticon-squares"></i>
                         <span class="menu-text">{{__('Dashboard')}}</span>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
 
                 <li class="menu-item menu-item-submenu {{ (request()->is('users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
-                        <i class="menu-icon flaticon-graphic"></i>
+                        <i class="menu-icon flaticon2-user"></i>
                         <span class="menu-text">{{__('User')}}</span>
                         <i class="menu-arrow"></i>
                     </a>
@@ -81,7 +81,7 @@
 
                 <li class="menu-item" aria-haspopup="true">
                     <a href="" class="menu-link">
-                        <i class="menu-icon flaticon-cogwheel-1"></i>
+                        <i class="menu-icon flaticon2-settings"></i>
                         <span class="menu-text">{{__('Settings')}}</span>
                     </a>
                 </li>
