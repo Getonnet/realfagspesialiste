@@ -3,7 +3,7 @@
 <!--begin::Head-->
 <head><base href="../../">
     <meta charset="utf-8" />
-    <title>University | IFS</title>
+    <title>@yield('title')</title>
     <meta name="description" content="Page with empty content" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -25,6 +25,8 @@
     <link href="{{asset('assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+
+    @yield('style')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -40,7 +42,7 @@
             @include('include.header')
             <!--begin::Content-->
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-{{--                @include('include.sub-header')--}}
+                @yield('page')
                 <!--begin::Entry-->
                 <div class="d-flex flex-column-fluid">
                     <!--begin::Container-->
@@ -48,6 +50,7 @@
 
                         @yield('content')
 
+                        @yield('box')
                     </div>
                     <!--end::Container-->
                 </div>
@@ -78,6 +81,7 @@
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{asset('assets/js/pages/widgets.js')}}"></script>
 <!--end::Page Scripts-->
+@yield('script')
 </body>
 <!--end::Body-->
 </html>
