@@ -3,10 +3,16 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.users');
+        $table = User::orderBy('id', 'DESC')->where('user_type', 'Admin')->get();
+        return view('users.users')->with(['table' => $table]);
     }
 
     /**
@@ -24,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +42,48 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:4|max:191',
+            'email' => 'required|string|email|min:4|max:191|unique:users,email',
+            'password' => 'required|string|min:8|max:191|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = new User();
+            $table->name = $request->name;
+            $table->email = $request->email;
+            $table->user_type = 'Admin';
+            $table->password = bcrypt($request->password);
+
+            if ($request->has('photo')) {
+                // Get image file
+                $image = $request->file('photo');
+                // Make a image name based on user name and current timestamp
+                $name = Str::slug($request->input('name')) . '_' . time();
+                // Define folder path
+                $folder = '/uploads/profile/';
+                // Make a file path where image will be stored [ folder path + file name + file extension]
+                $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                // Upload image
+                $this->uploadOne($image, $folder, 'public', $name);
+                // Set user profile image path in database to filePath
+                $table->profile_photo_path = $filePath;
+            }
+
+            $table->save();
+
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.save'));
+
     }
 
     /**
@@ -69,7 +117,51 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:4|max:191',
+            'email' => 'required|string|email|min:4|max:191|unique:users,email,'.$id.',id',
+            'password' => 'sometimes|nullable|min:8|max:191|confirmed'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = User::find($id);
+            $table->name = $request->name;
+            $table->email = $request->email;
+            $table->user_type = 'Admin';
+
+            if (isset($request->password)){
+                $table->password = bcrypt($request->password);
+            }
+
+            if ($request->has('photo')) {
+                // Get image file
+                $image = $request->file('photo');
+                // Make a image name based on user name and current timestamp
+                $name = Str::slug($request->input('name')) . '_' . time();
+                // Define folder path
+                $folder = '/uploads/profile/';
+                // Make a file path where image will be stored [ folder path + file name + file extension]
+                $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                // Upload image
+                $this->uploadOne($image, $folder, 'public', $name);
+                // Set user profile image path in database to filePath
+                $table->profile_photo_path = $filePath;
+            }
+
+            $table->save();
+
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
     }
 
     /**
@@ -80,6 +172,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        return redirect()->back()->with(config('naz.del'));
     }
 }

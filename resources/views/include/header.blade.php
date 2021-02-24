@@ -9,7 +9,7 @@
                 <!--begin::Header Nav-->
                 <ul class="menu-nav">
                     <li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
-                        <h3>Realfagspesialisten</h3>
+                        <h3>@yield('title')</h3>
                     </li>
                 </ul>
                 <!--end::Header Nav-->
