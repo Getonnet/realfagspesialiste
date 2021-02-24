@@ -16,6 +16,7 @@
 
     </x-modals>
 
+
     <x-modals id="ediModal" action="#" title="{{__('Edit user')}}">
         @method('PUT')
         <div class="text-center">
