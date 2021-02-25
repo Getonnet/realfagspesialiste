@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-
+    Route::put('/permissions/{id}', [RolesController::class, 'assign_role'])->name('permissions');
     Route::resource('/users/roles', RolesController::class);
     Route::resource('/users', UserController::class);
 });

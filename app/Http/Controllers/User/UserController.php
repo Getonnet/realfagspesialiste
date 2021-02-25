@@ -8,6 +8,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -21,7 +22,8 @@ class UserController extends Controller
     public function index()
     {
         $table = User::orderBy('id', 'DESC')->where('user_type', 'Admin')->get();
-        return view('users.users')->with(['table' => $table]);
+        $roles = Role::orderBy('name')->get();
+        return view('users.users')->with(['table' => $table, 'roles' => $roles]);
     }
 
     /**
@@ -76,6 +78,8 @@ class UserController extends Controller
             }
 
             $table->save();
+
+            $table->assignRole($request->role_id);
 
 
         }catch (\Exception $ex) {
@@ -156,6 +160,7 @@ class UserController extends Controller
 
             $table->save();
 
+            $table->syncRoles($request->role_id);
 
         }catch (\Exception $ex) {
             return redirect()->back()->with(config('naz.db_error'));
