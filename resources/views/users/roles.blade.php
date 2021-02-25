@@ -107,9 +107,6 @@
         }
 
 
-        new KTImageInput('profile_photo');
-        new KTImageInput('ediprofile_photo');
-
         var table = function() {
             // Private functions
 

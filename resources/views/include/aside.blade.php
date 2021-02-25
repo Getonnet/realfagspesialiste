@@ -45,6 +45,20 @@
                 </li>
                 <!--/Divider-->
 
+                <li class="menu-item {{request()->routeIs('subjects.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('subjects.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon2-open-text-book"></i>
+                        <span class="menu-text">{{__('Subject')}}</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {{request()->routeIs('package.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('package.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon2-box-1"></i>
+                        <span class="menu-text">{{__('Packages')}}</span>
+                    </a>
+                </li>
+
                 <li class="menu-item menu-item-submenu {{ (request()->is('users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <i class="menu-icon flaticon2-user"></i>

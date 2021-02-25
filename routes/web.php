@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MainController;
+//use App\Http\Controllers\MainController;
+use App\Http\Controllers\Packages\PackagesController;
+use App\Http\Controllers\Subjects\SubjectsController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/permissions/{id}', [RolesController::class, 'assign_role'])->name('permissions');
     Route::resource('/users/roles', RolesController::class);
     Route::resource('/users', UserController::class);
+
+    Route::resource('/subjects', SubjectsController::class);
+    Route::resource('/package', PackagesController::class);
 });
 
 

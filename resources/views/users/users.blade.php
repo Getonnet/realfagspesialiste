@@ -119,7 +119,7 @@
                         {
                             field: 'Action',
                             sortable: false,
-                            textAlign: 'right'
+                            textAlign: 'center'
                         }
                     ],
                 });
