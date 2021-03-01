@@ -12,7 +12,7 @@
         <x-slot name="button">
             <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
         </x-slot>
-        <table class="datatable datatable-bordered table-striped" id="kt_datatable">
+        <table class="datatable datatable-bordered datatable-head-custom table-striped" id="kt_datatable">
             <thead>
             <tr>
                 <th>Photo</th>

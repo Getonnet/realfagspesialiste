@@ -98,6 +98,7 @@
             $('#ediModal [name=expire]').daterangepicker({
                 timePicker: true,
                 singleDatePicker: true,
+                startDate: new Date(expire),
                 locale: {
                     format: 'DD-MM-YYYY hh:mm A'
                 }
@@ -134,6 +135,19 @@
                         class: 'datatable-bordered',
                     },
                     columns: [
+                        {
+                            field: 'Hours',
+                            type: 'number',
+                        },
+                        {
+                            field: 'Price',
+                            type: 'number',
+                        },
+                        {
+                            field: 'Expire',
+                            type: 'date',
+                            format: 'DD-MM-YYYY hh:mm A',
+                        },
                         {
                             field: 'Action',
                             sortable: false,
