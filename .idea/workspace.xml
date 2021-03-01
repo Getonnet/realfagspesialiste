@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/packages/box/packages.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/packages/packages.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/subjects/box/subjects.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/subjects/subjects.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/right-panels/user.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/right-panels/user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/roles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,11 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/include/right-panels/user.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="528">
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -43,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/users/users.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
+            <state relative-caret-position="528">
               <caret line="33" column="99" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="99" />
             </state>
           </provider>
@@ -245,7 +232,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="247" />
     <option name="y" value="-25" />
     <option name="width" value="1936" />
@@ -401,16 +388,19 @@
       <workItem from="1614167287159" duration="355000" />
       <workItem from="1614168077073" duration="281000" />
       <workItem from="1614228971268" duration="32217000" />
+      <workItem from="1614316636896" duration="599000" />
+      <workItem from="1614501532066" duration="187000" />
+      <workItem from="1614503119231" duration="19000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97326000" />
+    <option name="totallyTimeSpent" value="98131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19722815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -598,13 +588,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/components/checkinput.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/components/checkinput.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/components/ninput.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -760,20 +744,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/users/users.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/include/right-panels/user.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="33" column="99" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="99" />
+        <state relative-caret-position="528">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/include/right-panels/user.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/users/users.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="528">
+          <caret line="33" column="99" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="99" />
         </state>
       </provider>
     </entry>
