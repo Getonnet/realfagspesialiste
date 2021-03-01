@@ -59,6 +59,28 @@
                     </a>
                 </li>
 
+                <li class="menu-item {{request()->routeIs('orders.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('orders.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-bag"></i>
+                        <span class="menu-text">{{__('Purchase Order')}}</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {{request()->routeIs('teacher.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('teacher.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-businesswoman"></i>
+                        <span class="menu-text">{{__('Teachers')}}</span>
+                    </a>
+                </li>
+
+                <li class="menu-item {{request()->routeIs('student.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('student.index')}}" class="menu-link">
+                        <i class="menu-icon flaticon-customer"></i>
+                        <span class="menu-text">{{__('Student')}}</span>
+                    </a>
+                </li>
+
+
                 <li class="menu-item menu-item-submenu {{ (request()->is('users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <i class="menu-icon flaticon2-user"></i>
@@ -96,7 +118,7 @@
                 <li class="menu-item" aria-haspopup="true">
                     <a href="" class="menu-link">
                         <i class="menu-icon flaticon2-settings"></i>
-                        <span class="menu-text">{{__('Settings')}}</span>
+                        <span class="menu-text">{{__('Reports')}}</span>
                     </a>
                 </li>
 

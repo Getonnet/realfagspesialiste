@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\DashboardController;
 //use App\Http\Controllers\MainController;
+use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Packages\PackagesController;
+use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Subjects\SubjectsController;
+use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/subjects', SubjectsController::class);
     Route::resource('/package', PackagesController::class);
+
+    Route::resource('/student', StudentController::class);
+    Route::resource('/teacher', TeacherController::class);
+    Route::resource('/orders', OrderController::class);
 });
 
 
