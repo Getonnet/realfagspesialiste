@@ -46,6 +46,16 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+    public function student()
+    {
+        return $this->hasOne('App\Models\StudentProfile');
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne('App\Models\TeacherProfile');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

@@ -6,7 +6,7 @@
         </div>
         <div class="card-toolbar">
             <!--begin::Button-->
-            {{$button}}
+            {{$button ?? ''}}
             <!--end::Button-->
         </div>
     </div>

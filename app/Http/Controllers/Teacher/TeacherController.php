@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -14,7 +15,8 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        return view('teachers.teachers');
+        $table = User::orderBy('id', 'DESC')->where('user_type', 'Teacher')->get();
+        return view('teachers.teachers')->with(['table' => $table]);
     }
 
     /**
