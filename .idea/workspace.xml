@@ -233,9 +233,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="584" />
-    <option name="y" value="204" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="229" />
+    <option name="y" value="-14" />
     <option name="width" value="1936" />
     <option name="height" value="1100" />
   </component>
