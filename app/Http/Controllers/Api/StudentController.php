@@ -20,9 +20,7 @@ class StudentController extends Controller
 
         try{
 
-
-
-            //
+            
         }catch (\Exception $ex) {
             return response()->json([config('naz.db_error')], 400);
         }
