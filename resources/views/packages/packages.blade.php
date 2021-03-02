@@ -30,7 +30,7 @@
                             <td>{{$row->name}} <small class="text-danger">{{$row->isCoupon == true ? '*':''}}</small></td>
                             <td>{{$row->hours}}</td>
                             <td>{{$row->price}}</td>
-                            <td>{{$row->description}}</td>
+                            <td>{{Str::limit($row->description, 25)}}</td>
                             <td>{{date('d-M-Y - h:i A', strtotime($row->expire))}}</td>
                             <td>
                                 <x-actions>
