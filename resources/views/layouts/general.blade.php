@@ -3,7 +3,7 @@
 <!--begin::Head-->
 <head><base href="../../">
     <meta charset="utf-8" />
-    <title>University | IFS</title>
+    <title>@yield('title')</title>
     <meta name="description" content="Page with empty content" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -28,7 +28,7 @@
 </head>
 <!--end::Head-->
 <!--begin::Body-->
-<body id="kt_body" class="header-fixed header-mobile-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+<body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
 <!--begin::Main-->
 @include('include.no-aside-mobile-header')
 <div class="d-flex flex-column flex-root">
@@ -36,9 +36,9 @@
     <div class="d-flex flex-row flex-column-fluid page">
         <!--begin::Wrapper-->
         <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+        @include('include.general-header')
             <!--begin::Content-->
             <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                @include('include.sub-header')
                 <!--begin::Entry-->
                 <div class="d-flex flex-column-fluid">
                     <!--begin::Container-->

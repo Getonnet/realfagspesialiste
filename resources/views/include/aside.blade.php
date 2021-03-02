@@ -31,8 +31,8 @@
             <!--begin::Menu Nav-->
             <ul class="menu-nav">
 
-                <li class="menu-item {{request()->routeIs('dashboard') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
-                    <a href="{{route('dashboard')}}" class="menu-link">
+                <li class="menu-item {{request()->routeIs('admin.dashboard') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                    <a href="{{route('admin.dashboard')}}" class="menu-link">
                         <i class="menu-icon flaticon-squares"></i>
                         <span class="menu-text">{{__('Dashboard')}}</span>
                     </a>
@@ -81,7 +81,7 @@
                 </li>
 
 
-                <li class="menu-item menu-item-submenu {{ (request()->is('users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu {{ (request()->is('admin/users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <i class="menu-icon flaticon2-user"></i>
                         <span class="menu-text">{{__('User')}}</span>
@@ -116,7 +116,7 @@
                 </li>
 
                 <li class="menu-item" aria-haspopup="true">
-                    <a href="" class="menu-link">
+                    <a href="javascript:;" class="menu-link">
                         <i class="menu-icon flaticon2-settings"></i>
                         <span class="menu-text">{{__('Reports')}}</span>
                     </a>

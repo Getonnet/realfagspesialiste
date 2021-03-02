@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 //use App\Http\Controllers\MainController;
 use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Packages\PackagesController;
+use App\Http\Controllers\Student\FrontStudentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Subjects\SubjectsController;
 use App\Http\Controllers\Teacher\TeacherController;
@@ -25,22 +26,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
-
-Route::middleware(['auth'])->group(function () {
-
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::put('/permissions/{id}', [RolesController::class, 'assign_role'])->name('permissions');
-    Route::resource('/users/roles', RolesController::class);
-    Route::resource('/users', UserController::class);
-
-    Route::resource('/subjects', SubjectsController::class);
-    Route::resource('/package', PackagesController::class);
-
-    Route::resource('/student', StudentController::class);
-    Route::resource('/teacher', TeacherController::class);
-    Route::resource('/orders', OrderController::class);
+Route::middleware(['student'])->group(function () {
+    Route::get('/', [FrontStudentController::class, 'index'])->name('student.package');
 });
+
+Route::prefix('admin')->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
+
+        Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+        Route::put('/permissions/{id}', [RolesController::class, 'assign_role'])->name('permissions');
+        Route::resource('/users/roles', RolesController::class);
+        Route::resource('/users', UserController::class);
+
+        Route::resource('/subjects', SubjectsController::class);
+        Route::resource('/package', PackagesController::class);
+
+        Route::resource('/student', StudentController::class);
+        Route::resource('/teacher', TeacherController::class);
+        Route::resource('/orders', OrderController::class);
+    });
+});
+
+
 
 
 
