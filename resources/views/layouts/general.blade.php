@@ -25,6 +25,7 @@
     <link href="{{asset('assets/css/themes/layout/aside/dark.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+    @yield('style')
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -45,6 +46,8 @@
                     <div class="container-fluid">
 
                         @yield('content')
+
+                        @yield('box')
 
                     </div>
                     <!--end::Container-->
@@ -68,6 +71,45 @@
 <script src="{{asset('assets/plugins/custom/prismjs/prismjs.bundle.js')}}"></script>
 <script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 <!--end::Global Theme Bundle-->
+<script type="text/javascript">
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+</script>
+
+<!-- Global Notification System: Using for common notification -->
+
+@if(Session::has('message'))
+    <script type="text/javascript">
+        toastr.{{Session::get('type')}}("{{Session::get('message')}}");
+    </script>
+@endif
+
+
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <script type="text/javascript">
+            toastr.error("{{$error}}");
+        </script>
+    @endforeach
+@endif
+
+<!-- /Global Notification System: Using for common notification -->
+@yield('script')
 </body>
 <!--end::Body-->
 </html>

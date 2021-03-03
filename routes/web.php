@@ -26,8 +26,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
-Route::middleware(['student'])->group(function () {
+Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/', [FrontStudentController::class, 'index'])->name('student.package');
+    Route::post('/my-order', [FrontStudentController::class, 'orders_save'])->name('package.orders');
+    Route::get('/my-order', [FrontStudentController::class, 'orders'])->name('order.list');
+
+    Route::get('/my-reports', [FrontStudentController::class, 'reports'])->name('my.reports');
+    Route::get('/my-profile', [FrontStudentController::class, 'profile'])->name('my.profile');
+    Route::put('/my-profile/{id}', [FrontStudentController::class, 'update_profile'])->name('update.myprofile');
 });
 
 Route::prefix('admin')->group(function () {

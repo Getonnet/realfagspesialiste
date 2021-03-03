@@ -15,20 +15,31 @@
             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                 <!--begin::Header Nav-->
                 <ul class="menu-nav">
+                    <li class="menu-item menu-item-rel {{request()->routeIs('student.package') ? 'menu-item-active':''}}">
+                        <a href="{{route('admin.dashboard')}}" class="menu-link">
+                            <span class="menu-text">{{__('Package')}}</span>
+                        </a>
+                    </li>
 
 {{--                    @if(auth()->check())--}}
-                        <li class="menu-item menu-item-rel">
-                            <a href="javascript:;" class="menu-link">
-                                <span class="menu-text">Dashboard</span>
+                        <li class="menu-item menu-item-rel {{request()->routeIs('order.list') ? 'menu-item-active':''}}">
+                            <a href="{{route('order.list')}}" class="menu-link">
+                                <span class="menu-text">{{__('Order List')}}</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item menu-item-rel {{request()->routeIs('my.profile') ? 'menu-item-active':''}}">
+                            <a href="{{route('my.profile')}}" class="menu-link">
+                                <span class="menu-text">{{__('Profile')}}</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item menu-item-rel {{request()->routeIs('my.reports') ? 'menu-item-active':''}}">
+                            <a href="{{route('my.reports')}}" class="menu-link">
+                                <span class="menu-text">{{__('Reports')}}</span>
                             </a>
                         </li>
 {{--                    @endif--}}
-
-                    <li class="menu-item menu-item-rel {{request()->routeIs('student.package') ? 'menu-item-active':''}}">
-                        <a href="{{route('admin.dashboard')}}" class="menu-link">
-                            <span class="menu-text">Package</span>
-                        </a>
-                    </li>
 
                 </ul>
                 <!--end::Header Nav-->

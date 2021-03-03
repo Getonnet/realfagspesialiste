@@ -1,4 +1,5 @@
 @extends('layouts.general')
+@extends('frontend.student.box.student')
 
 @section('title')
     {{__('Packages')}}
@@ -12,10 +13,10 @@
             <div class="card card-custom">
                 <div class="card-header">
                     <div class="card-title">
-											<span class="card-icon">
-												<i class="flaticon2-box-1 text-success"></i>
-											</span>
-                        <h3 class="card-label">Package Pricing</h3>
+                        <span class="card-icon">
+                            <i class="flaticon2-box-1 text-success"></i>
+                        </span>
+                        <h3 class="card-label">{{__('Package Pricing')}}</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -80,36 +81,43 @@
                             @endphp
                             @foreach($rows as $row)
                             <!--begin: Pricing-->
-                            <div class="col-md-6 col-xxl-3 {{$i != 3 ? 'border-right-0 border-right-xxl border-bottom border-bottom-xxl-0':''}}">
-                                <div class="pt-30 pt-md-25 pb-15 px-5 text-center">
-                                    <div class="d-flex flex-center position-relative mb-25">
-                                        <span class="svg svg-fill-primary opacity-4 position-absolute">
-                                            <svg width="175" height="200">
-                                                <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
-                                            </svg>
-                                        </span>
-                                        <span class="svg-icon svg-icon-5x svg-icon-{{$asset_data[$i]['color']}}">
-                                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box3.svg-->
-                                            {!! $asset_data[$i]['icon'] !!}
-                                            <!--end::Svg Icon-->
-                                        </span>
-                                    </div>
-                                    <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{$row->hours}}<sup class="font-size-h3 font-weight-normal pl-1">hr</sup></span>
-                                    <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{$row->name}}</h4>
-                                    <h2>{{$row->price}}<sup class="font-size-h3 font-weight-normal pl-1">$</sup></h2>
-                                    <p class="mb-15 d-flex flex-column">
-                                        <span>{{$row->description}}</span>
-                                    </p>
-                                    <div class="d-flex justify-content-center">
-                                        <button type="button" class="btn btn-{{$asset_data[$i]['color']}} text-uppercase font-weight-bolder px-15 py-3">Purchase</button>
+                                <div class="col-md-6 col-xxl-3 {{$i != 3 ? 'border-right-0 border-right-xxl border-bottom border-bottom-xxl-0':''}}">
+                                    <div class="pt-30 pt-md-25 pb-15 px-5 text-center">
+                                        <div class="d-flex flex-center position-relative mb-25">
+                                            <span class="svg svg-fill-primary opacity-4 position-absolute">
+                                                <svg width="175" height="200">
+                                                    <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
+                                                </svg>
+                                            </span>
+                                            <span class="svg-icon svg-icon-5x svg-icon-{{$asset_data[$i]['color']}}">
+                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box3.svg-->
+                                                {!! $asset_data[$i]['icon'] !!}
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                        </div>
+                                        <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{$row->hours}}<sup class="font-size-h3 font-weight-normal pl-1">hr</sup></span>
+                                        <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{$row->name}}</h4>
+                                        <h2>{{$row->price}}<sup class="font-size-h3 font-weight-normal pl-1">$</sup></h2>
+                                        <p class="mb-15 d-flex flex-column">
+                                            <span>{{$row->description}}</span>
+                                        </p>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" id="conf_order" class="btn btn-{{$asset_data[$i]['color']}} text-uppercase font-weight-bolder px-15 py-3" onclick="ediFn(this)"
+                                                data-name="{{$row->name}}"
+                                                data-hour="{{$row->hours}}"
+                                                data-price="{{$row->price}}"
+                                                data-id="{{$row->id}}"
+                                                data-coupon="{{$row->isCoupon}}"
+                                                data-toggle="modal" data-target="#orderModal">{{__('order')}}</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            @php
-                                $i++;
-                            @endphp
-                            @endforeach
+                                @php
+                                    $i++;
+                                @endphp
                             <!--end: Pricing-->
+                            @endforeach
+
                         @endforeach
                     </div>
                 </div>
@@ -118,4 +126,31 @@
 
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+
+        function ediFn(e){
+            var name = e.getAttribute('data-name');
+            var hour = e.getAttribute('data-hour');
+            var price = e.getAttribute('data-price');
+            var id = e.getAttribute('data-id');
+            var coupon = e.getAttribute('data-coupon');
+
+            $('#p_name').html(name);
+            $('#p_hour').html(hour+'hr');
+            $('#p_price').html('&#36;'+price);
+
+            $('#orderModal [name=id]').val(id);
+
+            if(coupon == 1){
+                $('#show_coupon').html(`<x-ninput label="{{__('Coupon Code')}}" name="coupon" />`);
+
+            }else{
+                $('#show_coupon').html('');
+            }
+        }
+
+    </script>
 @endsection
