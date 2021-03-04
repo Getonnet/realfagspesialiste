@@ -10,14 +10,14 @@
     <div class="row">
         <div class="col">
             <x-card title="{{__('Students List')}}">
-                <table class="datatable datatable-bordered datatable-head-custom table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>Photo</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
-                        <th>Action</th>
+                        <th class="text-right">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,7 +27,7 @@
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->student->contact ?? ''}}</td>
-                            <td>
+                            <td class="text-right">
                                 <x-actions>
 
                                     <li class="navi-item">
@@ -70,45 +70,10 @@
             $('#ediModal [name=name]').val(name);
         }
 
-        var table = function() {
-            // Private functions
-
-            // demo initializer
-            var demo = function() {
-
-                $('#kt_datatable').KTDatatable({
-                    data: {
-                        saveState: {cookie: false},
-                    },
-                    search: {
-                        input: $('#kt_datatable_search_query'),
-                        key: 'generalSearch',
-                    },
-                    layout: {
-                        class: 'datatable-bordered',
-                    },
-                    columns: [
-                        {
-                            field: 'Action',
-                            sortable: false,
-                            textAlign: 'center'
-                        }
-                    ],
-                });
-
-            };
-
-            return {
-                // Public functions
-                init: function() {
-                    // init dmeo
-                    demo();
-                },
-            };
-        }();
-
-        jQuery(document).ready(function() {
-            table.init();
+        $('#kt_datatable').DataTable({
+            columnDefs: [
+                { orderable: false, "targets": [4] }//For Column Order
+            ]
         });
     </script>
 @endsection

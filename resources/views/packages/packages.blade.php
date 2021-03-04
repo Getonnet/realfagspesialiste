@@ -13,7 +13,7 @@
                 <x-slot name="button">
                     <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
                 </x-slot>
-                <table class="datatable datatable-bordered datatable-head-custom table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -21,7 +21,7 @@
                         <th>Price</th>
                         <th>Description</th>
                         <th>Expire</th>
-                        <th>Action</th>
+                        <th class="text-right">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,7 +32,7 @@
                             <td>{{$row->price}}</td>
                             <td>{{Str::limit($row->description, 25)}}</td>
                             <td>{{date('d-M-Y - h:i A', strtotime($row->expire))}}</td>
-                            <td>
+                            <td class="text-right">
                                 <x-actions>
 
                                     <li class="navi-item">
@@ -117,58 +117,10 @@
             }
         });
 
-        var table = function() {
-            // Private functions
-
-            // demo initializer
-            var demo = function() {
-
-                $('#kt_datatable').KTDatatable({
-                    data: {
-                        saveState: {cookie: false},
-                    },
-                    search: {
-                        input: $('#kt_datatable_search_query'),
-                        key: 'generalSearch',
-                    },
-                    layout: {
-                        class: 'datatable-bordered',
-                    },
-                    columns: [
-                        {
-                            field: 'Hours',
-                            type: 'number',
-                        },
-                        {
-                            field: 'Price',
-                            type: 'number',
-                        },
-                        {
-                            field: 'Expire',
-                            type: 'date',
-                            format: 'DD-MM-YYYY hh:mm A',
-                        },
-                        {
-                            field: 'Action',
-                            sortable: false,
-                            textAlign: 'center'
-                        }
-                    ],
-                });
-
-            };
-
-            return {
-                // Public functions
-                init: function() {
-                    // init dmeo
-                    demo();
-                },
-            };
-        }();
-
-        jQuery(document).ready(function() {
-            table.init();
+        $('#kt_datatable').DataTable({
+            columnDefs: [
+                { orderable: false, "targets": [5] }//For Column Order
+            ]
         });
     </script>
 @endsection

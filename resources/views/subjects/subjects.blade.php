@@ -13,18 +13,18 @@
                 <x-slot name="button">
                     <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
                 </x-slot>
-                <table class="datatable datatable-bordered datatable-head-custom table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Action</th>
+                        <th class="text-right">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($table as $row)
                         <tr>
                             <td>{{$row->name}}</td>
-                            <td>
+                            <td class="text-right">
                                 <x-actions>
 
                                     <li class="navi-item">
@@ -67,45 +67,10 @@
             $('#ediModal [name=name]').val(name);
         }
 
-        var table = function() {
-            // Private functions
-
-            // demo initializer
-            var demo = function() {
-
-                $('#kt_datatable').KTDatatable({
-                    data: {
-                        saveState: {cookie: false},
-                    },
-                    search: {
-                        input: $('#kt_datatable_search_query'),
-                        key: 'generalSearch',
-                    },
-                    layout: {
-                        class: 'datatable-bordered',
-                    },
-                    columns: [
-                        {
-                            field: 'Action',
-                            sortable: false,
-                            textAlign: 'right'
-                        }
-                    ],
-                });
-
-            };
-
-            return {
-                // Public functions
-                init: function() {
-                    // init dmeo
-                    demo();
-                },
-            };
-        }();
-
-        jQuery(document).ready(function() {
-            table.init();
+        $('#kt_datatable').DataTable({
+            columnDefs: [
+                { orderable: false, "targets": [1] }//For Column Order
+            ]
         });
     </script>
 @endsection
