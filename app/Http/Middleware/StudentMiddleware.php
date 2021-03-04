@@ -20,6 +20,8 @@ class StudentMiddleware
     {
         if (Auth::check() && Auth::user()->user_type == 'Admin'){
             return redirect()->route('admin.dashboard');
+        }elseif (Auth::check() && Auth::user()->user_type == 'Teacher'){
+            return redirect()->route('teacher.home');
         }
         return $next($request);
     }

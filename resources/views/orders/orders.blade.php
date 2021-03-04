@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@extends('packages.box.packages')
+@extends('orders.box.orders')
 
 @section('title')
     {{__('Purchase Order')}}
@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
                             <td>{{$row->user->name ?? ''}}</td>
-                            <td>{{$row->package->name ?? ''}}</td>
+                            <td>{{$row->name}}</td>
                             <td>{{$row->hours}}</td>
                             <td>{{$row->price}}</td>
                             <td>{{$row->status}}</td>
@@ -36,20 +36,23 @@
 
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                           data-href="{{route('package.update', ['package' => $row->id])}}"
-                                           data-name="{{$row->name}}"
+                                           data-href="{{route('orders.update', ['order' => $row->id])}}"
+                                           data-date="{{date('d/m/Y', strtotime($row->created_at))}}"
+                                           data-student="{{$row->user->name}}"
+                                           data-package="{{$row->name}}"
+                                           data-coupon="{{$row->coupon}}"
                                            data-hours="{{$row->hours}}"
                                            data-price="{{$row->price}}"
                                            data-description="{{$row->description}}"
                                            data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
-                                           data-coupon="{{$row->isCoupon}}">
+                                           data-status="{{$row->status}}">
                                             <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('Edit')}}</span>
+                                            <span class="navi-text">{{__('View')}}</span>
                                         </a>
                                     </li>
 
                                     <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('package.destroy', ['package' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                        <a href="javascript:;" data-href="{{route('orders.destroy', ['order' => $row->id])}}" class="navi-link" onclick="delFn(this)">
                                             <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
                                             <span class="navi-text">{{__('Delete')}}</span>
                                         </a>
@@ -72,39 +75,26 @@
 
         function ediFn(e){
             var link = e.getAttribute('data-href');
-            var name = e.getAttribute('data-name');
+            var date = e.getAttribute('data-date');
+            var student = e.getAttribute('data-student');
+            var package = e.getAttribute('data-package');
+            var coupon = e.getAttribute('data-coupon');
             var hours = e.getAttribute('data-hours');
             var price = e.getAttribute('data-price');
-            var description = e.getAttribute('data-description');
-            var expire = e.getAttribute('data-expire');
-            var coupon = e.getAttribute('data-coupon');
+
+            var status = e.getAttribute('data-status');
 
 
             $('#ediModal form').attr('action', link);
 
-            $('#ediModal [name=name]').val(name);
-            $('#ediModal [name=hours]').val(hours);
-            $('#ediModal [name=price]').val(price);
-            $('#ediModal [name=description]').val(description);
+            $('#ediModal [name=status]').val(status);
 
-            if(coupon == 1){
-                $('#checkCoupon').prop('checked', true);
-            }else{
-                $('#checkCoupon').prop('checked', false);
-            }
-
-
-            $('#ediModal [name=expire]').daterangepicker({
-                timePicker: true,
-                singleDatePicker: true,
-                startDate: new Date(expire),
-                locale: {
-                    format: 'DD-MM-YYYY hh:mm A'
-                }
-            });
-
-            $('#ediModal [name=expire]').val(expire);
-
+            $('#o_date').html(date);
+            $('#o_name').html(student);
+            $('#o_package').html(package);
+            $('#o_hour').html(hours);
+            $('#o_price').html(price);
+            $('#o_coupon').html(coupon);
 
         }
 

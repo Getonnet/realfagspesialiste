@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@extends('students.box.students')
 @section('title')
     {{__('Students List')}}
 @endsection
@@ -17,18 +17,26 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Contact</th>
+                        <th>Hour</th>
                         <th class="text-right">Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($table as $row)
+                        @php
+
+                            $hour = $row->purchase()->where('status', 'Active')->sum('hours');
+
+                        @endphp
                         <tr>
                             <td><img src="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}" style="height: 30px;" class="img-fluid img-thumbnail" /></td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->student->contact ?? ''}}</td>
+                            <td>{{$hour}}</td>
                             <td class="text-right">
                                 <x-actions>
+
 
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
@@ -72,7 +80,7 @@
 
         $('#kt_datatable').DataTable({
             columnDefs: [
-                { orderable: false, "targets": [4] }//For Column Order
+                { orderable: false, "targets": [5] }//For Column Order
             ]
         });
     </script>

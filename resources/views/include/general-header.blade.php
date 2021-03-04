@@ -15,13 +15,13 @@
             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                 <!--begin::Header Nav-->
                 <ul class="menu-nav">
-                    <li class="menu-item menu-item-rel {{request()->routeIs('student.package') ? 'menu-item-active':''}}">
-                        <a href="{{route('admin.dashboard')}}" class="menu-link">
-                            <span class="menu-text">{{__('Package')}}</span>
-                        </a>
-                    </li>
+                    @if(auth()->check() && auth()->user()->user_type == 'Student')
+                        <li class="menu-item menu-item-rel {{request()->routeIs('student.package') ? 'menu-item-active':''}}">
+                            <a href="{{route('student.dashboard')}}" class="menu-link">
+                                <span class="menu-text">{{__('Package')}}</span>
+                            </a>
+                        </li>
 
-{{--                    @if(auth()->check())--}}
                         <li class="menu-item menu-item-rel {{request()->routeIs('order.list') ? 'menu-item-active':''}}">
                             <a href="{{route('order.list')}}" class="menu-link">
                                 <span class="menu-text">{{__('Order List')}}</span>
@@ -39,7 +39,15 @@
                                 <span class="menu-text">{{__('Reports')}}</span>
                             </a>
                         </li>
-{{--                    @endif--}}
+                    @endif
+
+                    @if(auth()->check() && auth()->user()->user_type == 'Teacher')
+                        <li class="menu-item menu-item-rel {{request()->routeIs('teacher.home') ? 'menu-item-active':''}}">
+                            <a href="{{route('teacher.home')}}" class="menu-link">
+                                <span class="menu-text">{{__('Dashboard')}}</span>
+                            </a>
+                        </li>
+                    @endif
 
                 </ul>
                 <!--end::Header Nav-->

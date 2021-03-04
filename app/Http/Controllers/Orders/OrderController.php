@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Orders;
 use App\Http\Controllers\Controller;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -71,7 +72,25 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'status' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = Purchase::find($id);
+            $table->status = $request->status;
+            $table->save();
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
     }
 
     /**
@@ -82,6 +101,11 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            Purchase::destroy($id);
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+        return redirect()->back()->with(config('naz.del'));
     }
 }

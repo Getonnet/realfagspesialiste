@@ -54,7 +54,12 @@
                                     <!--end::Contact-->
                                     <hr />
                                     <!--Hour Calculation -->
-                                    <h1 class="text-center text-danger" style="font-size: 70px;">0<sup>hr</sup></h1>
+                                    @php
+
+                                        $hour = $table->purchase()->where('status', 'Active')->sum('hours');
+
+                                    @endphp
+                                    <h1 class="text-center text-danger" style="font-size: 70px;">{{$hour}}<sup>hr</sup></h1>
                                     <!--/Hour Calculation -->
                                 </div>
                                 <!--end::Body-->

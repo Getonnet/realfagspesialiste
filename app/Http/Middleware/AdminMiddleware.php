@@ -19,6 +19,8 @@ class AdminMiddleware
     {
         if (Auth::check() && Auth::user()->user_type == 'Student'){
             return redirect()->route('student.package');
+        }elseif (Auth::check() && Auth::user()->user_type == 'Teacher'){
+            return redirect()->route('teacher.home');
         }
         return $next($request);
     }

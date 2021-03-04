@@ -7,6 +7,7 @@ use App\Http\Controllers\Packages\PackagesController;
 use App\Http\Controllers\Student\FrontStudentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Subjects\SubjectsController;
+use App\Http\Controllers\Teacher\FrontTeacherController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\User\RolesController;
 use App\Http\Controllers\User\UserController;
@@ -35,6 +36,14 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/my-profile', [FrontStudentController::class, 'profile'])->name('my.profile');
     Route::put('/my-profile/{id}', [FrontStudentController::class, 'update_profile'])->name('update.myprofile');
 });
+
+
+Route::prefix('teacher')->group(function () {
+    Route::middleware(['auth', 'teacher'])->group(function () {
+        Route::get('/', [FrontTeacherController::class, 'index'])->name('teacher.home');
+    });
+});
+
 
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
