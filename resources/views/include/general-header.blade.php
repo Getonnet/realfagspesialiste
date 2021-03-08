@@ -17,7 +17,7 @@
                 <ul class="menu-nav">
                     @if(auth()->check() && auth()->user()->user_type == 'Student')
                         <li class="menu-item menu-item-rel {{request()->routeIs('student.package') ? 'menu-item-active':''}}">
-                            <a href="{{route('student.dashboard')}}" class="menu-link">
+                            <a href="{{route('student.package')}}" class="menu-link">
                                 <span class="menu-text">{{__('Package')}}</span>
                             </a>
                         </li>
