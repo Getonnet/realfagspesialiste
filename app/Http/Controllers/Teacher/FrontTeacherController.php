@@ -18,6 +18,6 @@ class FrontTeacherController extends Controller
      */
     public function profile(){
         $table = User::find(Auth::id());
-        return view('frontend.student.profile')->with(['table' => $table]);
+        return view('frontend.teacher.profile')->with(['table' => $table]);
     }
 }
