@@ -132,7 +132,7 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+       // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'email' => 'required|email|unique:users',
