@@ -66,7 +66,7 @@
                                     <div class="py-9">
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('Weekly Working Hour')}}:</span>
-                                            <span class="text-muted text-hover-primary">{{$table->teacher->working_hour}}</span>
+                                            <span class="text-muted text-hover-primary">{{$table->teacher->working_hour ?? ''}}</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('VGS Grade')}}:</span>
@@ -74,11 +74,11 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('CV')}}:</span>
-                                            <span class="text-muted text-hover-primary"><a href="{{asset($table->teacher->cv)}}">{{__('Download')}}</a></span>
+                                            <span class="text-muted text-hover-primary"><a href="{{asset($table->teacher->cv ?? '')}}">{{__('Download')}}</a></span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('Diploma Certificate')}}:</span>
-                                            <span class="text-muted text-hover-primary"><a href="{{asset($table->teacher->diploma)}}">{{__('Download')}}</a></span>
+                                            <span class="text-muted text-hover-primary"><a href="{{asset($table->teacher->diploma ?? '')}}">{{__('Download')}}</a></span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('Descriptions')}}:</span>

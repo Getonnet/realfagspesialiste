@@ -6,9 +6,9 @@
     <div class="login-form">
         <!--begin::Form-->
         <form class="form" id="kt_login_singin_form" action="{{ route('register') }}" method="POST">
-            @csrf
-                <input type="hidden" name="user_type" value="Student">
-            <!--begin::Title-->
+        @csrf
+            <input type="hidden" name="user_type" value="Teacher">
+        <!--begin::Title-->
             <div class="pb-5 pb-lg-15">
                 <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{__('Create Account')}}</h3>
                 <div class="text-muted font-weight-bold font-size-h4">{{__('Already have an Account ?')}}
@@ -53,19 +53,19 @@
             </div>
             <!--end::Form group-->
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <!--begin::Form group-->
-            <div class="form-group">
-                <label class="font-size-h6 font-weight-bolder text-dark">
-                    <input type="checkbox" name="terms"/>
-                    <span></span>
-                    {{ __('I agree to the privacy_policy') }}
-                </label>
-            </div>
-            <!--end::Form group-->
-            @endif
+                <div class="form-group">
+                    <label class="font-size-h6 font-weight-bolder text-dark">
+                        <input type="checkbox" name="terms"/>
+                        <span></span>
+                        {{ __('I agree to the privacy_policy') }}
+                    </label>
+                </div>
+                <!--end::Form group-->
+        @endif
 
-            <!--begin::Action-->
+        <!--begin::Action-->
             <div class="pb-lg-0 pb-5">
                 <button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">{{__('Register')}}</button>
                 <a href="{{route('login')}}" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">{{__('Cancel')}}</a>

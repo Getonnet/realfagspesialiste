@@ -18,6 +18,16 @@ class FrontTeacherController extends Controller
         return view('frontend.teacher.index');
     }
 
+    public function register(){
+        if(Auth::guest())
+        {
+            return view('frontend.teacher.register');
+
+        }else{
+            return redirect()->route('teacher.home');
+        }
+    }
+
     /**
      * View: Profile
      */
@@ -55,7 +65,6 @@ class FrontTeacherController extends Controller
                 $table->password = bcrypt($request->password);
             }
 
-
             if ($request->has('photo')) {
                 // Get image file
                 $image = $request->file('photo');
@@ -73,8 +82,6 @@ class FrontTeacherController extends Controller
             $table->save();
 
             $user_id = $table->id;
-
-
 
             $teacherProfile = TeacherProfile::updateOrCreate(
                 ['user_id' => $user_id],

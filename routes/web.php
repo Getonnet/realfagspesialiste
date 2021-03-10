@@ -39,6 +39,8 @@ Route::middleware(['auth', 'student'])->group(function () {
 
 
 Route::prefix('teacher')->group(function () {
+    Route::get('/register', [FrontTeacherController::class, 'register'])->name('teacher.register');
+
     Route::middleware(['auth', 'teacher'])->group(function () {
         Route::get('/', [FrontTeacherController::class, 'index'])->name('teacher.home');
         Route::get('/profile', [FrontTeacherController::class, 'profile'])->name('teacher.profile');
@@ -48,6 +50,8 @@ Route::prefix('teacher')->group(function () {
 
 
 Route::prefix('admin')->group(function () {
+    Route::get('/register', [DashboardController::class, 'register'])->name('admin.register');
+
     Route::middleware(['auth', 'admin'])->group(function () {
 
         Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
