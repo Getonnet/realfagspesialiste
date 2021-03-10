@@ -52,6 +52,11 @@
                                 <span class="menu-text">{{__('Profile')}}</span>
                             </a>
                         </li>
+                        <li class="menu-item menu-item-rel {{request()->routeIs('teacher.reports') ? 'menu-item-active':''}}">
+                            <a href="{{route('teacher.reports')}}" class="menu-link">
+                                <span class="menu-text">{{__('Reports')}}</span>
+                            </a>
+                        </li>
                     @endif
 
                 </ul>

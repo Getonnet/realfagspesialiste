@@ -16,7 +16,7 @@
                         <span class="card-icon">
                             <i class="flaticon-user text-danger"></i>
                         </span>
-                            <h3 class="card-label">{{__('My Dashboard')}}</h3>
+                            <h3 class="card-label">{{__('My Calender')}}</h3>
                         </div>
                     </div>
                     <div class="card-body">

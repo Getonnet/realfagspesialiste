@@ -45,6 +45,8 @@ Route::prefix('teacher')->group(function () {
         Route::get('/', [FrontTeacherController::class, 'index'])->name('teacher.home');
         Route::get('/profile', [FrontTeacherController::class, 'profile'])->name('teacher.profile');
         Route::put('/profile/{id}', [FrontTeacherController::class, 'update_profile'])->name('update.teacher_profile');
+
+        Route::get('/reports', [FrontTeacherController::class, 'reports'])->name('teacher.reports');
     });
 });
 

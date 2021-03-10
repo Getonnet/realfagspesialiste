@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subject;
 use App\Models\TeacherProfile;
 use App\Models\User;
 use App\Traits\UploadTrait;
@@ -137,6 +138,12 @@ class FrontTeacherController extends Controller
 
         return redirect()->back()->with(config('naz.edit'));
 
+    }
+
+
+    public function reports(){
+        $subject = Subject::orderBy('name')->get();
+        return view('frontend.teacher.reports')->with(['subject' => $subject]);
     }
 
 }
