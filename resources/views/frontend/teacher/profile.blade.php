@@ -240,7 +240,14 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">{{__('Weekly Working Hour')}} <small class="text-danger">*</small></label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control form-control-lg form-control-solid" name="working_hour" min="0" max="40" step="any" type="number" value="{{$table->teacher->working_hour ?? ''}}" required />
+                                                    <select name="working_hour"  class="form-control form-control-lg form-control-solid" id="working_hour">
+                                                        <option value="2">2 Hours</option>
+                                                        <option value="4">2-4 Hours</option>
+                                                        <option value="6">4-6 Hours</option>
+                                                        <option value="8">6-8 Hours</option>
+                                                        <option value="10">8-10 Hours</option>
+                                                        <option value="12">12+ Hours</option>
+                                                    </select>
                                                     @error('working_hour')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                     @enderror
@@ -320,6 +327,7 @@
 @section('script')
     <script type="text/javascript">
         $(function () {
+            $('#working_hour').val("{{$table->teacher->working_hour ?? 2}}");
             $('#grade').val("{{$table->teacher->grade ?? 2}}");
             $('#gender').val("{{$table->teacher->gender ?? 'Male'}}");
         });
