@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $subject_id
  * @property integer $student_id
  * @property integer $teacher_id
+ * @property string $event_start
  * @property string $start_time
  * @property string $end_time
  * @property float $hour_spend
@@ -21,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $summery
  * @property boolean $motivational
  * @property boolean $understanding
+ * @property string $status
  * @property string $deleted_at
  * @property string $created_at
  * @property string $updated_at
@@ -33,7 +35,7 @@ class TimeLog extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -41,7 +43,7 @@ class TimeLog extends Model
     /**
      * @var array
      */
-    protected $fillable = ['subject_id', 'student_id', 'teacher_id', 'start_time', 'end_time', 'hour_spend', 'subject_name', 'student_name', 'student_email', 'teacher_name', 'teacher_email', 'description', 'summery', 'motivational', 'understanding', 'deleted_at', 'created_at', 'updated_at'];
+    protected $fillable = ['subject_id', 'student_id', 'teacher_id', 'event_start', 'start_time', 'end_time', 'hour_spend', 'subject_name', 'student_name', 'student_email', 'teacher_name', 'teacher_email', 'description', 'summery', 'motivational', 'understanding', 'status', 'deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

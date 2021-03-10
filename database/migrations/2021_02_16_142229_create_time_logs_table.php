@@ -15,6 +15,7 @@ class CreateTimeLogsTable extends Migration
     {
         Schema::create('time_logs', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('event_start');
             $table->timestamp('start_time')->useCurrent();
             $table->timestamp('end_time')->nullable();
             $table->float('hour_spend')->default(0)->comment('Based on start and end time');
@@ -30,6 +31,7 @@ class CreateTimeLogsTable extends Migration
             $table->foreignId('subject_id')->nullable()->constrained()->onDelete('Set Null')->onUpdate('No Action');
             $table->foreignId('student_id')->nullable()->constrained('users')->onDelete('Set Null')->onUpdate('No Action');
             $table->foreignId('teacher_id')->nullable()->constrained('users')->onDelete('Set Null')->onUpdate('No Action');
+            $table->enum('status',['Pending', 'Running', 'End'])->default('Pending');
             $table->softDeletes();
             $table->timestamps();
         });
