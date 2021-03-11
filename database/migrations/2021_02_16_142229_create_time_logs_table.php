@@ -16,7 +16,7 @@ class CreateTimeLogsTable extends Migration
         Schema::create('time_logs', function (Blueprint $table) {
             $table->id();
             $table->timestamp('event_start');
-            $table->timestamp('start_time')->useCurrent();
+            $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
             $table->float('hour_spend')->default(0)->comment('Based on start and end time');
             $table->string('subject_name')->nullable();

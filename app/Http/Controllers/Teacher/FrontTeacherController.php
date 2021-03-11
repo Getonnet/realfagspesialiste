@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Controllers\Controller;
 use App\Models\Subject;
 use App\Models\TeacherProfile;
+use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
@@ -132,7 +133,6 @@ class FrontTeacherController extends Controller
             $file_upload->save();
 
         }catch (\Exception $ex) {
-            dd($ex);
             return redirect()->back()->with(config('naz.db_error'));
         }
 
@@ -142,8 +142,55 @@ class FrontTeacherController extends Controller
 
 
     public function reports(){
-        $subject = Subject::orderBy('name')->get();
-        return view('frontend.teacher.reports')->with(['subject' => $subject]);
+        return view('frontend.teacher.reports');
+    }
+
+    public function events(){
+        $subjects = Subject::orderBy('name')->get();
+        $students = User::orderBy('name')->where('user_type', 'Student')->get();
+        $table = TimeLog::orderBy('Id', 'DESC')->get();
+        return view('frontend.teacher.events')->with(['subjects' => $subjects, 'students' => $students, 'table' => $table]);
+    }
+
+    public function event_save(Request $request){
+        //dd($request->all());
+
+        $validator = Validator::make($request->all(), [
+            'event_start' => 'required|date',
+            'subject_id' => 'required|numeric',
+            'student_id' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $student = User::find($request->student_id);
+            $subject = Subject::find($request->subject_id);
+
+            $table = new TimeLog();
+            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->subject_id = $request->subject_id;
+            $table->subject_name = $subject->name;
+
+            $table->student_id = $request->student_id;
+            $table->student_name = $student->name;
+            $table->student_email = $student->email;
+
+            $table->teacher_id  = Auth::id();
+            $table->teacher_name = Auth::user()->name;
+            $table->teacher_email = Auth::user()->email;
+
+            $table->description = $request->description;
+            $table->save();
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.save'));
     }
 
 }

@@ -47,6 +47,11 @@
                                 <span class="menu-text">{{__('Dashboard')}}</span>
                             </a>
                         </li>
+                        <li class="menu-item menu-item-rel {{request()->routeIs('teacher.events') ? 'menu-item-active':''}}">
+                            <a href="{{route('teacher.events')}}" class="menu-link">
+                                <span class="menu-text">{{__('Events')}}</span>
+                            </a>
+                        </li>
                         <li class="menu-item menu-item-rel {{request()->routeIs('teacher.profile') ? 'menu-item-active':''}}">
                             <a href="{{route('teacher.profile')}}" class="menu-link">
                                 <span class="menu-text">{{__('Profile')}}</span>

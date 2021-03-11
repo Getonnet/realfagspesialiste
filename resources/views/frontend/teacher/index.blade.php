@@ -18,11 +18,6 @@
                         </span>
                             <h3 class="card-label">{{__('My Calender')}}</h3>
                         </div>
-                        <div class="card-toolbar">
-                            <a href="#" class="btn btn-light-primary font-weight-bold">
-                                <i class="ki ki-plus "></i> Add Event
-                            </a>
-                        </div>
                     </div>
                     <div class="card-body">
 
