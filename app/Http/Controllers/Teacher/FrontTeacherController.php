@@ -193,4 +193,45 @@ class FrontTeacherController extends Controller
         return redirect()->back()->with(config('naz.save'));
     }
 
+    public function event_edit(Request $request, $id){
+       // dd($request->all());
+
+        $validator = Validator::make($request->all(), [
+            'event_start' => 'required|date',
+            'subject_id' => 'required|numeric',
+            'student_id' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $student = User::find($request->student_id);
+            $subject = Subject::find($request->subject_id);
+
+            $table = TimeLog::find($id);
+            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->subject_id = $request->subject_id;
+            $table->subject_name = $subject->name;
+
+            $table->student_id = $request->student_id;
+            $table->student_name = $student->name;
+            $table->student_email = $student->email;
+
+            /*$table->teacher_id  = Auth::id();
+            $table->teacher_name = Auth::user()->name;
+            $table->teacher_email = Auth::user()->email;*/
+
+            $table->description = $request->description;
+            $table->save();
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
+    }
+
 }

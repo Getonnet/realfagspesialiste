@@ -46,6 +46,7 @@ Route::prefix('teacher')->group(function () {
         Route::get('/profile', [FrontTeacherController::class, 'profile'])->name('teacher.profile');
         Route::put('/profile/{id}', [FrontTeacherController::class, 'update_profile'])->name('update.teacher_profile');
 
+        Route::put('/events/{id}', [FrontTeacherController::class, 'event_edit'])->name('teacher.events-edit');
         Route::post('/events', [FrontTeacherController::class, 'event_save'])->name('teacher.events-save');
         Route::get('/events', [FrontTeacherController::class, 'events'])->name('teacher.events');
 

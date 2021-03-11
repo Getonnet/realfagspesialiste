@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * @property integer $id
@@ -75,5 +76,18 @@ class TimeLog extends Model
     public function studyMaterials()
     {
         return $this->hasMany('App\Models\StudyMaterial');
+    }
+
+    public function cal_start_before(){
+        $today = date('Y-m-d H:i:s');
+        $event_day = $this->event_start;
+        $startTime = Carbon::parse($today);
+        $finishTime = Carbon::parse($event_day);
+        $totalDuration = $finishTime->diffInMinutes($startTime, false);
+        return $totalDuration;
+    }
+
+    public function spend_time(){
+
     }
 }

@@ -38,17 +38,28 @@
                         <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                         <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
                         <td>{{$row->hour_spend}}</td>
-                        <td>{{$row->status}}</td>
+                        @if($row->cal_start_before() > -30)
+                            @if($row->status == 'Pending')
+                            <td><a href="javascript:;">{{__('Start')}}</a></td>
+                            @elseif($row->status == 'Running')
+                                <td><a href="javascript:;" data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
+                            @else
+                                <td>{{__($row->status)}}</td>
+                            @endif
+                        @else
+                            <td>{{__($row->status)}}</td>
+                        @endif
                         <td class="text-right">
                             <x-actions>
 
                                 <li class="navi-item">
                                     <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                       data-href="{{route('users.update', ['user' => $row->id])}}"
-                                       data-name="{{$row->name}}"
-                                       data-email="{{$row->email}}"
-                                       data-role="{{$role_id ?? ''}}"
-                                       data-photo="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}"
+                                       data-href="{{route('teacher.events-edit', ['id' => $row->id])}}"
+                                       data-subject="{{$row->subject_id}}"
+                                       data-student="{{$row->student_id}}"
+                                       data-description="{{$row->description}}"
+                                       data-event="{{date('Y-m-d h:i A', strtotime($row->event_start))}}"
+                                       data-events="{{date('d-m-Y h:i A', strtotime($row->event_start))}}"
                                     >
                                         <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
                                         <span class="navi-text">{{__('Edit')}}</span>
@@ -81,6 +92,33 @@
     <script type="text/javascript">
 
        // $('.select2').select2();
+
+       function ediFn(e){
+           var link = e.getAttribute('data-href');
+
+           var subject_id = e.getAttribute('data-subject');
+           var student_id = e.getAttribute('data-student');
+           var description = e.getAttribute('data-description');
+           var event = e.getAttribute('data-event');
+           var event_start = e.getAttribute('data-events');
+
+           $('#ediModal form').attr('action', link);
+
+           $('#ediModal [name=subject_id]').val(subject_id);
+           $('#ediModal [name=student_id]').val(student_id);
+           $('#ediModal [name=description]').val(description);
+
+           $('#ediModal [name=event_start]').daterangepicker({
+               timePicker: true,
+               singleDatePicker: true,
+               startDate: new Date(event),
+               minDate:new Date(),
+               locale: {
+                   format: 'DD-MM-YYYY hh:mm A'
+               }
+           });
+           $('#ediModal [name=event_start]').val(event_start);
+       }
 
         $('#addModal [name=event_start]').daterangepicker({
             timePicker: true,
