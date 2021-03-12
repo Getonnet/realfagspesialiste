@@ -78,10 +78,9 @@
                         defaultView: 'dayGridMonth',
                         defaultDate: TODAY,
 
-                        editable: true,
                         eventLimit: true, // allow "more" link when too many events
                         navLinks: true,
-                        events: [
+                        events: "{{route('teacher.events-all')}}",/*[
                             {
                                 title: 'All Day Event',
                                 start: YM + '-01',
@@ -178,7 +177,7 @@
                                 className: "fc-event-solid-info fc-event-light",
                                 description: 'Lorem ipsum dolor sit amet, labore'
                             }
-                        ],
+                        ],*/
 
                         eventRender: function(info) {
                             var element = $(info.el);

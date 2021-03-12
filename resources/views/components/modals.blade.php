@@ -18,7 +18,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
-                    <button type="{{isset($action) ? 'submit':'button'}}" class="btn btn-primary font-weight-bold">Save changes</button>
+                    @if(isset($action))
+                    <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+                    @endif
                 </div>
             @if(isset($action))
                 </form>

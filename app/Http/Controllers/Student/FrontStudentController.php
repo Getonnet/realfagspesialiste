@@ -145,11 +145,11 @@ class FrontStudentController extends Controller
         return redirect()->back()->with(config('naz.edit'));
     }
 
-
     public function reports(){
         $subject = Subject::orderBy('name')->get();
         return view('frontend.student.reports')->with(['subject' => $subject]);
     }
+
 
 
 

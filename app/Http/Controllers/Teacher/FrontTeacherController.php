@@ -274,6 +274,7 @@ class FrontTeacherController extends Controller
             $table->summery = $request->summery;
             $table->status = 'End';
             $table->save();
+            $time_log_id = $table->id;
 
             if (isset($request->materials)){
                 $materials = $request->materials;
@@ -286,6 +287,7 @@ class FrontTeacherController extends Controller
 
                     $st_mat = new StudyMaterial();
                     $st_mat->file_name = $filePath;
+                    $st_mat->time_log_id = $time_log_id;
                     $st_mat->save();
                 }
             }
@@ -307,6 +309,32 @@ class FrontTeacherController extends Controller
         }
 
         return redirect()->back()->with(config('naz.del'));
+    }
+
+    public function overview($id){
+        $table = TimeLog::find($id);
+        return view('frontend.teacher.overview')->with(['table' => $table]);
+    }
+
+    public function all_events(){
+        $table = TimeLog::where('teacher_id', Auth::id())->get();
+
+        $data = [];
+        foreach ($table as $row){
+            $rowData['title'] = $row->student_name;
+            $rowData['start'] = $row->event_start;
+            $rowData['description'] = $row->description;
+            $rowData['end'] = $row->event_start;
+            if ($row->status == 'Pending') {
+                $rowData['className'] = 'fc-event-solid-primary';
+            }elseif ($row->status == 'Running'){
+                $rowData['className'] = 'fc-event-solid-success';
+            }else{
+                $rowData['className'] = 'fc-event-success';
+            }
+            $data[] = $rowData;
+        }
+        return response()->json($data);
     }
 
 }

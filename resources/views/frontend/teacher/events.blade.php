@@ -56,30 +56,42 @@
                             <td>{{__($row->status)}}</td>
                         @endif
                         <td class="text-right">
+
                             <x-actions>
+                                @if($row->status != 'End')
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                           data-href="{{route('teacher.events-edit', ['id' => $row->id])}}"
+                                           data-subject="{{$row->subject_id}}"
+                                           data-student="{{$row->student_id}}"
+                                           data-description="{{$row->description}}"
+                                           data-event="{{date('Y-m-d h:i A', strtotime($row->event_start))}}"
+                                           data-events="{{date('d-m-Y h:i A', strtotime($row->event_start))}}"
+                                        >
+                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                            <span class="navi-text">{{__('Edit')}}</span>
+                                        </a>
+                                    </li>
 
-                                <li class="navi-item">
-                                    <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                       data-href="{{route('teacher.events-edit', ['id' => $row->id])}}"
-                                       data-subject="{{$row->subject_id}}"
-                                       data-student="{{$row->student_id}}"
-                                       data-description="{{$row->description}}"
-                                       data-event="{{date('Y-m-d h:i A', strtotime($row->event_start))}}"
-                                       data-events="{{date('d-m-Y h:i A', strtotime($row->event_start))}}"
-                                    >
-                                        <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                        <span class="navi-text">{{__('Edit')}}</span>
-                                    </a>
-                                </li>
-
-                                <li class="navi-item">
-                                    <a href="javascript:;" data-href="{{route('teacher.events-del', ['id' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                        <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                        <span class="navi-text">{{__('Delete')}}</span>
-                                    </a>
-                                </li>
+                                    <li class="navi-item">
+                                        <a href="javascript:;" data-href="{{route('teacher.events-del', ['id' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                            <span class="navi-text">{{__('Delete')}}</span>
+                                        </a>
+                                    </li>
+                                    @else
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#viewModal" onclick="viewFn(this)"
+                                           data-href="{{route('teacher.events-overview', ['id' => $row->id])}}"
+                                        >
+                                            <span class="navi-icon"><i class="fab la-phabricator text-info"></i></span>
+                                            <span class="navi-text">{{__('View')}}</span>
+                                        </a>
+                                    </li>
+                                @endif
 
                             </x-actions>
+
                         </td>
                     </tr>
                 @endforeach
@@ -98,6 +110,13 @@
     <script type="text/javascript">
 
        // $('.select2').select2();
+
+       function viewFn(e) {
+           var link = e.getAttribute('data-href');
+           $.get( link, function( result ) {
+               $( "#viewModal .modal-body" ).html( result );
+           });
+       }
 
        function endFn(e) {
            var link = e.getAttribute('data-href');
