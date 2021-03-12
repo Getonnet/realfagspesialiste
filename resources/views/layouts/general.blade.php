@@ -63,6 +63,10 @@
     </div>
     <!--end::Page-->
 </div>
+<form id="delForm" method="post" style="display: none;">
+    @csrf
+    @method('DELETE')
+</form>
 <!--end::Main-->
 @include('include.right-panel')
 <!--begin::Global Config(global config for global JS scripts)-->
@@ -111,6 +115,35 @@
 @endif
 
 <!-- /Global Notification System: Using for common notification -->
+
+<script type="text/javascript">
+    /**
+     *  Global Delete Function: using for all type of delete operation
+     */
+    function delFn(e){
+        var link = e.getAttribute('data-href');
+
+        $('#delForm').attr('action', link);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You wont be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then(function(result) {
+            if (result.value) {
+                $('#delForm').submit();
+            }
+        });
+    }
+    /**
+     *  /Global Delete Function: using for all type of delete operation
+     */
+</script>
+
 @yield('script')
 </body>
 <!--end::Body-->

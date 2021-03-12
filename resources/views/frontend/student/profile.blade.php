@@ -55,11 +55,20 @@
                                     <hr />
                                     <!--Hour Calculation -->
                                     @php
-
                                         $hour = $table->purchase()->where('status', 'Active')->sum('hours');
+                                        $spends = $table->time_log()->where('status', 'End')->get();
+                                        $spend_times = 0;
+                                        foreach ($spends as $spend){
+                                            if($spend->spend_time() > 30){
+                                                $spend_times += ($spend->spend_time() - 30);
+                                            }
+                                        }
+                                        $hour_to_min = $hour * 60;
+                                        $remain_min = $hour_to_min - $spend_times;
+                                        $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
 
                                     @endphp
-                                    <h1 class="text-center text-danger" style="font-size: 70px;">{{$hour}}<sup>hr</sup></h1>
+                                    <h1 class="text-center text-danger" style="font-size: 70px;">{{$spend_hour}}<sup>hr</sup></h1>
                                     <!--/Hour Calculation -->
                                 </div>
                                 <!--end::Body-->

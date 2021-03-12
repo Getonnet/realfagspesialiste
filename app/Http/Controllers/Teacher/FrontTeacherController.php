@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudyMaterial;
 use App\Models\Subject;
 use App\Models\TeacherProfile;
 use App\Models\TimeLog;
@@ -232,6 +233,80 @@ class FrontTeacherController extends Controller
         }
 
         return redirect()->back()->with(config('naz.edit'));
+    }
+
+    public function running_status($id){
+        try{
+
+            $table = TimeLog::find($id);
+            $current = $table->status;
+            if($current == 'Pending'){
+                $table->status = 'Running';
+                $table->start_time = date('Y-m-d H:i:s');
+            }
+            $table->save();
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
+    }
+
+    public function end_status(Request $request, $id){
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'motivational' => 'required|numeric|min:1|max:10',
+            'understanding' => 'required|numeric|min:1|max:10',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = TimeLog::find($id);
+            $table->end_time = date('Y-m-d H:i:s');
+            $table->understanding = $request->understanding;
+            $table->motivational = $request->motivational;
+            $table->description = $request->description;
+            $table->summery = $request->summery;
+            $table->status = 'End';
+            $table->save();
+
+            if (isset($request->materials)){
+                $materials = $request->materials;
+                foreach ($materials as $i => $row){
+                    $image = $request->file('materials')[$i];
+                    $name = md5(date('Y-m-d H:i:s').$i);
+                    $folder = '/uploads/materials/';
+                    $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                    $this->uploadOne($image, $folder, 'public', $name);
+
+                    $st_mat = new StudyMaterial();
+                    $st_mat->file_name = $filePath;
+                    $st_mat->save();
+                }
+            }
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
+    }
+
+    public function del_event($id){
+        try{
+
+            TimeLog::destroy($id);
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.del'));
     }
 
 }

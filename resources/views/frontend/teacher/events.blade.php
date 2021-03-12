@@ -37,12 +37,18 @@
                         <td>{{$row->student_email}}</td>
                         <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                         <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
-                        <td>{{$row->hour_spend}}</td>
+                        <td>{{$row->spend_time('H')}}</td>
                         @if($row->cal_start_before() > -30)
                             @if($row->status == 'Pending')
-                            <td><a href="javascript:;">{{__('Start')}}</a></td>
+                            <td><a href="{{route('teacher.events-status-running', ['id' => $row->id])}}">{{__('Start')}}</a></td>
                             @elseif($row->status == 'Running')
-                                <td><a href="javascript:;" data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
+                                <td><a href="javascript:;"
+                                       onclick="endFn(this)"
+                                       data-subject="{{$row->subject_name}}"
+                                       data-student="{{$row->student_name}}"
+                                       data-description="{{$row->description}}"
+                                       data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
+                                       data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
                             @else
                                 <td>{{__($row->status)}}</td>
                             @endif
@@ -67,7 +73,7 @@
                                 </li>
 
                                 <li class="navi-item">
-                                    <a href="javascript:;" data-href="{{route('users.destroy', ['user' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                    <a href="javascript:;" data-href="{{route('teacher.events-del', ['id' => $row->id])}}" class="navi-link" onclick="delFn(this)">
                                         <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
                                         <span class="navi-text">{{__('Delete')}}</span>
                                     </a>
@@ -92,6 +98,18 @@
     <script type="text/javascript">
 
        // $('.select2').select2();
+
+       function endFn(e) {
+           var link = e.getAttribute('data-href');
+           var subject = e.getAttribute('data-subject');
+           var student = e.getAttribute('data-student');
+           var description = e.getAttribute('data-description');
+
+           $('#endModal form').attr('action', link);
+           $('#subject_names').html(subject);
+           $('#student_names').html(student);
+           $('#endModal [name=description]').val(description);
+       }
 
        function ediFn(e){
            var link = e.getAttribute('data-href');

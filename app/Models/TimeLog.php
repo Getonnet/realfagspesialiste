@@ -87,7 +87,17 @@ class TimeLog extends Model
         return $totalDuration;
     }
 
-    public function spend_time(){
-
+    public function spend_time($format = 'M'){ //M = Minutes format, H = Hour format
+        $startTime = Carbon::parse($this->start_time);
+        $finishTime = Carbon::parse($this->end_time);
+        $totalDuration = $startTime->diffInMinutes($finishTime, false);
+        if (isset($this->end_time)){
+            if($format == 'M'){
+                return $totalDuration;
+            }else{
+                return number_format(($totalDuration / 60), 2, '.', ' ');
+            }
+        }
+        return 0;
     }
 }

@@ -67,7 +67,6 @@
 <form id="delForm" method="post" style="display: none;">
     @csrf
     @method('DELETE')
-
 </form>
 <!--end::Main-->
 @include('include.right-panel')

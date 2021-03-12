@@ -42,18 +42,33 @@
         </x-nselect>
 
         <div class="form-group">
-            <label for="exampleTextarea">Descriptions</label>
+            <label for="exampleTextarea">{{__('Descriptions')}}</label>
             <textarea class="form-control" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
         </div>
 
     </x-modals>
 
     <x-modals id="endModal" action="#" title="{{__('Ending Time Log')}}">
+        @method('PUT')
+        <p><b>{{__('Student Name')}}:</b> <span id="student_names"></span></p>
+        <p><b>{{__('Subject Name')}}:</b> <span id="subject_names"></span></p>
 
+        <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" type="number" min="1" max="10" required="required" />
+        <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" type="number" min="1" max="10" required="required" />
 
         <div class="form-group">
-            <label for="exampleTextarea">Descriptions</label>
-            <textarea class="form-control" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
+            <label for="descriptionx">{{__('Descriptions')}}</label>
+            <textarea class="form-control" id="descriptionx" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="summeryx">{{__('Summery')}}</label>
+            <textarea class="form-control" id="summeryx" name="summery" placeholder="{{__('Summery this session')}}" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="files">{{__('Study Materials')}}</label>
+            <input id="files" type="file" name="materials[]" multiple>
         </div>
 
     </x-modals>

@@ -46,6 +46,10 @@ Route::prefix('teacher')->group(function () {
         Route::get('/profile', [FrontTeacherController::class, 'profile'])->name('teacher.profile');
         Route::put('/profile/{id}', [FrontTeacherController::class, 'update_profile'])->name('update.teacher_profile');
 
+
+        Route::put('/events/status/{id}', [FrontTeacherController::class, 'end_status'])->name('teacher.events-status-end');
+        Route::get('/events/status/{id}', [FrontTeacherController::class, 'running_status'])->name('teacher.events-status-running');
+        Route::delete('/events/{id}', [FrontTeacherController::class, 'del_event'])->name('teacher.events-del');
         Route::put('/events/{id}', [FrontTeacherController::class, 'event_edit'])->name('teacher.events-edit');
         Route::post('/events', [FrontTeacherController::class, 'event_save'])->name('teacher.events-save');
         Route::get('/events', [FrontTeacherController::class, 'events'])->name('teacher.events');
