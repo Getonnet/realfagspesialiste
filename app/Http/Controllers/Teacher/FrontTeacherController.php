@@ -149,7 +149,7 @@ class FrontTeacherController extends Controller
     public function events(){
         $subjects = Subject::orderBy('name')->get();
         $students = User::orderBy('name')->where('user_type', 'Student')->get();
-        $table = TimeLog::orderBy('Id', 'DESC')->get();
+        $table = TimeLog::orderBy('Id', 'DESC')->where('teacher_id', Auth::id())->get();
         return view('frontend.teacher.events')->with(['subjects' => $subjects, 'students' => $students, 'table' => $table]);
     }
 

@@ -31,7 +31,7 @@ class FrontStudentController extends Controller
      * View: Order List Page
      */
     public function orders(){
-        $table = Purchase::orderBy('id', 'DESC')->get();
+        $table = Purchase::orderBy('id', 'DESC')->where('user_id', Auth::id())->get();
         return view('frontend.student.order')->with(['table' => $table]);
     }
 
