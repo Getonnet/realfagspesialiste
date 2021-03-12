@@ -22,6 +22,18 @@
                             </a>
                         </li>
 
+                        <li class="menu-item menu-item-rel {{request()->routeIs('student.dashboard') ? 'menu-item-active':''}}">
+                            <a href="{{route('student.dashboard')}}" class="menu-link">
+                                <span class="menu-text">{{__('Dashboard')}}</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item menu-item-rel {{request()->routeIs('student.events') ? 'menu-item-active':''}}">
+                            <a href="{{route('student.events')}}" class="menu-link">
+                                <span class="menu-text">{{__('Events')}}</span>
+                            </a>
+                        </li>
+
                         <li class="menu-item menu-item-rel {{request()->routeIs('order.list') ? 'menu-item-active':''}}">
                             <a href="{{route('order.list')}}" class="menu-link">
                                 <span class="menu-text">{{__('Order List')}}</span>

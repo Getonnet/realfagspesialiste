@@ -7,6 +7,7 @@ use App\Models\Package;
 use App\Models\Purchase;
 use App\Models\StudentProfile;
 use App\Models\Subject;
+use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
@@ -145,12 +146,46 @@ class FrontStudentController extends Controller
         return redirect()->back()->with(config('naz.edit'));
     }
 
+    public function dashboard(){
+        return view('frontend.student.dashboard');
+    }
+
     public function reports(){
         $subject = Subject::orderBy('name')->get();
         return view('frontend.student.reports')->with(['subject' => $subject]);
     }
 
+    public function overview($id){
+        $table = TimeLog::find($id);
+        return view('frontend.student.overview')->with(['table' => $table]);
+    }
 
+
+    public function events(){
+        $table = TimeLog::orderBy('Id', 'DESC')->where('student_id', Auth::id())->get();
+        return view('frontend.student.events')->with(['table' => $table]);
+    }
+
+    public function all_events(){
+        $table = TimeLog::where('student_id', Auth::id())->get();
+
+        $data = [];
+        foreach ($table as $row){
+            $rowData['title'] = $row->teacher_name;
+            $rowData['start'] = $row->event_start;
+            $rowData['description'] = $row->description;
+            $rowData['end'] = $row->event_start;
+            if ($row->status == 'Pending') {
+                $rowData['className'] = 'fc-event-solid-primary';
+            }elseif ($row->status == 'Running'){
+                $rowData['className'] = 'fc-event-solid-success';
+            }else{
+                $rowData['className'] = 'fc-event-success';
+            }
+            $data[] = $rowData;
+        }
+        return response()->json($data);
+    }
 
 
 

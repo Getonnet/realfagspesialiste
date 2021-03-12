@@ -29,12 +29,20 @@ Route::get('/', function () {
 });*/
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/', [FrontStudentController::class, 'index'])->name('student.package');
-    Route::post('/my-order', [FrontStudentController::class, 'orders_save'])->name('package.orders');
-    Route::get('/my-order', [FrontStudentController::class, 'orders'])->name('order.list');
 
-    Route::get('/my-reports', [FrontStudentController::class, 'reports'])->name('my.reports');
-    Route::get('/my-profile', [FrontStudentController::class, 'profile'])->name('my.profile');
-    Route::put('/my-profile/{id}', [FrontStudentController::class, 'update_profile'])->name('update.myprofile');
+    Route::get('/dashboard', [FrontStudentController::class, 'dashboard'])->name('student.dashboard');
+
+    Route::post('/order', [FrontStudentController::class, 'orders_save'])->name('package.orders');
+    Route::get('/order', [FrontStudentController::class, 'orders'])->name('order.list');
+
+    Route::get('/reports', [FrontStudentController::class, 'reports'])->name('my.reports');
+    Route::get('/profile', [FrontStudentController::class, 'profile'])->name('my.profile');
+    Route::put('/profile/{id}', [FrontStudentController::class, 'update_profile'])->name('update.myprofile');
+
+    Route::get('/events', [FrontStudentController::class, 'events'])->name('student.events');
+    Route::get('/events/overview/{id}', [FrontStudentController::class, 'overview'])->name('student.events-overview');//Overview light box
+
+    Route::get('/events/all', [FrontStudentController::class, 'all_events'])->name('student.events-all');//Json for calender api
 });
 
 
@@ -48,9 +56,9 @@ Route::prefix('teacher')->group(function () {
 
 
         Route::put('/events/status/{id}', [FrontTeacherController::class, 'end_status'])->name('teacher.events-status-end');
-        Route::get('/events/overview/{id}', [FrontTeacherController::class, 'overview'])->name('teacher.events-overview');
+        Route::get('/events/overview/{id}', [FrontTeacherController::class, 'overview'])->name('teacher.events-overview');//Overview light box
         Route::get('/events/status/{id}', [FrontTeacherController::class, 'running_status'])->name('teacher.events-status-running');
-        Route::get('/events/all', [FrontTeacherController::class, 'all_events'])->name('teacher.events-all');
+        Route::get('/events/all', [FrontTeacherController::class, 'all_events'])->name('teacher.events-all');//Json for calender api
         Route::delete('/events/{id}', [FrontTeacherController::class, 'del_event'])->name('teacher.events-del');
         Route::put('/events/{id}', [FrontTeacherController::class, 'event_edit'])->name('teacher.events-edit');
         Route::post('/events', [FrontTeacherController::class, 'event_save'])->name('teacher.events-save');

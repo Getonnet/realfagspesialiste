@@ -80,7 +80,7 @@
 
                         eventLimit: true, // allow "more" link when too many events
                         navLinks: true,
-                        events: "{{route('teacher.events-all')}}",
+                        events: "{{route('student.events-all')}}",
 
                         eventRender: function(info) {
                             var element = $(info.el);
