@@ -42,11 +42,11 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'email' => 'required|email|unique:users',
             'password' => 'required|alpha_num|min:8|confirmed',
-            'ref' => 'required|in:Normal,FB,Gmail',
             'address' => 'required|string|max:191',
             'zip' => 'required|string|max:191',
             'city' => 'required|string|max:191',
@@ -58,12 +58,9 @@ class StudentController extends Controller
         }
 
         try{
-
             $table = new User();
             $table->name = $request->name;
             $table->email = $request->email;
-            $table->register_ref = $request->ref;
-            $table->user_type = 'Student';
             $table->password = bcrypt($request->password);
 
             if ($request->has('photo')) {
@@ -109,7 +106,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $table = User::find($id);
+        return view('students.show')->with(['table' => $table]);
     }
 
     /**
@@ -135,9 +133,8 @@ class StudentController extends Controller
        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|alpha_num|min:8|confirmed',
-            'ref' => 'required|in:Normal,FB,Gmail',
+            'email' => 'required|string|email|min:4|max:191|unique:users,email,'.$id.',id',
+            'password' => 'sometimes|nullable|min:8|max:191|confirmed',
             'address' => 'required|string|max:191',
             'zip' => 'required|string|max:191',
             'city' => 'required|string|max:191',
@@ -153,9 +150,9 @@ class StudentController extends Controller
             $table = User::find($id);
             $table->name = $request->name;
             $table->email = $request->email;
-            $table->register_ref = $request->ref;
-            $table->user_type = 'Student';
-            $table->password = bcrypt($request->password);
+            if (isset($request->password)){
+                $table->password = bcrypt($request->password);
+            }
 
             if ($request->has('photo')) {
                 // Get image file
@@ -173,10 +170,8 @@ class StudentController extends Controller
             }
             $table->save();
 
-            $user_id = $table->id;
-
             StudentProfile::updateOrCreate(
-                ['user_id' => $user_id],
+                ['user_id' => $id],
                 [
                     'contact' => $request->contact,
                     'address' => $request->address,
@@ -200,6 +195,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->back()->with(config('naz.del'));
     }
 }

@@ -66,14 +66,14 @@
                     </a>
                 </li>
 
-                <li class="menu-item {{request()->routeIs('teacher.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                <li class="menu-item {{ (request()->is('admin/teacher*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
                     <a href="{{route('teacher.index')}}" class="menu-link">
                         <i class="menu-icon flaticon-businesswoman"></i>
                         <span class="menu-text">{{__('Teachers')}}</span>
                     </a>
                 </li>
 
-                <li class="menu-item {{request()->routeIs('student.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                <li class="menu-item {{ (request()->is('admin/student*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
                     <a href="{{route('student.index')}}" class="menu-link">
                         <i class="menu-icon flaticon-customer"></i>
                         <span class="menu-text">{{__('Student')}}</span>
