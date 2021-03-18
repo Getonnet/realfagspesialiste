@@ -143,7 +143,8 @@ class FrontTeacherController extends Controller
 
 
     public function reports(){
-        return view('frontend.teacher.reports');
+        $subject = Subject::orderBy('name')->get();
+        return view('frontend.teacher.reports')->with(['subject' => $subject]);
     }
 
     public function events(){
