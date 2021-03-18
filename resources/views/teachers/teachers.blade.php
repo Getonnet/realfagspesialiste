@@ -21,21 +21,42 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Hour</th>
+                            <th>Travel</th>
+                            <th>Unpaid Hour</th>
                             <th class="text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($table as $row)
                         @php
-                            $hour = $row->purchase()->where('status', 'Active')->sum('hours');
+                            $paid_hour = $row->payment()->sum('paid_hour');
+
+                            $spends = $row->time_log_teacher()->where('status', 'End')->get();
+                            $travel_times = 0;
+                            $fixed_travel = 0;
+                            $spend_times = 0;
+                            foreach ($spends as $spend){
+                                $spend_times += $spend->spend_time();
+                                if($spend->spend_time() > 30){
+                                    $fixed_travel += 30;
+                                }else{
+                                    $travel_times += $spend->spend_time();
+                                }
+                            }
+
+                            $total_travel = $travel_times + $fixed_travel;
+                            $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
+                            $spend_hour = $spend_times / 60;
+                            $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
+
                         @endphp
                         <tr>
                             <td><img src="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}" style="height: 30px;" class="img-fluid img-thumbnail" /></td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->teacher->contact ?? ''}}</td>
-                            <td>{{$hour}}</td>
+                            <td>{{$travel_hour}}</td>
+                            <td>{{$unpaid_hour}}</td>
                             <td class="text-right">
                                 <x-actions>
 
@@ -57,6 +78,18 @@
                                             <span class="navi-text">{{__('Edit')}}</span>
                                         </a>
                                     </li>
+
+                                    @if($unpaid_hour > 0)
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#payModal" onclick="payFn(this)"
+                                           data-href="{{route('pay.teacher', ['teacher' => $row->id])}}"
+                                           data-hour="{{$unpaid_hour}}"
+                                        >
+                                            <span class="navi-icon"><i class="la la-money text-warning"></i></span>
+                                            <span class="navi-text">{{__('Payment')}}</span>
+                                        </a>
+                                    </li>
+                                    @endif
 
                                     <li class="navi-item">
                                         <a href="{{route('teacher.show', ['teacher' => $row->id])}}" class="navi-link">
@@ -115,6 +148,13 @@
             $('#ediModal [name=working_hour]').val(working_hour);
 
             $('#ediModal .ediprofile_photo').css('background-image', 'url("' + photo + '")');
+        }
+
+        function payFn(e){
+            var link = e.getAttribute('data-href');
+            var hour = e.getAttribute('data-hour');
+            $('#payModal form').attr('action', link);
+            $('#payModal [name=paid_hour]').attr('max', hour);
         }
 
         new KTImageInput('profile_photo');

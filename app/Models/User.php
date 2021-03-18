@@ -65,6 +65,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\TimeLog', 'student_id');
     }
 
+    public function time_log_teacher(){
+        return $this->hasMany('App\Models\TimeLog', 'teacher_id');
+    }
+
+    public function payment()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

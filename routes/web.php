@@ -83,6 +83,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('/package', PackagesController::class);
 
         Route::resource('/student', StudentController::class);
+
+        Route::delete('/teacher/payment/{id}', [TeacherController::class, 'del_payment'])->name('pay-del.teacher');
+        Route::put('/teacher/payment/{teacher}', [TeacherController::class, 'payments'])->name('pay.teacher');
+        Route::put('/teacher/payment-update/{id}', [TeacherController::class, 'pay_update'])->name('pay-update.teacher');
         Route::resource('/teacher', TeacherController::class);
         Route::resource('/orders', OrderController::class);
     });

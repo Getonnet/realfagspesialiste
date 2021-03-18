@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\TeacherProfile;
+use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
@@ -129,7 +131,8 @@ class TeacherController extends Controller
      */
     public function edit($id)
     {
-        //
+        $table = TimeLog::find($id);
+        return view('frontend.teacher.overview')->with(['table' => $table]);
     }
 
     /**
@@ -215,6 +218,66 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
+        return redirect()->back()->with(config('naz.del'));
+    }
+
+    public function payments(Request $request, $id){
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required|numeric',
+            'paid_hour' => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = new Payment();
+            $table->amount = $request->amount;
+            $table->paid_hour = $request->paid_hour;
+            $table->description = $request->description;
+            $table->user_id = $id;
+            $table->save();
+
+        }catch (\Exception $ex) {
+            //dd($ex);
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.save'));
+    }
+
+    public function pay_update(Request $request, $id){
+        //dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required|numeric',
+            'paid_hour' => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+
+            $table = Payment::find($id);
+            $table->amount = $request->amount;
+            $table->paid_hour = $request->paid_hour;
+            $table->description = $request->description;
+            $table->save();
+
+        }catch (\Exception $ex) {
+            //dd($ex);
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
+    }
+
+    public function del_payment($id){
+        Payment::destroy($id);
         return redirect()->back()->with(config('naz.del'));
     }
 }
