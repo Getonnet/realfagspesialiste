@@ -13,13 +13,13 @@
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Student Name</th>
-                        <th>Package</th>
-                        <th>Hours</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th class="text-right">Action</th>
+                        <th>{{__('Date')}}</th>
+                        <th>{{__('Student Name')}}</th>
+                        <th>{{__('Package')}}</th>
+                        <th>{{__('Hours')}}</th>
+                        <th>{{__('Amount')}}</th>
+                        <th>{{__('Status')}}</th>
+                        <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
                     <tbody>

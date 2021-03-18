@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\StudentProfile;
+use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
@@ -118,7 +119,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $table = TimeLog::find($id);
+        return view('frontend.student.overview')->with(['table' => $table]);
     }
 
     /**
