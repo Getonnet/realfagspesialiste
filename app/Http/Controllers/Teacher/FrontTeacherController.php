@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use App\Models\StudyMaterial;
 use App\Models\Subject;
 use App\Models\TeacherProfile;
@@ -18,7 +19,9 @@ class FrontTeacherController extends Controller
 {
     use UploadTrait;
     public function index(){
-        return view('frontend.teacher.index');
+        $table = User::find(Auth::id());
+        //dd($table);
+        return view('frontend.teacher.index')->with(['table' => $table]);
     }
 
     public function register(){
@@ -336,6 +339,11 @@ class FrontTeacherController extends Controller
             $data[] = $rowData;
         }
         return response()->json($data);
+    }
+
+    public function payments(){
+        $table = Payment::orderBy('id', 'DESC')->where('user_id', Auth::id())->get();
+        return view('frontend.teacher.payments')->with(['table' => $table]);
     }
 
 }

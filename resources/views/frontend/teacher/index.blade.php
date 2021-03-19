@@ -8,6 +8,52 @@
     <div class="container">
         <div class="row">
             <div class="col">
+            @php
+                $paid_hour = $table->payment()->sum('paid_hour');
+
+                 $spends = $table->time_log_teacher()->where('status', 'End')->get();
+                 $travel_times = 0;
+                 $fixed_travel = 0;
+                 $spend_times = 0;
+                 foreach ($spends as $spend){
+                     $spend_times += $spend->spend_time();
+                     if($spend->spend_time() > 30){
+                         $fixed_travel += 30;
+                     }else{
+                         $travel_times += $spend->spend_time();
+                     }
+                 }
+
+                 $total_travel = $travel_times + $fixed_travel;
+                 $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
+                 $spend_hour = $spend_times / 60;
+                 $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
+            @endphp
+
+                <div class="row mb-5">
+                    <div class="col">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Travel')}}:</b> {{$travel_hour}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-danger">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Unpaid')}}:</b> {{$unpaid_hour}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-success">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Paid')}}:</b> {{number_format($paid_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
                 <!--begin::Card-->
                 <div class="card card-custom">

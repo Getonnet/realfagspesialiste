@@ -63,6 +63,8 @@ Route::prefix('teacher')->group(function () {
         Route::post('/events', [FrontTeacherController::class, 'event_save'])->name('teacher.events-save');
         Route::get('/events', [FrontTeacherController::class, 'events'])->name('teacher.events');
 
+        Route::get('/pay', [FrontTeacherController::class, 'payments'])->name('teacher.pay');
+
         Route::get('/reports', [FrontTeacherController::class, 'reports'])->name('teacher.reports');
     });
 });

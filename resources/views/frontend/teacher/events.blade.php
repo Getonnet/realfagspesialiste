@@ -40,7 +40,7 @@
                         <td>{{$row->spend_time('H')}}</td>
                         @if($row->cal_start_before() > -30)
                             @if($row->status == 'Pending')
-                            <td><a href="{{route('teacher.events-status-running', ['id' => $row->id])}}">{{__('Start')}}</a></td>
+                            <td><a href="javascript:;" data-href="{{route('teacher.events-status-running', ['id' => $row->id])}}" onclick="runFn(this)">{{__('Start')}}</a></td>
                             @elseif($row->status == 'Running')
                                 <td><a href="javascript:;"
                                        onclick="endFn(this)"
@@ -115,6 +115,26 @@
            var link = e.getAttribute('data-href');
            $.get( link, function( result ) {
                $( "#viewModal .modal-body" ).html( result );
+           });
+       }
+
+       function runFn(e){
+           var link = e.getAttribute('data-href');
+
+           Swal.fire({
+               title: "Are you sure?",
+               text: "You wont be able to revert this!",
+               icon: "warning",
+               showCancelButton: true,
+               confirmButtonText: "Yes, time start!",
+               cancelButtonText: "No, cancel!",
+               reverseButtons: true
+           }).then(function(result) {
+               //alert(link);
+               if (result.value) {
+                   window.location.href = link;
+               }
+
            });
        }
 
