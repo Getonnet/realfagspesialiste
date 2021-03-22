@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text">Date</span></div>
+                                        <div class="input-group-prepend"><span class="input-group-text">{{__('Date')}}</span></div>
                                         <input type="text" id="pic_date" name="date_range" class="form-control" placeholder="Date" />
                                         <div class="input-group-append"><button type="submit" class=" btn btn-primary input-group-btn">Ok</button></div>
                                     </div>
