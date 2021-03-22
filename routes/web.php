@@ -35,6 +35,7 @@ Route::middleware(['auth', 'student'])->group(function () {
     Route::post('/order', [FrontStudentController::class, 'orders_save'])->name('package.orders');
     Route::get('/order', [FrontStudentController::class, 'orders'])->name('order.list');
 
+    Route::post('/reports', [FrontStudentController::class, 'show_reports'])->name('student.reports');
     Route::get('/reports', [FrontStudentController::class, 'reports'])->name('my.reports');
     Route::get('/profile', [FrontStudentController::class, 'profile'])->name('my.profile');
     Route::put('/profile/{id}', [FrontStudentController::class, 'update_profile'])->name('update.myprofile');

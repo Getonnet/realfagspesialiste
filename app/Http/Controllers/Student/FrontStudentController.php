@@ -147,13 +147,10 @@ class FrontStudentController extends Controller
     }
 
     public function dashboard(){
-        return view('frontend.student.dashboard');
+        $table = User::find(Auth::id());
+        return view('frontend.student.dashboard')->with(['table' => $table]);
     }
 
-    public function reports(){
-        $subject = Subject::orderBy('name')->get();
-        return view('frontend.student.reports')->with(['subject' => $subject]);
-    }
 
     public function overview($id){
         $table = TimeLog::find($id);
@@ -185,6 +182,35 @@ class FrontStudentController extends Controller
             $data[] = $rowData;
         }
         return response()->json($data);
+    }
+
+    public function reports(){
+        $subject = Subject::orderBy('name')->get();
+        $teacher = TimeLog::orderBy('teacher_name')->groupBy('teacher_id')->having('student_id', Auth::id())->get();
+        return view('frontend.student.reports')->with(['subject' => $subject, 'teacher' => $teacher]);
+    }
+
+    public function show_reports(Request $request){
+        //dd($request->all());
+
+        $sp_date = explode(" - ", $request->date_range);
+       // dd($sp_date);
+        $dates = [];
+        foreach ($sp_date as $row){
+            $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
+        }
+
+        //dd($dates);
+
+        $pre_table = TimeLog::where('student_id', Auth::id())->whereBetween('created_at', $dates);
+        if(isset($request->subject_id)){
+            $pre_table->where('subject_id', $request->subject_id);
+        }
+        if(isset($request->teacher_id)){
+            $pre_table->where('teacher_id', $request->teacher_id);
+        }
+        $table =  $pre_table->get();
+        return view('frontend.student.report_page')->with(['table' => $table]);
     }
 
 

@@ -9,6 +9,45 @@
         <div class="row">
             <div class="col">
 
+                @php
+                    $hour = $table->purchase()->where('status', 'Active')->sum('hours');
+                    $spends = $table->time_log()->orderBy('id', 'DESC')->where('status', 'End')->get();
+                    $spend_times = 0;
+                    foreach ($spends as $spend){
+                        if($spend->spend_time() > 30){
+                            $spend_times += ($spend->spend_time() - 30);
+                        }
+                    }
+                    $spend_times_hour = $spend_times/60;
+                    $hour_to_min = $hour * 60;
+                    $remain_min = $hour_to_min - $spend_times;
+                    $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
+                @endphp
+
+                <div class="row mb-5">
+                    <div class="col">
+                        <div class="card bg-primary">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Purchase')}}:</b> {{number_format(($hour), 2, '.', ' ')}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-danger">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Spend')}}:</b> {{number_format(($spend_times_hour), 2, '.', ' ')}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-success">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Remaining')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <div class="card-header">
