@@ -191,16 +191,12 @@ class FrontStudentController extends Controller
     }
 
     public function show_reports(Request $request){
-        //dd($request->all());
-
         $sp_date = explode(" - ", $request->date_range);
-       // dd($sp_date);
+
         $dates = [];
         foreach ($sp_date as $row){
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
-
-        //dd($dates);
 
         $pre_table = TimeLog::where('student_id', Auth::id())->whereBetween('created_at', $dates);
         if(isset($request->subject_id)){

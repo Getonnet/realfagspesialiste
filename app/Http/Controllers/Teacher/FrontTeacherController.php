@@ -145,11 +145,6 @@ class FrontTeacherController extends Controller
     }
 
 
-    public function reports(){
-        $subject = Subject::orderBy('name')->get();
-        return view('frontend.teacher.reports')->with(['subject' => $subject]);
-    }
-
     public function events(){
         $subjects = Subject::orderBy('name')->get();
         $students = User::orderBy('name')->where('user_type', 'Student')->get();
@@ -344,6 +339,32 @@ class FrontTeacherController extends Controller
     public function payments(){
         $table = Payment::orderBy('id', 'DESC')->where('user_id', Auth::id())->get();
         return view('frontend.teacher.payments')->with(['table' => $table]);
+    }
+
+    public function reports(){
+        $subject = Subject::orderBy('name')->get();
+        $students = TimeLog::orderBy('student_name')->groupBy('student_id')->having('teacher_id', Auth::id())->get();
+        return view('frontend.teacher.reports')->with(['subject' => $subject, 'students' => $students]);
+    }
+
+    public function show_reports(Request $request){
+
+       // dd($request->all());
+        $sp_date = explode(" - ", $request->date_range);
+        $dates = [];
+        foreach ($sp_date as $row){
+            $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
+        }
+
+        $pre_table = TimeLog::where('teacher_id', Auth::id())->whereBetween('created_at', $dates);
+        if(isset($request->subject_id)){
+            $pre_table->where('subject_id', $request->subject_id);
+        }
+        if(isset($request->student_id)){
+            $pre_table->where('student_id', $request->student_id);
+        }
+        $table =  $pre_table->get();
+        return view('frontend.teacher.report_page')->with(['table' => $table]);
     }
 
 }

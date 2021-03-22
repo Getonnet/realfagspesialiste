@@ -17,15 +17,15 @@
             <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                 <thead>
                 <tr>
-                    <th>Event Date</th>
-                    <th>Subject</th>
-                    <th>Student</th>
-                    <th>Email</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Hour</th>
-                    <th>Status</th>
-                    <th class="text-right">Action</th>
+                    <th>{{__('Event Date')}}</th>
+                    <th>{{__('Subject')}}</th>
+                    <th>{{__('Student')}}</th>
+                    <th>{{__('Email')}}</th>
+                    <th>{{__('Start')}}</th>
+                    <th>{{__('End')}}</th>
+                    <th>{{__('Hour')}}</th>
+                    <th>{{__('Status')}}</th>
+                    <th class="text-right">{{__('Action')}}</th>
                 </tr>
                 </thead>
                 <tbody>

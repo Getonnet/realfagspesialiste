@@ -66,6 +66,7 @@ Route::prefix('teacher')->group(function () {
 
         Route::get('/pay', [FrontTeacherController::class, 'payments'])->name('teacher.pay');
 
+        Route::post('/reports', [FrontTeacherController::class, 'show_reports'])->name('teacher.reports-show');
         Route::get('/reports', [FrontTeacherController::class, 'reports'])->name('teacher.reports');
     });
 });

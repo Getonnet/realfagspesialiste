@@ -57,7 +57,7 @@
 
                         <hr />
 
-                        <p id="loader" class="text-center text-gray-500" style="display: none;">Loading...</p>
+                        <p id="loader" class="text-center text-gray-500" style="display: none;">{{__('Loading')}}...</p>
                         <div id="show_reports">
 
                         </div>
