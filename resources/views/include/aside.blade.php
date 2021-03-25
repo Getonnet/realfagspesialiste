@@ -115,11 +115,46 @@
                     </div>
                 </li>
 
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="javascript:;" class="menu-link">
-                        <i class="menu-icon flaticon2-settings"></i>
+                <li class="menu-item menu-item-submenu {{ (request()->is('admin/reports*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                    <a href="javascript:;" class="menu-link menu-toggle">
+                        <i class="menu-icon flaticon2-chart"></i>
                         <span class="menu-text">{{__('Reports')}}</span>
+                        <i class="menu-arrow"></i>
                     </a>
+                    <div class="menu-submenu">
+                        <i class="menu-arrow"></i>
+                        <ul class="menu-subnav">
+                            <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                <span class="menu-link">
+                                    <span class="menu-text">{{__('Reports')}}</span>
+                                </span>
+                            </li>
+                            <li class="menu-item {{request()->routeIs('admin.reports') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                <a href="{{route('admin.reports')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('General Reports')}}</span>
+                                </a>
+                            </li>
+                            <li class="menu-item {{request()->routeIs('admin.report-student') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                <a href="{{route('admin.report-student')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('Student Reports')}}</span>
+                                </a>
+                            </li>
+                            <li class="menu-item {{request()->routeIs('admin.report-teacher') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                <a href="{{route('admin.report-teacher')}}" class="menu-link">
+                                    <i class="menu-bullet menu-bullet-dot">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">{{__('Teacher Reports')}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>

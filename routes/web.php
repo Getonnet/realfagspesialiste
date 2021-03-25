@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 //use App\Http\Controllers\MainController;
 use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Packages\PackagesController;
+use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\Student\FrontStudentController;
 use App\Http\Controllers\Student\StudentController;
 use App\Http\Controllers\Subjects\SubjectsController;
@@ -93,6 +94,11 @@ Route::prefix('admin')->group(function () {
         Route::put('/teacher/payment-update/{id}', [TeacherController::class, 'pay_update'])->name('pay-update.teacher');
         Route::resource('/teacher', TeacherController::class);
         Route::resource('/orders', OrderController::class);
+
+        Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports');
+        Route::get('/reports/student', [ReportController::class, 'student'])->name('admin.report-student');
+        Route::get('/reports/teacher', [ReportController::class, 'teacher'])->name('admin.report-teacher');
+
     });
 });
 
