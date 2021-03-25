@@ -95,7 +95,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('/teacher', TeacherController::class);
         Route::resource('/orders', OrderController::class);
 
+        Route::post('/reports/sells', [ReportController::class, 'sells_reports'])->name('admin.reports-sells');
+        Route::post('/reports/payments', [ReportController::class, 'payment_reports'])->name('admin.reports-pay');
         Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports');
+
         Route::get('/reports/student', [ReportController::class, 'student'])->name('admin.report-student');
         Route::get('/reports/teacher', [ReportController::class, 'teacher'])->name('admin.report-teacher');
 

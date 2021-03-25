@@ -30,5 +30,5 @@
     </table>
 
 @else
-<p class="text-center text-gray-500">Nothing to found</p>
+    <p class="text-center text-gray-500">{{__('Nothing to found')}}</p>
 @endif
