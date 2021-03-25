@@ -20,13 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/payments.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/sells.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/reports/time_log.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Reports/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Reports/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/report_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/report_page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/include/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/student.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/teacher.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -262,7 +264,7 @@
       <workItem from="1616437779180" duration="110000" />
       <workItem from="1616481175165" duration="4401000" />
       <workItem from="1616493243893" duration="613000" />
-      <workItem from="1616677059325" duration="6827000" />
+      <workItem from="1616677059325" duration="12365000" />
     </task>
     <servers />
   </component>
@@ -293,10 +295,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="845" y="388" key="#Notifications/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615553210775" />
-    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616685121647">
+    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616692785590">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1616685121647" />
+    <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1616692785590" />
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1615451135572">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -309,10 +311,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="540" y="260" key="IDE.errors.dialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615554608086" />
-    <state x="829" y="455" key="NewPhpFileDialog" timestamp="1616686341438">
+    <state x="829" y="455" key="NewPhpFileDialog" timestamp="1616692615476">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="829" y="455" key="NewPhpFileDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1616686341438" />
+    <state x="829" y="455" key="NewPhpFileDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1616692615476" />
     <state x="248" y="84" key="SettingsEditor" timestamp="1615530606940">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

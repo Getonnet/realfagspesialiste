@@ -99,8 +99,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/reports/payments', [ReportController::class, 'payment_reports'])->name('admin.reports-pay');
         Route::get('/reports', [ReportController::class, 'index'])->name('admin.reports');
 
-        Route::get('/reports/student', [ReportController::class, 'student'])->name('admin.report-student');
-        Route::get('/reports/teacher', [ReportController::class, 'teacher'])->name('admin.report-teacher');
+        Route::post('/reports/time', [ReportController::class, 'time_report'])->name('admin.time-log');
+        Route::get('/reports/time', [ReportController::class, 'times'])->name('admin.time');
 
     });
 });

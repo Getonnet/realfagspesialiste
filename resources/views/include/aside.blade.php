@@ -137,20 +137,12 @@
                                     <span class="menu-text">{{__('General Reports')}}</span>
                                 </a>
                             </li>
-                            <li class="menu-item {{request()->routeIs('admin.report-student') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('admin.report-student')}}" class="menu-link">
+                            <li class="menu-item {{request()->routeIs('admin.time') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                <a href="{{route('admin.time')}}" class="menu-link">
                                     <i class="menu-bullet menu-bullet-dot">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">{{__('Student Reports')}}</span>
-                                </a>
-                            </li>
-                            <li class="menu-item {{request()->routeIs('admin.report-teacher') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('admin.report-teacher')}}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">{{__('Teacher Reports')}}</span>
+                                    <span class="menu-text">{{__('Time log Reports')}}</span>
                                 </a>
                             </li>
                         </ul>
