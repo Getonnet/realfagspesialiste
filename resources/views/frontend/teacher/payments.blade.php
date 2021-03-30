@@ -14,6 +14,7 @@
                     <thead>
                     <tr>
                         <th>Date</th>
+                        <th>Payment Mode</th>
                         <th>Paid Hour</th>
                         <th>Paid Amount</th>
                         <th>Payment Descriptions</th>
@@ -23,6 +24,7 @@
                     @foreach($table as $row)
                         <tr>
                             <td>{{date('d-M-Y', strtotime($row->created_at))}}</td>
+                            <td>{{$row->is_travel == 0 ? 'Regular' : 'Travel'}}</td>
                             <td>{{number_format($row->paid_hour, 2, '.', ' ')}}</td>
                             <td>{{number_format($row->amount, 2, '.', ' ')}}</td>
                             <td>{{$row->description}}</td>

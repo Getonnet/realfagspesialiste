@@ -76,23 +76,18 @@
                     </div>
 
                     @php
-                           $paid_hour = $table->payment()->sum('paid_hour');
+                            $paid_hour = $table->payment()->where('is_travel', 0)->sum('paid_hour');
+                            $paid_travel_hour = $table->payment()->where('is_travel', 1)->sum('paid_hour');
 
                             $spends = $table->time_log_teacher()->where('status', 'End')->get();
-                            $travel_times = 0;
-                            $fixed_travel = 0;
+                            $total_travel = 0;
                             $spend_times = 0;
                             foreach ($spends as $spend){
                                 $spend_times += $spend->spend_time();
-                                if($spend->spend_time() > 30){
-                                    $fixed_travel += 30;
-                                }else{
-                                    $travel_times += $spend->spend_time();
-                                }
+                                $total_travel += $spend->hour_spend;
                             }
-
-                            $total_travel = $travel_times + $fixed_travel;
                             $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
+                            $unpaid_travel_hour = number_format(($travel_hour - $paid_travel_hour), 2, '.', ' ');
                             $spend_hour = $spend_times / 60;
                             $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
                     @endphp
@@ -101,8 +96,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row font-size-h3">
-                                    <div class="col text-right text-primary"><b>{{__('Travel')}}:</b></div>
-                                    <div class="col  border-right text-primary">{{$travel_hour}} <sup>Hr</sup></div>
+                                    <div class="col text-right text-primary"><b>{{__('Unpaid Travel')}}:</b></div>
+                                    <div class="col  border-right text-primary">{{$unpaid_travel_hour}} <sup>Hr</sup></div>
 
                                     <div class="col text-right  text-danger"><b>{{__('Unpaid')}}:</b></div>
                                     <div class="col  border-right  text-danger">{{$unpaid_hour}} <sup>Hr</sup></div>
@@ -138,6 +133,7 @@
                                         <thead>
                                         <tr>
                                             <th>{{__('Date')}}</th>
+                                            <th>{{__('Payment Mode')}}</th>
                                             <th>{{__('Hour')}}</th>
                                             <th>{{__('Amount')}}</th>
                                             <th>{{__('Description')}}</th>
@@ -148,6 +144,7 @@
                                         @foreach($payments as $row)
                                             <tr>
                                                 <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                                                <td>{{$row->is_travel == 0 ? 'Regular': 'Travel'}}</td>
                                                 <td>{{number_format(($row->paid_hour), 2, '.', ' ')}}</td>
                                                 <td>{{number_format(($row->amount), 2, '.', ' ')}}</td>
                                                 <td title="{{$row->description}}">{{Str::limit($row->description, 20)}}</td>
@@ -159,6 +156,7 @@
                                                                data-href="{{route('pay-update.teacher', ['id' => $row->id])}}"
                                                                data-hour="{{$row->paid_hour}}"
                                                                data-amount="{{$row->amount}}"
+                                                               data-travel="{{$row->is_travel}}"
                                                                data-description="{{$row->description}}">
                                                                 <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
                                                                 <span class="navi-text">{{__('Edit')}}</span>
@@ -279,12 +277,14 @@
             var paid_hour = e.getAttribute('data-hour');
             var amount = e.getAttribute('data-amount');
             var description = e.getAttribute('data-description');
+            var is_travel = e.getAttribute('data-travel');
             //var hour = "{{$unpaid_hour}}";
 
 
             $('#ediPayModal form').attr('action', link);
             $('#ediPayModal [name=paid_hour]').val(paid_hour);
             $('#ediPayModal [name=amount]').val(amount);
+            $('#ediPayModal [name=is_travel]').val(is_travel);
             $('#ediPayModal [name=description]').val(description);
             //if(paid_hour > hour)
             //$('#ediPayModal [name=paid_hour]').attr('max', hour);

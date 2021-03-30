@@ -24,6 +24,7 @@
                     <th>{{__('Start')}}</th>
                     <th>{{__('End')}}</th>
                     <th>{{__('Hour')}}</th>
+                    <th>{{__('Travel')}}</th>
                     <th>{{__('Status')}}</th>
                     <th class="text-right">{{__('Action')}}</th>
                 </tr>
@@ -37,7 +38,8 @@
                         <td>{{$row->student_email}}</td>
                         <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                         <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
-                        <td>{{$row->spend_time('H')}}</td>
+                        <td>{{$row->spend_time('H')}} Hr</td>
+                        <td>{{$row->hour_spend}} Min</td>
                         @if($row->cal_start_before() > -30)
                             @if($row->status == 'Pending')
                             <td><a href="javascript:;" data-href="{{route('teacher.events-status-running', ['id' => $row->id])}}" onclick="runFn(this)">{{__('Start')}}</a></td>
@@ -47,6 +49,7 @@
                                        data-subject="{{$row->subject_name}}"
                                        data-student="{{$row->student_name}}"
                                        data-description="{{$row->description}}"
+                                       data-start="{{date('Y-m-d h:i A', strtotime($row->start_time))}}"
                                        data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
                                        data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
                             @else
@@ -143,11 +146,30 @@
            var subject = e.getAttribute('data-subject');
            var student = e.getAttribute('data-student');
            var description = e.getAttribute('data-description');
+           var start_time = e.getAttribute('data-start');
 
            $('#endModal form').attr('action', link);
            $('#subject_names').html(subject);
            $('#student_names').html(student);
            $('#endModal [name=description]').val(description);
+
+          /* $('#endModal [name=start_time]').daterangepicker({
+               timePicker: true,
+               singleDatePicker: true,
+               locale: {
+                   format: 'DD-MM-YYYY hh:mm A'
+               }
+           });
+           $('#endModal [name=start_time]').val(start_time);
+
+           $('#endModal [name=end_time]').daterangepicker({
+               timePicker: true,
+               singleDatePicker: true,
+               minDate:new Date(),
+               locale: {
+                   format: 'DD-MM-YYYY hh:mm A'
+               }
+           });*/
        }
 
        function ediFn(e){

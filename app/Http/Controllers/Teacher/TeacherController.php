@@ -227,7 +227,8 @@ class TeacherController extends Controller
         //dd($request->all());
         $validator = Validator::make($request->all(), [
             'amount' => 'required|numeric',
-            'paid_hour' => 'required|numeric'
+            'paid_hour' => 'required|numeric',
+            'is_travel' => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
@@ -240,6 +241,7 @@ class TeacherController extends Controller
             $table->amount = $request->amount;
             $table->paid_hour = $request->paid_hour;
             $table->description = $request->description;
+            $table->is_travel = $request->is_travel;
             $table->user_id = $id;
             $table->save();
 
@@ -255,7 +257,8 @@ class TeacherController extends Controller
         //dd($request->all());
         $validator = Validator::make($request->all(), [
             'amount' => 'required|numeric',
-            'paid_hour' => 'required|numeric'
+            'paid_hour' => 'required|numeric',
+            'is_travel' => 'required|numeric'
         ]);
 
         if ($validator->fails()) {
@@ -268,6 +271,7 @@ class TeacherController extends Controller
             $table->amount = $request->amount;
             $table->paid_hour = $request->paid_hour;
             $table->description = $request->description;
+            $table->is_travel = $request->is_travel;
             $table->save();
 
         }catch (\Exception $ex) {

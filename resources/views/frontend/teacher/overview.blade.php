@@ -26,7 +26,11 @@
         </tr>
         <tr>
             <th>{{__('Hour Spend')}}</th>
-            <td>{{$table->spend_time('H')}}</td>
+            <td>{{$table->spend_time('H')}} Hr</td>
+        </tr>
+        <tr>
+            <th>{{__('Travel Time')}}</th>
+            <td>{{$table->hour_spend}} Min</td>
         </tr>
         <tr>
             <th>{{__('Status')}}</th>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssignStudent;
 use App\Models\Payment;
 use App\Models\StudyMaterial;
 use App\Models\Subject;
@@ -147,7 +148,7 @@ class FrontTeacherController extends Controller
 
     public function events(){
         $subjects = Subject::orderBy('name')->get();
-        $students = User::orderBy('name')->where('user_type', 'Student')->get();
+        $students = AssignStudent::where('teacher_id', Auth::id())->get();
         $table = TimeLog::orderBy('Id', 'DESC')->where('teacher_id', Auth::id())->get();
         return view('frontend.teacher.events')->with(['subjects' => $subjects, 'students' => $students, 'table' => $table]);
     }
@@ -257,6 +258,7 @@ class FrontTeacherController extends Controller
         $validator = Validator::make($request->all(), [
             'motivational' => 'required|numeric|min:1|max:10',
             'understanding' => 'required|numeric|min:1|max:10',
+            'hour_spend' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -267,6 +269,7 @@ class FrontTeacherController extends Controller
 
             $table = TimeLog::find($id);
             $table->end_time = date('Y-m-d H:i:s');
+            $table->hour_spend = $request->hour_spend;
             $table->understanding = $request->understanding;
             $table->motivational = $request->motivational;
             $table->description = $request->description;

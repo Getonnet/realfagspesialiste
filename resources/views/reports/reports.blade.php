@@ -96,10 +96,19 @@
                                                         <option value="{{$row->id}}">{{$row->name}}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend"><span class="input-group-text">{{__('Payment Mode')}}</span></div>
+                                                <select name="is_travel" class="form-control">
+                                                    <option value="">All</option>
+                                                    <option value="0">{{__('Regular Payment')}}</option>
+                                                    <option value="1">{{__('Travel Payment')}}</option>
+                                                </select>
                                                 <div class="input-group-append"><button type="submit" class=" btn btn-primary input-group-btn">Ok</button></div>
                                             </div>
                                         </div>
-                                        <div class="col"></div>
                                     </div>
                                 </form>
 

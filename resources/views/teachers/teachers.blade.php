@@ -21,7 +21,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact</th>
-                            <th>Travel</th>
+                            <th>Unpaid Travel</th>
                             <th>Unpaid Hour</th>
                             <th class="text-right">Action</th>
                         </tr>
@@ -29,25 +29,22 @@
                     <tbody>
                     @foreach($table as $row)
                         @php
-                            $paid_hour = $row->payment()->sum('paid_hour');
+                            $paid_hour = $row->payment()->where('is_travel', 0)->sum('paid_hour');
+                            $paid_travel_hour = $row->payment()->where('is_travel', 1)->sum('paid_hour');
 
                             $spends = $row->time_log_teacher()->where('status', 'End')->get();
-                            $travel_times = 0;
-                            $fixed_travel = 0;
+                            $total_travel = 0;
                             $spend_times = 0;
                             foreach ($spends as $spend){
                                 $spend_times += $spend->spend_time();
-                                if($spend->spend_time() > 30){
-                                    $fixed_travel += 30;
-                                }else{
-                                    $travel_times += $spend->spend_time();
-                                }
+                                $total_travel += $spend->hour_spend;
                             }
 
-                            $total_travel = $travel_times + $fixed_travel;
                             $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
                             $spend_hour = $spend_times / 60;
                             $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
+                            $unpaid_travel = number_format(($travel_hour - $paid_travel_hour), 2, '.', ' ');
+                            $total_unpaid_hours = $travel_hour + $unpaid_hour;
 
                         @endphp
                         <tr>
@@ -55,7 +52,7 @@
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->teacher->contact ?? ''}}</td>
-                            <td>{{$travel_hour}}</td>
+                            <td>{{$unpaid_travel}}</td>
                             <td>{{$unpaid_hour}}</td>
                             <td class="text-right">
                                 <x-actions>
@@ -97,11 +94,11 @@
                                         </a>
                                     </li>
 
-                                    @if($unpaid_hour > 0)
+                                    @if($total_unpaid_hours > 0)
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#payModal" onclick="payFn(this)"
                                            data-href="{{route('pay.teacher', ['teacher' => $row->id])}}"
-                                           data-hour="{{$unpaid_hour}}"
+                                           data-hour="{{$total_unpaid_hours}}"
                                         >
                                             <span class="navi-icon"><i class="la la-money text-warning"></i></span>
                                             <span class="navi-text">{{__('Payment')}}</span>

@@ -33,9 +33,7 @@
                             $spends = $row->time_log()->where('status', 'End')->get();
                             $spend_times = 0;
                             foreach ($spends as $spend){
-                                if($spend->spend_time() > 30){
-                                    $spend_times += ($spend->spend_time() - 30);
-                                }
+                                $spend_times += $spend->spend_time();
                             }
                             $hour_to_min = $hour * 60;
                             $remain_min = $hour_to_min - $spend_times;

@@ -18,7 +18,7 @@ class CreateTimeLogsTable extends Migration
             $table->timestamp('event_start');
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
-            $table->float('hour_spend')->default(0)->comment('Based on start and end time');
+            $table->float('hour_spend')->default(0)->comment('Travel Time');
             $table->string('subject_name')->nullable();
             $table->string('student_name')->nullable();
             $table->string('student_email')->nullable();

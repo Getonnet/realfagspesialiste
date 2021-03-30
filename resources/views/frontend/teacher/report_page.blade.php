@@ -10,6 +10,7 @@
             <th>{{__('Start')}}</th>
             <th>{{__('End')}}</th>
             <th>{{__('Hour')}}</th>
+            <th>{{__('Travel')}}</th>
             <th>{{__('Status')}}</th>
         </tr>
         </thead>
@@ -22,7 +23,8 @@
                 <td>{{$row->student_email}}</td>
                 <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                 <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
-                <td>{{$row->spend_time('H')}}</td>
+                <td>{{$row->spend_time('H')}} Hr</td>
+                <td>{{$row->hour_spend}} Min</td>
                 <td>{{__($row->status)}}</td>
             </tr>
         @endforeach

@@ -51,9 +51,7 @@
                         $spends = $table->time_log()->orderBy('id', 'DESC')->where('status', 'End')->get();
                         $spend_times = 0;
                         foreach ($spends as $spend){
-                            if($spend->spend_time() > 30){
-                                $spend_times += ($spend->spend_time() - 30);
-                            }
+                            $spend_times += $spend->spend_time();
                         }
                         $spend_times_hour = $spend_times/60;
                         $hour_to_min = $hour * 60;

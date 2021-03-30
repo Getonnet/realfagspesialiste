@@ -6,6 +6,7 @@
             <th>{{__('Date')}}</th>
             <th>{{__('Teacher')}}</th>
             <th>{{__('Email')}}</th>
+            <th>{{__('Payment Mode')}}</th>
             <th>{{__('Paid Hour')}}</th>
             <th>{{__('Paid Amount')}}</th>
             <th>{{__('Payment Descriptions')}}</th>
@@ -23,9 +24,10 @@
                 <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
                 <td>{{$row->user->name ?? ''}}</td>
                 <td>{{$row->user->email ?? ''}}</td>
-                <td>{{$row->description}}</td>
+                <td>{{$row->is_travel == 0 ? 'Regular' : 'Travel'}}</td>
                 <td>{{$row->paid_hour}}</td>
                 <td>{{$row->amount}}</td>
+                <td>{{$row->description}}</td>
             </tr>
             @php
                 $amount += $row->amount;
@@ -38,6 +40,7 @@
             <th colspan="4" class="text-right">{{__('Total')}}</th>
             <th>{{$hour}}</th>
             <th>{{$amount}}</th>
+            <th></th>
         </tr>
         </tfoot>
     </table>

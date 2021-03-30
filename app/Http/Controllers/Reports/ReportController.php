@@ -54,6 +54,9 @@ class ReportController extends Controller
         if(isset($request->user_id)){
             $pre_table->where('user_id', $request->user_id);
         }
+        if(isset($request->is_travel)){
+            $pre_table->where('is_travel', $request->is_travel);
+        }
         $table =  $pre_table->get();
 
         return view('reports.lightbox.payments')->with(['table' => $table]);

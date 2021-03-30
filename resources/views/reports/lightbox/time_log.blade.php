@@ -11,12 +11,14 @@
             <th>{{__('Start')}}</th>
             <th>{{__('End')}}</th>
             <th>{{__('Hour')}}</th>
+            <th>{{__('Travel')}}</th>
             <th>{{__('Status')}}</th>
         </tr>
         </thead>
         <tbody>
         @php
             $hours = 0;
+            $travels = 0;
         @endphp
         @foreach($table as $row)
             <tr>
@@ -28,10 +30,12 @@
                 <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                 <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
                 <td>{{$row->spend_time('H')}}</td>
+                <td>{{number_format(($row->hour_spend / 60), 2, '.', ' ')}}</td>
                 <td>{{__($row->status)}}</td>
             </tr>
             @php
                 $hours += $row->spend_time('H');
+                $travels += $row->hour_spend;
             @endphp
         @endforeach
         </tbody>
@@ -39,6 +43,7 @@
             <tr>
                 <th colspan="7" class="text-right">Total Hour</th>
                 <th>{{$hours}}</th>
+                <th>{{number_format(($travels / 60), 2, '.', ' ')}}</th>
                 <th></th>
             </tr>
         </tfoot>
