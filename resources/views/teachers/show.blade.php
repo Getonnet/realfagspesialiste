@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@extends('teachers.box.teachers')
+@extends('teachers.box.show')
 @section('title')
     {{__('Teacher Info')}}
 @endsection
@@ -125,6 +125,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{{__('Time Spend Reports')}}</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#assign" role="tab" aria-controls="profile" aria-selected="false">{{__('Student Assign')}}</a>
+                                </li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -218,6 +221,36 @@
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="tab-pane fade" id="assign" role="tabpanel" aria-labelledby="profile-tab">
+                                    @php
+                                        $assign = $table->student_assign()->get();
+
+                                    //dd($assign)
+                                    @endphp
+                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatableAs">
+                                        <thead>
+                                        <tr>
+                                            <th>{{__('Photo')}}</th>
+                                            <th>{{__('Student')}}</th>
+                                            <th>{{__('Email')}}</th>
+                                            <th>{{__('Contact')}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($assign as $row)
+                                            <tr>
+                                                <td><img src="{{asset($row->students->profile_photo_path ?? 'assets/media/users/blank.png')}}" style="height: 30px;" class="img-fluid img-thumbnail" /></td>
+                                                <td>{{$row->students->name ?? ''}}</td>
+                                                <td>{{$row->students->email ?? ''}}</td>
+                                                <td>{{$row->students->student->contact ?? ''}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
                             </div>
                         </div>
 
@@ -262,6 +295,8 @@
                 { orderable: false, "targets": [5] }//For Column Order
             ]
         });
+
+        $('#kt_datatableAs').DataTable();
 
         $('#kt_datatable2').DataTable({
             columnDefs: [

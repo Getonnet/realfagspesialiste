@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssignStudent;
 use App\Models\Payment;
 use App\Models\TeacherProfile;
 use App\Models\TimeLog;
@@ -24,7 +25,8 @@ class TeacherController extends Controller
     public function index()
     {
         $table = User::orderBy('id', 'DESC')->where('user_type', 'Teacher')->get();
-        return view('teachers.teachers')->with(['table' => $table]);
+        $students = User::orderBy('name')->where('user_type', 'Student')->get();
+        return view('teachers.teachers')->with(['table' => $table, 'students' => $students]);
     }
 
     /**
@@ -269,7 +271,6 @@ class TeacherController extends Controller
             $table->save();
 
         }catch (\Exception $ex) {
-            //dd($ex);
             return redirect()->back()->with(config('naz.db_error'));
         }
 
@@ -279,5 +280,29 @@ class TeacherController extends Controller
     public function del_payment($id){
         Payment::destroy($id);
         return redirect()->back()->with(config('naz.del'));
+    }
+
+    public function assign_student(Request $request, $id){
+        //dd($request->all());
+
+        try{
+            AssignStudent::where('teacher_id', $id)->delete();
+
+            if(isset($request->assign)){
+                $assign = $request->assign;
+                foreach ($assign as $row){
+                    $table = new AssignStudent();
+                    $table->teacher_id = $id;
+                    $table->student_id = $row;
+                    $table->save();
+                }
+            }
+
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.edit'));
+
     }
 }

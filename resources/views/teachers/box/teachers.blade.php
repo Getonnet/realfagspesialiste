@@ -110,10 +110,22 @@
         <x-ninput label="{{__('Description')}}" name="description"/>
     </x-modals>
 
-    <x-modals id="ediPayModal" action="#" title="{{__('Teacher Payment Edit')}}">
+    <x-modals id="assignModal" class="modal-sm" action="#" title="{{__('Assign Student')}}">
         @method('PUT')
-        <x-ninput label="{{__('Pay Amount')}}" type="number" min="0" step="any" name="amount" required="required" />
-        <x-ninput label="{{__('Pay Hour')}}" type="number" min="0" step="any" name="paid_hour" required="required" />
-        <x-ninput label="{{__('Description')}}" name="description"/>
+
+        <div class="form-group">
+            <div class="checkbox-list">
+
+                @foreach($students as $row)
+                    <label class="checkbox checkbox-success">
+                        <input type="checkbox" id="checkedPerm{{$row->id}}" name="assign[]" value="{{$row->id}}"/>
+                        <span></span>
+                        {{$row->name}}
+                    </label>
+                @endforeach
+
+            </div>
+        </div>
+
     </x-modals>
 @endsection

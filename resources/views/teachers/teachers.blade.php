@@ -79,6 +79,24 @@
                                         </a>
                                     </li>
 
+                                    @php
+                                        $data = [];
+                                        $assign = $row->student_assign()->select('student_id')->get();
+                                        foreach ($assign as $permit){
+                                            $data[] = $permit->student_id;
+                                        }
+                                        //dd($data);
+                                    @endphp
+
+                                    <li class="navi-item">
+                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#assignModal" onclick="assignFn(this)"
+                                           data-href="{{route('assign.teacher', ['id' => $row->id])}}"
+                                           data-permission="{{json_encode($data)}}">
+                                            <span class="navi-icon"><i class="la la-hand-point-right text-primary"></i></span>
+                                            <span class="navi-text">{{__('Assign Students')}}</span>
+                                        </a>
+                                    </li>
+
                                     @if($unpaid_hour > 0)
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#payModal" onclick="payFn(this)"
@@ -155,6 +173,20 @@
             var hour = e.getAttribute('data-hour');
             $('#payModal form').attr('action', link);
             $('#payModal [name=paid_hour]').attr('max', hour);
+        }
+
+        function assignFn(e) {
+            var link = e.getAttribute('data-href');
+            var permission = e.getAttribute('data-permission');
+
+            $('#assignModal input:checkbox').prop('checked',false);
+
+            $('#assignModal form').attr('action', link);
+
+            $.each(JSON.parse(permission), function( index, value ) {
+                $('#assignModal #checkedPerm'+value).prop('checked',true);
+            });
+
         }
 
         new KTImageInput('profile_photo');
