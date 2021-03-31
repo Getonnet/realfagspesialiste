@@ -18,12 +18,12 @@
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Hours</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                        <th>Expire</th>
-                        <th class="text-right">Action</th>
+                        <th>{{__('Name')}}</th>
+                        <th>{{__('Hours')}}</th>
+                        <th>{{__('Price')}}</th>
+                        <th>{{__('Description')}}</th>
+                        <th>{{__('Expire')}}</th>
+                        <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
                     <tbody>

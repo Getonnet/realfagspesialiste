@@ -18,13 +18,13 @@
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                         <tr>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Contact</th>
-                            <th>Unpaid Travel</th>
-                            <th>Unpaid Hour</th>
-                            <th class="text-right">Action</th>
+                            <th>{{__('Photo')}}</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('Contact')}}</th>
+                            <th>{{__('Unpaid Travel')}}</th>
+                            <th>{{__('Unpaid Hour')}}</th>
+                            <th class="text-right">{{__('Action')}}</th>
                         </tr>
                     </thead>
                     <tbody>
