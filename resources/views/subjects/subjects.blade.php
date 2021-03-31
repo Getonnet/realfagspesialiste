@@ -10,9 +10,11 @@
     <div class="row">
         <div class="col-md-6">
             <x-card title="{{__('Subject List')}}">
-                <x-slot name="button">
-                    <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
-                </x-slot>
+                @can('Subject Create')
+                    <x-slot name="button">
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                    </x-slot>
+                @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
@@ -26,23 +28,24 @@
                             <td>{{$row->name}}</td>
                             <td class="text-right">
                                 <x-actions>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                           data-href="{{route('subjects.update', ['subject' => $row->id])}}"
-                                           data-name="{{$row->name}}">
-                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('Edit')}}</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('subjects.destroy', ['subject' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                            <span class="navi-text">{{__('Delete')}}</span>
-                                        </a>
-                                    </li>
-
+                                    @can('Subject Edit')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                               data-href="{{route('subjects.update', ['subject' => $row->id])}}"
+                                               data-name="{{$row->name}}">
+                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                <span class="navi-text">{{__('Edit')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Subject Delete')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('subjects.destroy', ['subject' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                <span class="navi-text">{{__('Delete')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
                                 </x-actions>
                             </td>
                         </tr>

@@ -18,7 +18,7 @@ class RolesController extends Controller
     public function index()
     {
         $table = Role::orderBy('id', 'DESC')->get();
-        $permissions = Permission::orderBy('name', 'ASC')->get();
+        $permissions = Permission::orderBy('name', 'ASC')->get()->chunk(12);
         return view('users.roles')->with(['table' => $table, 'permissions' => $permissions]);
     }
 

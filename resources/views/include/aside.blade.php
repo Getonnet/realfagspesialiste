@@ -44,110 +44,125 @@
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
                 <!--/Divider-->
+                @can('Subject List')
+                    <li class="menu-item {{request()->routeIs('subjects.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                        <a href="{{route('subjects.index')}}" class="menu-link">
+                            <i class="menu-icon flaticon2-open-text-book"></i>
+                            <span class="menu-text">{{__('Subject')}}</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('Package List')
+                    <li class="menu-item {{request()->routeIs('package.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                        <a href="{{route('package.index')}}" class="menu-link">
+                            <i class="menu-icon flaticon2-box-1"></i>
+                            <span class="menu-text">{{__('Packages')}}</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('Purchase List')
+                    <li class="menu-item {{request()->routeIs('orders.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
+                        <a href="{{route('orders.index')}}" class="menu-link">
+                            <i class="menu-icon flaticon-bag"></i>
+                            <span class="menu-text">{{__('Purchase Order')}}</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('Teacher List')
+                    <li class="menu-item {{ (request()->is('admin/teacher*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
+                        <a href="{{route('teacher.index')}}" class="menu-link">
+                            <i class="menu-icon flaticon-businesswoman"></i>
+                            <span class="menu-text">{{__('Teachers')}}</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('Student List')
+                    <li class="menu-item {{ (request()->is('admin/student*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
+                        <a href="{{route('student.index')}}" class="menu-link">
+                            <i class="menu-icon flaticon-customer"></i>
+                            <span class="menu-text">{{__('Student')}}</span>
+                        </a>
+                    </li>
+                @endcan
+                @canany(['User List', 'Role List'])
+                    <li class="menu-item menu-item-submenu {{ (request()->is('admin/users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <i class="menu-icon flaticon2-user"></i>
+                            <span class="menu-text">{{__('User')}}</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <span class="menu-link">
+                                        <span class="menu-text">{{__('User')}}</span>
+                                    </span>
+                                </li>
+                                @can('User List')
+                                    <li class="menu-item {{request()->routeIs('users.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('users.index')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">{{__('User List')}}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('Role List')
+                                    <li class="menu-item {{request()->routeIs('roles.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('roles.index')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">{{__('User Role')}}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
 
-                <li class="menu-item {{request()->routeIs('subjects.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
-                    <a href="{{route('subjects.index')}}" class="menu-link">
-                        <i class="menu-icon flaticon2-open-text-book"></i>
-                        <span class="menu-text">{{__('Subject')}}</span>
-                    </a>
-                </li>
-
-                <li class="menu-item {{request()->routeIs('package.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
-                    <a href="{{route('package.index')}}" class="menu-link">
-                        <i class="menu-icon flaticon2-box-1"></i>
-                        <span class="menu-text">{{__('Packages')}}</span>
-                    </a>
-                </li>
-
-                <li class="menu-item {{request()->routeIs('orders.index') ? 'menu-item-open menu-item-here' : ''}}" aria-haspopup="true">
-                    <a href="{{route('orders.index')}}" class="menu-link">
-                        <i class="menu-icon flaticon-bag"></i>
-                        <span class="menu-text">{{__('Purchase Order')}}</span>
-                    </a>
-                </li>
-
-                <li class="menu-item {{ (request()->is('admin/teacher*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
-                    <a href="{{route('teacher.index')}}" class="menu-link">
-                        <i class="menu-icon flaticon-businesswoman"></i>
-                        <span class="menu-text">{{__('Teachers')}}</span>
-                    </a>
-                </li>
-
-                <li class="menu-item {{ (request()->is('admin/student*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
-                    <a href="{{route('student.index')}}" class="menu-link">
-                        <i class="menu-icon flaticon-customer"></i>
-                        <span class="menu-text">{{__('Student')}}</span>
-                    </a>
-                </li>
-
-
-                <li class="menu-item menu-item-submenu {{ (request()->is('admin/users*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <i class="menu-icon flaticon2-user"></i>
-                        <span class="menu-text">{{__('User')}}</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">{{__('User')}}</span>
-                                </span>
-                            </li>
-                            <li class="menu-item {{request()->routeIs('users.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('users.index')}}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">{{__('User List')}}</span>
-                                </a>
-                            </li>
-                            <li class="menu-item {{request()->routeIs('roles.index') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('roles.index')}}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">{{__('User Role')}}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="menu-item menu-item-submenu {{ (request()->is('admin/reports*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <i class="menu-icon flaticon2-chart"></i>
-                        <span class="menu-text">{{__('Reports')}}</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">{{__('Reports')}}</span>
-                                </span>
-                            </li>
-                            <li class="menu-item {{request()->routeIs('admin.reports') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('admin.reports')}}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">{{__('General Reports')}}</span>
-                                </a>
-                            </li>
-                            <li class="menu-item {{request()->routeIs('admin.time') ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                                <a href="{{route('admin.time')}}" class="menu-link">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">{{__('Time log Reports')}}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @canany(['Reports General', 'Reports Time log'])
+                    <li class="menu-item menu-item-submenu {{ (request()->is('admin/reports*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <i class="menu-icon flaticon2-chart"></i>
+                            <span class="menu-text">{{__('Reports')}}</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <span class="menu-link">
+                                        <span class="menu-text">{{__('Reports')}}</span>
+                                    </span>
+                                </li>
+                                @can('Reports General')
+                                    <li class="menu-item {{request()->routeIs('admin.reports') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('admin.reports')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">{{__('General Reports')}}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('Reports Time log')
+                                    <li class="menu-item {{request()->routeIs('admin.time') ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                                        <a href="{{route('admin.time')}}" class="menu-link">
+                                            <i class="menu-bullet menu-bullet-dot">
+                                                <span></span>
+                                            </i>
+                                            <span class="menu-text">{{__('Time log Reports')}}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </div>
+                    </li>
+                @endcanany
 
             </ul>
             <!--end::Menu Nav-->

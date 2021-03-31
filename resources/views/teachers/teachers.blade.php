@@ -10,10 +10,11 @@
     <div class="row">
         <div class="col">
             <x-card title="{{__('Teacher List')}}">
-                <x-slot name="button">
-                    <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
-                </x-slot>
-
+                @can('Teacher Create')
+                    <x-slot name="button">
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                    </x-slot>
+                @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                         <tr>
@@ -56,69 +57,74 @@
                             <td>{{$unpaid_hour}}</td>
                             <td class="text-right">
                                 <x-actions>
+                                    @can('Teacher Edit')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                               data-href="{{route('teacher.update', ['teacher' => $row->id])}}"
+                                               data-name="{{$row->name}}"
+                                               data-email="{{$row->email}}"
+                                               data-contact="{{$row->teacher->contact ?? ''}}"
+                                               data-address="{{$row->teacher->address ?? ''}}"
+                                               data-city="{{$row->teacher->city ?? ''}}"
+                                               data-zip="{{$row->teacher->zip ?? ''}}"
+                                               data-dob="{{$row->teacher->dob ?? ''}}"
+                                               data-gender="{{$row->teacher->gender ?? ''}}"
+                                               data-grade="{{$row->teacher->grade ?? ''}}"
+                                               data-working="{{$row->teacher->working_hour ?? ''}}"
+                                               data-photo="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}">
+                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                <span class="navi-text">{{__('Edit')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Teacher Student Assign')
+                                        @php
+                                            $data = [];
+                                            $assign = $row->student_assign()->select('student_id')->get();
+                                            foreach ($assign as $permit){
+                                                $data[] = $permit->student_id;
+                                            }
+                                            //dd($data);
+                                        @endphp
 
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                           data-href="{{route('teacher.update', ['teacher' => $row->id])}}"
-                                           data-name="{{$row->name}}"
-                                           data-email="{{$row->email}}"
-                                           data-contact="{{$row->teacher->contact ?? ''}}"
-                                           data-address="{{$row->teacher->address ?? ''}}"
-                                           data-city="{{$row->teacher->city ?? ''}}"
-                                           data-zip="{{$row->teacher->zip ?? ''}}"
-                                           data-dob="{{$row->teacher->dob ?? ''}}"
-                                           data-gender="{{$row->teacher->gender ?? ''}}"
-                                           data-grade="{{$row->teacher->grade ?? ''}}"
-                                           data-working="{{$row->teacher->working_hour ?? ''}}"
-                                           data-photo="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}">
-                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('Edit')}}</span>
-                                        </a>
-                                    </li>
-
-                                    @php
-                                        $data = [];
-                                        $assign = $row->student_assign()->select('student_id')->get();
-                                        foreach ($assign as $permit){
-                                            $data[] = $permit->student_id;
-                                        }
-                                        //dd($data);
-                                    @endphp
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#assignModal" onclick="assignFn(this)"
-                                           data-href="{{route('assign.teacher', ['id' => $row->id])}}"
-                                           data-permission="{{json_encode($data)}}">
-                                            <span class="navi-icon"><i class="la la-hand-point-right text-primary"></i></span>
-                                            <span class="navi-text">{{__('Assign Students')}}</span>
-                                        </a>
-                                    </li>
-
-                                    @if($total_unpaid_hours > 0)
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#payModal" onclick="payFn(this)"
-                                           data-href="{{route('pay.teacher', ['teacher' => $row->id])}}"
-                                           data-hour="{{$total_unpaid_hours}}"
-                                        >
-                                            <span class="navi-icon"><i class="la la-money text-warning"></i></span>
-                                            <span class="navi-text">{{__('Payment')}}</span>
-                                        </a>
-                                    </li>
-                                    @endif
-
-                                    <li class="navi-item">
-                                        <a href="{{route('teacher.show', ['teacher' => $row->id])}}" class="navi-link">
-                                            <span class="navi-icon"><i class="la la-eye text-info"></i></span>
-                                            <span class="navi-text">{{__('Show')}}</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('teacher.destroy', ['teacher' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                            <span class="navi-text">{{__('Delete')}}</span>
-                                        </a>
-                                    </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#assignModal" onclick="assignFn(this)"
+                                               data-href="{{route('assign.teacher', ['id' => $row->id])}}"
+                                               data-permission="{{json_encode($data)}}">
+                                                <span class="navi-icon"><i class="la la-hand-point-right text-primary"></i></span>
+                                                <span class="navi-text">{{__('Assign Students')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Teacher Payment')
+                                        @if($total_unpaid_hours > 0)
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#payModal" onclick="payFn(this)"
+                                               data-href="{{route('pay.teacher', ['teacher' => $row->id])}}"
+                                               data-hour="{{$total_unpaid_hours}}"
+                                            >
+                                                <span class="navi-icon"><i class="la la-money text-warning"></i></span>
+                                                <span class="navi-text">{{__('Payment')}}</span>
+                                            </a>
+                                        </li>
+                                        @endif
+                                    @endcan
+                                    @can('Teacher View')
+                                        <li class="navi-item">
+                                            <a href="{{route('teacher.show', ['teacher' => $row->id])}}" class="navi-link">
+                                                <span class="navi-icon"><i class="la la-eye text-info"></i></span>
+                                                <span class="navi-text">{{__('Show')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Teacher Delete')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('teacher.destroy', ['teacher' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                <span class="navi-text">{{__('Delete')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
 
                                 </x-actions>
                             </td>

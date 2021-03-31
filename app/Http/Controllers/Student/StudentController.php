@@ -8,6 +8,7 @@ use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
@@ -107,6 +108,9 @@ class StudentController extends Controller
      */
     public function show($id)
     {
+        if(!Auth::user()->can('Student View')){
+            return view('un_authorize');
+        }
         $table = User::find($id);
         return view('students.show')->with(['table' => $table]);
     }

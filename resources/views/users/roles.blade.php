@@ -10,9 +10,11 @@
     <div class="row">
         <div class="col-md-6">
             <x-card title="{{__('User Roles List')}}">
-                <x-slot name="button">
-                    <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
-                </x-slot>
+                @can('Role Create')
+                    <x-slot name="button">
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                    </x-slot>
+                @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
@@ -38,33 +40,36 @@
                                     @endphp
 
                                     <x-actions>
-
-                                        <li class="navi-item" title="{{__('Assign Permission')}}">
-                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#permissionModal" onclick="perFn(this)"
-                                               data-href="{{route('permissions', ['id' => $row->id])}}"
-                                               data-permission="{{json_encode($data)}}"
-                                            >
-                                                <span class="navi-icon"><i class="la la-crown text-warning"></i></span>
-                                                <span class="navi-text">{{__('Permission')}}</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="navi-item">
-                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                               data-href="{{route('roles.update', ['role' => $row->id])}}"
-                                               data-name="{{$row->name}}"
-                                            >
-                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                                <span class="navi-text">{{__('Edit')}}</span>
-                                            </a>
-                                        </li>
-
-                                        <li class="navi-item">
-                                            <a href="javascript:;" data-href="{{route('roles.destroy', ['role' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                                <span class="navi-text">{{__('Delete')}}</span>
-                                            </a>
-                                        </li>
+                                        @can('Role Permission')
+                                            <li class="navi-item" title="{{__('Assign Permission')}}">
+                                                <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#permissionModal" onclick="perFn(this)"
+                                                   data-href="{{route('permissions', ['id' => $row->id])}}"
+                                                   data-permission="{{json_encode($data)}}"
+                                                >
+                                                    <span class="navi-icon"><i class="la la-crown text-warning"></i></span>
+                                                    <span class="navi-text">{{__('Permission')}}</span>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('Role Edit')
+                                            <li class="navi-item">
+                                                <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                                   data-href="{{route('roles.update', ['role' => $row->id])}}"
+                                                   data-name="{{$row->name}}"
+                                                >
+                                                    <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                    <span class="navi-text">{{__('Edit')}}</span>
+                                                </a>
+                                            </li>
+                                        @endcan
+                                        @can('Role Delete')
+                                            <li class="navi-item">
+                                                <a href="javascript:;" data-href="{{route('roles.destroy', ['role' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                    <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                    <span class="navi-text">{{__('Delete')}}</span>
+                                                </a>
+                                            </li>
+                                        @endcan
 
                                     </x-actions>
                                 @endif

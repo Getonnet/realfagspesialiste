@@ -384,10 +384,4 @@ class FrontTeacherController extends Controller
         return view('frontend.teacher.report_page')->with(['table' => $table]);
     }
 
-    /*public function subject_time(){
-
-
-        dd($data);
-    }*/
-
 }

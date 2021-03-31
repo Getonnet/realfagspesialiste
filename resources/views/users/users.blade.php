@@ -9,9 +9,11 @@
     <div class="row">
         <div class="col">
             <x-card title="{{__('User List')}}">
+                @can('User Create')
                 <x-slot name="button">
                     <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
                 </x-slot>
+                @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
@@ -37,26 +39,28 @@
                             <td>{{$role ?? ''}}</td>
                             <td class="text-right">
                                 <x-actions>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                            data-href="{{route('users.update', ['user' => $row->id])}}"
-                                            data-name="{{$row->name}}"
-                                            data-email="{{$row->email}}"
-                                            data-role="{{$role_id ?? ''}}"
-                                            data-photo="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}"
-                                        >
-                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('Edit')}}</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('users.destroy', ['user' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                            <span class="navi-text">{{__('Delete')}}</span>
-                                        </a>
-                                    </li>
+                                    @can('User Edit')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                                data-href="{{route('users.update', ['user' => $row->id])}}"
+                                                data-name="{{$row->name}}"
+                                                data-email="{{$row->email}}"
+                                                data-role="{{$role_id ?? ''}}"
+                                                data-photo="{{asset($row->profile_photo_path ?? 'assets/media/users/blank.png')}}"
+                                            >
+                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                <span class="navi-text">{{__('Edit')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('User Delete')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('users.destroy', ['user' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                <span class="navi-text">{{__('Delete')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
 
                                 </x-actions>
                             </td>
@@ -72,7 +76,7 @@
 @section('script')
     <script type="text/javascript">
 
-        $('.select2').select2();
+      //  $('.select2').select2();
 
         function ediFn(e){
             var link = e.getAttribute('data-href');
@@ -86,7 +90,7 @@
 
             $('#ediModal [name=name]').val(name);
             $('#ediModal [name=email]').val(email);
-            $('#ediModal [name=role_id]').val(role_id).select2();
+            $('#ediModal [name=role_id]').val(role_id);
 
             $('#ediModal .ediprofile_photo').css('background-image', 'url("' + photo + '")');
         }

@@ -20,10 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/un_authorize.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/StudentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/TeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/TeacherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/RolesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/RolesAndPermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RolesAndPermissionsSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/include/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/packages/packages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/packages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/students/students.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/students.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/subjects/subjects.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/subjects/subjects.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teachers/teachers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/teachers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/box/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/box/roles.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/box/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/box/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/roles.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/users.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +196,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeders" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -190,6 +205,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\realfagspesialiste\database\seeders" />
       <recent name="D:\laragon\www\realfagspesialiste\resources\views\teachers" />
       <recent name="C:\wamp64\www\realfagspesialiste\app" />
       <recent name="C:\wamp64\www\realfagspesialiste\app\Models" />
@@ -263,7 +279,7 @@
       <workItem from="1616736077060" duration="595000" />
       <workItem from="1616787701344" duration="215000" />
       <workItem from="1617092087748" duration="17392000" />
-      <workItem from="1617170968006" duration="8597000" />
+      <workItem from="1617170968006" duration="17760000" />
     </task>
     <servers />
   </component>

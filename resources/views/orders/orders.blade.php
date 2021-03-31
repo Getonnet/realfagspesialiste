@@ -33,30 +33,32 @@
                             <td>{{$row->status}}</td>
                             <td class="text-right">
                                 <x-actions>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                           data-href="{{route('orders.update', ['order' => $row->id])}}"
-                                           data-date="{{date('d/m/Y', strtotime($row->created_at))}}"
-                                           data-student="{{$row->user->name}}"
-                                           data-package="{{$row->name}}"
-                                           data-coupon="{{$row->coupon}}"
-                                           data-hours="{{$row->hours}}"
-                                           data-price="{{$row->price}}"
-                                           data-description="{{$row->description}}"
-                                           data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
-                                           data-status="{{$row->status}}">
-                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('View')}}</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('orders.destroy', ['order' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                            <span class="navi-text">{{__('Delete')}}</span>
-                                        </a>
-                                    </li>
+                                    @can('Purchase View')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                               data-href="{{route('orders.update', ['order' => $row->id])}}"
+                                               data-date="{{date('d/m/Y', strtotime($row->created_at))}}"
+                                               data-student="{{$row->user->name}}"
+                                               data-package="{{$row->name}}"
+                                               data-coupon="{{$row->coupon}}"
+                                               data-hours="{{$row->hours}}"
+                                               data-price="{{$row->price}}"
+                                               data-description="{{$row->description}}"
+                                               data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
+                                               data-status="{{$row->status}}">
+                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                <span class="navi-text">{{__('View')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Purchase Delete')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('orders.destroy', ['order' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                <span class="navi-text">{{__('Delete')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
 
                                 </x-actions>
                             </td>

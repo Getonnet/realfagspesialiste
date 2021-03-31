@@ -10,9 +10,11 @@
     <div class="row">
         <div class="col">
             <x-card title="{{__('Package List')}}">
-                <x-slot name="button">
-                    <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
-                </x-slot>
+                @can('Package Create')
+                    <x-slot name="button">
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                    </x-slot>
+                @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
@@ -34,28 +36,29 @@
                             <td>{{date('d-M-Y - h:i A', strtotime($row->expire))}}</td>
                             <td class="text-right">
                                 <x-actions>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
-                                           data-href="{{route('package.update', ['package' => $row->id])}}"
-                                           data-name="{{$row->name}}"
-                                            data-hours="{{$row->hours}}"
-                                            data-price="{{$row->price}}"
-                                            data-description="{{$row->description}}"
-                                            data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
-                                            data-coupon="{{$row->isCoupon}}">
-                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
-                                            <span class="navi-text">{{__('Edit')}}</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="navi-item">
-                                        <a href="javascript:;" data-href="{{route('package.destroy', ['package' => $row->id])}}" class="navi-link" onclick="delFn(this)">
-                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
-                                            <span class="navi-text">{{__('Delete')}}</span>
-                                        </a>
-                                    </li>
-
+                                    @can('Package Edit')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
+                                               data-href="{{route('package.update', ['package' => $row->id])}}"
+                                               data-name="{{$row->name}}"
+                                                data-hours="{{$row->hours}}"
+                                                data-price="{{$row->price}}"
+                                                data-description="{{$row->description}}"
+                                                data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
+                                                data-coupon="{{$row->isCoupon}}">
+                                                <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                                <span class="navi-text">{{__('Edit')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                    @can('Package Delete')
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('package.destroy', ['package' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                                <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                                <span class="navi-text">{{__('Delete')}}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
                                 </x-actions>
                             </td>
                         </tr>
