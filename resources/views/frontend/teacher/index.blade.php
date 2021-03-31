@@ -9,25 +9,21 @@
         <div class="row">
             <div class="col">
             @php
-                $paid_hour = $table->payment()->sum('paid_hour');
+                 $paid_hour = $table->payment()->where('is_travel', 0)->sum('paid_hour');
+                 $paid_travel_hour = $table->payment()->where('is_travel', 1)->sum('paid_hour');
 
                  $spends = $table->time_log_teacher()->where('status', 'End')->get();
-                 $travel_times = 0;
-                 $fixed_travel = 0;
+                 $total_travel = 0;
                  $spend_times = 0;
                  foreach ($spends as $spend){
                      $spend_times += $spend->spend_time();
-                     if($spend->spend_time() > 30){
-                         $fixed_travel += 30;
-                     }else{
-                         $travel_times += $spend->spend_time();
-                     }
+                     $total_travel += $spend->hour_spend;
                  }
 
-                 $total_travel = $travel_times + $fixed_travel;
                  $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
                  $spend_hour = $spend_times / 60;
                  $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
+                 $unpaid_travel = number_format(($travel_hour - $paid_travel_hour), 2, '.', ' ');
             @endphp
 
                 <div class="row mb-5">
@@ -39,22 +35,54 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card bg-danger">
+                        <div class="card bg-success">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Unpaid')}}:</b> {{$unpaid_hour}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Unpaid Travel')}}:</b> {{$unpaid_travel}}<sup>Hr</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card bg-success">
+                        <div class="card bg-info">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Paid')}}:</b> {{number_format($paid_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Hours')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-danger">
+                            <div class="card-body">
+                                <h3 class="text-center text-white"><b>{{__('Unpaid Hours')}}:</b> {{$unpaid_hour}}<sup>Hr</sup></h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
+                @php
+                    $paid = $table->payment()->sum('amount');
+                @endphp
+                <div class="row">
+                   <div class="col-md-3">
+                       <ul class="list-group">
+                           <li class="list-group-item bg-info text-white pt-lg-20 pb-lg-20">
+                               <h1 class="text-center">{{__('Total hours taught')}}</h1>
+                               <h2 class="text-center">{{number_format(($spend_hour + $travel_hour), 2, '.', ' ')}}<sup>Hr</sup></h2>
+                           </li>
+                           <li class="list-group-item bg-success text-white pt-lg-20 pb-lg-20">
+                               <h1 class="text-center">{{__('Total salary paid')}}</h1>
+                               <h2 class="text-center">{{$paid}}<sup>kr</sup></h2>
+                           </li>
+                       </ul>
+                   </div>
+                    <div class="col-md-9">
+                        <!--begin::Card-->
+                        <div class="card card-custom gutter-b">
+                            <div class="card-body">
+                                <div id="chart_3"></div>
+                            </div>
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                </div>
                 <!--begin::Card-->
                 <div class="card card-custom">
                     <div class="card-header">
@@ -84,6 +112,14 @@
     <script src="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
     <!--end::Page Vendors-->
     <script type="text/javascript">
+
+        // Shared Colors Definition
+        const primary = '#6993FF';
+        const success = '#1BC5BD';
+        const info = '#8950FC';
+        const warning = '#FFA800';
+        const danger = '#F64E60';
+
         var KTCalendarBasic = function() {
 
             return {
@@ -150,8 +186,68 @@
             };
         }();
 
+        var KTApexChartsDemo = function () {
+            var thoughts = function () {
+                const apexChart = "#chart_3";
+                var options = {
+                    series: [{
+                        name: 'Hours',
+                        data: {!! $data !!}
+                    }],
+                    chart: {
+                        type: 'bar',
+                        height: 350
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: false,
+                            columnWidth: '55%',
+                            endingShape: 'rounded'
+                        },
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        show: true,
+                        width: 2,
+                        colors: ['transparent']
+                    },
+                    xaxis: {
+                        categories: {!! $categories !!},
+                    },
+                    yaxis: {
+                        title: {
+                            text: 'Hours'
+                        }
+                    },
+                    fill: {
+                        opacity: 1
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function (val) {
+                                return val + " Hr"
+                            }
+                        }
+                    },
+                    colors: [success, primary, warning]
+                };
+
+                var chart = new ApexCharts(document.querySelector(apexChart), options);
+                chart.render();
+            }
+            return {
+                // public functions
+                init: function () {
+                    thoughts();
+                }
+            };
+        }();
+
         jQuery(document).ready(function() {
             KTCalendarBasic.init();
+            KTApexChartsDemo.init();
         });
     </script>
 @endsection

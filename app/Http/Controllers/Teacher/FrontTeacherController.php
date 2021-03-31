@@ -21,8 +21,22 @@ class FrontTeacherController extends Controller
     use UploadTrait;
     public function index(){
         $table = User::find(Auth::id());
-        //dd($table);
-        return view('frontend.teacher.index')->with(['table' => $table]);
+
+        $subjects_id = TimeLog::select('subject_id')->where('teacher_id', Auth::id())->groupBy('subject_id')->pluck('subject_id')->toArray();
+        $categories = Subject::select('name')->whereIn('id', $subjects_id)->pluck('name')->toArray();
+        $data = [];
+        foreach ($subjects_id as $subject_id){
+            $time_log = TimeLog::where('teacher_id', Auth::id())->where('subject_id', $subject_id)->get();
+
+            $hours = 0;
+            foreach ($time_log as $row){
+                $hours +=  $row->spend_time('H');
+            }
+
+            $data[] = $hours;
+        }
+
+        return view('frontend.teacher.index')->with(['table' => $table, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
     }
 
     public function register(){
@@ -369,5 +383,11 @@ class FrontTeacherController extends Controller
         $table =  $pre_table->get();
         return view('frontend.teacher.report_page')->with(['table' => $table]);
     }
+
+    /*public function subject_time(){
+
+
+        dd($data);
+    }*/
 
 }

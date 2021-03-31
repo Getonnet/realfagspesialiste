@@ -56,6 +56,8 @@ Route::prefix('teacher')->group(function () {
         Route::put('/profile/{id}', [FrontTeacherController::class, 'update_profile'])->name('update.teacher_profile');
 
 
+       // Route::get('/dashboard/bar-chart', [FrontTeacherController::class, 'subject_time'])->name('teacher.bar-charts');//Json for bar chart api
+
         Route::put('/events/status/{id}', [FrontTeacherController::class, 'end_status'])->name('teacher.events-status-end');
         Route::get('/events/overview/{id}', [FrontTeacherController::class, 'overview'])->name('teacher.events-overview');//Overview light box
         Route::get('/events/status/{id}', [FrontTeacherController::class, 'running_status'])->name('teacher.events-status-running');
