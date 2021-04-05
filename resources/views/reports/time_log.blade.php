@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{__('Student Reports')}}
+    {{__('Time log Reports')}}
 @endsection
 
 @section('content')
