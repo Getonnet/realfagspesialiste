@@ -13,11 +13,11 @@
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Payment Mode</th>
-                        <th>Paid Hour</th>
-                        <th>Paid Amount</th>
-                        <th>Payment Descriptions</th>
+                        <th>{{__('Date')}}</th>
+                        <th>{{__('Payment Mode')}}</th>
+                        <th>{{__('Paid Hour')}}</th>
+                        <th>{{__('Paid Amount')}}</th>
+                        <th>{{__("Payment Descriptions")}}</th>
                     </tr>
                     </thead>
                     <tbody>
