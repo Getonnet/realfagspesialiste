@@ -26,21 +26,21 @@
                     <div class="col">
                         <div class="card bg-primary">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Purchase')}}:</b> {{number_format(($hour), 2, '.', ' ')}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Purchase')}}:</b> {{number_format(($hour), 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card bg-danger">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Spend')}}:</b> {{number_format(($spend_times_hour), 2, '.', ' ')}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Spend')}}:</b> {{number_format(($spend_times_hour), 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card bg-success">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Remaining')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Remaining')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>

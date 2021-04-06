@@ -27,7 +27,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend"><span class="input-group-text">{{__('Subject')}}</span></div>
                                         <select name="subject_id" class="form-control">
-                                            <option value="">All</option>
+                                            <option value="">{{__('All')}}</option>
                                             @foreach($subject as $row)
                                                 <option value="{{$row->id}}">{{$row->name}}</option>
                                             @endforeach
@@ -38,7 +38,7 @@
                                     <div class="input-group">
                                         <div class="input-group-prepend"><span class="input-group-text">{{__('Teacher')}}</span></div>
                                         <select name="teacher_id" class="form-control">
-                                            <option value="">All</option>
+                                            <option value="">{{__('All')}}</option>
                                             @foreach($teacher as $row)
                                                 <option value="{{$row->teacher_id}}">{{$row->teacher->name ?? ''}}</option>
                                             @endforeach

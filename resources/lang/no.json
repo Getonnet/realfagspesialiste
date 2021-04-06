@@ -276,5 +276,13 @@
     "Nothing to found": "Ingenting å finne",
     "Assign Students": "Tilordne studenter",
     "Student Reports": "Studentrapporter",
-    "Time log Reports": "Tidslogg Rapporter"
+    "Time log Reports": "Tidslogg Rapporter",
+    "Hr": "T",
+    "Add new Teacher": "Legg til ny lærer",
+    "Add new Student": "Legg til ny student",
+    "Add new subject": "Legg til nytt emne",
+    "Add new package": "Legg til ny pakke",
+    "Add new user": "Legg til ny bruker",
+    "Add new role": "Legg til ny rolle",
+    "Number Of Permission": "Antall tillatelser"
 }

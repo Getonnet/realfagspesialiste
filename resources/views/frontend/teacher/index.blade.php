@@ -30,28 +30,28 @@
                     <div class="col">
                         <div class="card bg-primary">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Travel')}}:</b> {{$travel_hour}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Travel')}}:</b> {{$travel_hour}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card bg-success">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Unpaid Travel')}}:</b> {{$unpaid_travel}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Unpaid Travel')}}:</b> {{$unpaid_travel}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card bg-info">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Hours')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Hours')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card bg-danger">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Unpaid Hours')}}:</b> {{$unpaid_hour}}<sup>Hr</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Unpaid Hours')}}:</b> {{$unpaid_hour}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                        <ul class="list-group">
                            <li class="list-group-item bg-info text-white pt-lg-20 pb-lg-20">
                                <h1 class="text-center">{{__('Total hours taught')}}</h1>
-                               <h2 class="text-center">{{number_format(($spend_hour + $travel_hour), 2, '.', ' ')}}<sup>Hr</sup></h2>
+                               <h2 class="text-center">{{number_format(($spend_hour + $travel_hour), 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h2>
                            </li>
                            <li class="list-group-item bg-success text-white pt-lg-20 pb-lg-20">
                                <h1 class="text-center">{{__('Total salary paid')}}</h1>
@@ -191,7 +191,7 @@
                 const apexChart = "#chart_3";
                 var options = {
                     series: [{
-                        name: 'Hours',
+                        name: "{{__('Hours')}}",
                         data: {!! $data !!}
                     }],
                     chart: {
@@ -218,7 +218,7 @@
                     },
                     yaxis: {
                         title: {
-                            text: 'Hours'
+                            text: "{{__('Hours')}}"
                         }
                     },
                     fill: {

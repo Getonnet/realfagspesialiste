@@ -97,13 +97,13 @@
                             <div class="card-body">
                                 <div class="row font-size-h3">
                                     <div class="col text-right text-primary"><b>{{__('Unpaid Travel')}}:</b></div>
-                                    <div class="col  border-right text-primary">{{$unpaid_travel_hour}} <sup>Hr</sup></div>
+                                    <div class="col  border-right text-primary">{{$unpaid_travel_hour}} <sup>{{__('Hr')}}</sup></div>
 
                                     <div class="col text-right  text-danger"><b>{{__('Unpaid')}}:</b></div>
-                                    <div class="col  border-right  text-danger">{{$unpaid_hour}} <sup>Hr</sup></div>
+                                    <div class="col  border-right  text-danger">{{$unpaid_hour}} <sup>{{__('Hr')}}</sup></div>
 
                                     <div class="col text-right  text-info"><b>{{__('Paid')}}:</b></div>
-                                    <div class="col  text-info">{{number_format(($paid_hour), 2, '.', ' ')}} <sup>Hr</sup></div>
+                                    <div class="col  text-info">{{number_format(($paid_hour), 2, '.', ' ')}} <sup>{{__('Hr')}}</sup></div>
                                 </div>
 
 

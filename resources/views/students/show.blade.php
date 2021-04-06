@@ -64,13 +64,13 @@
                             <div class="card-body">
                                 <div class="row font-size-h3">
                                     <div class="col text-right text-primary"><b>{{__('Purchase')}}:</b></div>
-                                    <div class="col  border-right text-primary">{{number_format(($hour), 2, '.', ' ')}} <sup>Hr</sup></div>
+                                    <div class="col  border-right text-primary">{{number_format(($hour), 2, '.', ' ')}} <sup>{{__('Hr')}}</sup></div>
 
                                     <div class="col text-right  text-danger"><b>{{__('Spend')}}:</b></div>
-                                    <div class="col  border-right  text-danger">{{number_format(($spend_times_hour), 2, '.', ' ')}} <sup>Hr</sup></div>
+                                    <div class="col  border-right  text-danger">{{number_format(($spend_times_hour), 2, '.', ' ')}} <sup>{{__('Hr')}}</sup></div>
 
                                     <div class="col text-right  text-info"><b>{{__('Remaining')}}:</b></div>
-                                    <div class="col  text-info">{{$spend_hour}} <sup>Hr</sup></div>
+                                    <div class="col  text-info">{{$spend_hour}} <sup>{{__('Hr')}}</sup></div>
                                 </div>
 
                             </div>
