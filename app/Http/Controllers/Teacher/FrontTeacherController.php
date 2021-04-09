@@ -340,7 +340,9 @@ class FrontTeacherController extends Controller
             $rowData['title'] = $row->student_name;
             $rowData['start'] = $row->event_start;
             $rowData['description'] = $row->description;
-            $rowData['end'] = $row->event_start;
+            //$rowData['end'] = $row->event_start;
+            $rowData['allDay'] = false;
+
             if ($row->status == 'Pending') {
                 $rowData['className'] = 'fc-event-solid-primary';
             }elseif ($row->status == 'Running'){

@@ -133,6 +133,7 @@
 
                     var calendarEl = document.getElementById('kt_calendar');
                     var calendar = new FullCalendar.Calendar(calendarEl, {
+                        timeFormat: 'H:mm',
                         plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
                         themeSystem: 'bootstrap',
 
@@ -147,7 +148,6 @@
                         height: 800,
                         contentHeight: 780,
                         aspectRatio: 3,  // see: https://fullcalendar.io/docs/aspectRatio
-
                         nowIndicator: true,
                         now: TODAY + 'T09:25:00', // just for demo
 
