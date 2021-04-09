@@ -17,25 +17,25 @@
                         <th>{{__('Event Date')}}</th>
                         <th>{{__('Subject')}}</th>
                         <th>{{__('Teacher')}}</th>
-                        <th>{{__('Email')}}</th>
+                        <!-- <th>{{__('Email')}}</th> -->
                         <th>{{__('Start')}}</th>
                         <th>{{__('End')}}</th>
                         <th>{{__('Hour')}}</th>
-                        <th>{{__('Status')}}</th>
+                        <!-- <th>{{__('Status')}}</th> -->
                         <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($table as $row)
                         <tr>
-                            <td>{{date('d, M h:i A', strtotime($row->event_start))}}</td>
+                            <td>{{date('d, M', strtotime($row->event_start))}}</td>
                             <td>{{$row->subject_name}}</td>
                             <td>{{$row->teacher_name}}</td>
-                            <td>{{$row->teacher_email}}</td>
-                            <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
-                            <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
+                            <!-- <td>{{$row->teacher_email}}</td> -->
+                            <td>{{isset($row->start_time) ? date('d, M H:I', strtotime($row->start_time)) : ''}}</td>
+                            <td>{{isset($row->end_time) ? date('d, M H:I', strtotime($row->end_time)) : ''}}</td>
                             <td>{{$row->spend_time('H')}}</td>
-                            <td>{{__($row->status)}}</td>
+                            <!-- <td>{{__($row->status)}}</td> -->
                             <td class="text-right">
 
                                 <x-actions>
