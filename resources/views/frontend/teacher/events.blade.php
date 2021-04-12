@@ -18,6 +18,7 @@
                 <thead>
                 <tr>
                     <th>{{__('Event Date')}}</th>
+                    <th>{{__('Title')}}</th>
                     <th>{{__('Subject')}}</th>
                     <th>{{__('Student')}}</th>
                     <th>{{__('Start')}}</th>
@@ -32,30 +33,28 @@
                 @foreach($table as $row)
                     <tr>
                         <td>{{date('d/m/Y', strtotime($row->event_start))}}</td>
+                        <td>{{$row->name}}</td>
                         <td>{{$row->subject_name}}</td>
                         <td>{{$row->student_name}}</td>
                         <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
                         <td>{{isset($row->end_time) ? date('d, M H:i', strtotime($row->end_time)) : ''}}</td>
                         <td>{{$row->spend_time('H')}} {{__('Hr')}}</td>
                         <td>{{$row->hour_spend}} Min</td>
-                        @if($row->cal_start_before() > -30)
                             @if($row->status == 'Pending')
                             <td><a href="javascript:;" data-href="{{route('teacher.events-status-running', ['id' => $row->id])}}" onclick="runFn(this)">{{__('Start')}}</a></td>
                             @elseif($row->status == 'Running')
                                 <td><a href="javascript:;"
                                        onclick="endFn(this)"
-                                       data-subject="{{$row->subject_name}}"
+                                       data-name="{{$row->name}}"
+                                       data-subject="{{$row->subject_id}}"
                                        data-student="{{$row->student_name}}"
                                        data-description="{{$row->description}}"
-                                       data-start="{{date('Y-m-d H:i', strtotime($row->start_time))}}"
+                                       data-start="{{date('d-m-Y H:i', strtotime($row->start_time))}}"
                                        data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
                                        data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
                             @else
                                 <td>{{__($row->status)}}</td>
                             @endif
-                        @else
-                            <td>{{__($row->status)}}</td>
-                        @endif
                         <td class="text-right">
 
                             <x-actions>
@@ -63,6 +62,7 @@
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
                                            data-href="{{route('teacher.events-edit', ['id' => $row->id])}}"
+                                           data-name="{{$row->name}}"
                                            data-subject="{{$row->subject_id}}"
                                            data-student="{{$row->student_id}}"
                                            data-description="{{$row->description}}"
@@ -141,33 +141,35 @@
 
        function endFn(e) {
            var link = e.getAttribute('data-href');
-           var subject = e.getAttribute('data-subject');
-           var student = e.getAttribute('data-student');
+           var subject_id = e.getAttribute('data-subject');
            var description = e.getAttribute('data-description');
+           var name = e.getAttribute('data-name');
            var start_time = e.getAttribute('data-start');
 
            $('#endModal form').attr('action', link);
-           $('#subject_names').html(subject);
-           $('#student_names').html(student);
            $('#endModal [name=description]').val(description);
+           $('#endModal [name=name]').val(name);
+           $('#endModal [name=subject_id]').val(subject_id);
 
-          /* $('#endModal [name=start_time]').daterangepicker({
+           $('#endModal [name=start_time]').daterangepicker({
                timePicker: true,
+               timePicker24Hour: true,
                singleDatePicker: true,
                locale: {
-                   format: 'DD-MM-YYYY hh:mm A'
+                   format: 'DD-MM-YYYY H:mm'
                }
            });
            $('#endModal [name=start_time]').val(start_time);
 
            $('#endModal [name=end_time]').daterangepicker({
                timePicker: true,
+               timePicker24Hour: true,
                singleDatePicker: true,
                minDate:new Date(),
                locale: {
-                   format: 'DD-MM-YYYY hh:mm A'
+                   format: 'DD-MM-YYYY H:mm'
                }
-           });*/
+           });
        }
 
        function ediFn(e){
@@ -178,12 +180,14 @@
            var description = e.getAttribute('data-description');
            var event = e.getAttribute('data-event');
            var event_start = e.getAttribute('data-events');
+           var name = e.getAttribute('data-name');
 
            $('#ediModal form').attr('action', link);
 
            $('#ediModal [name=subject_id]').val(subject_id);
            $('#ediModal [name=student_id]').val(student_id);
            $('#ediModal [name=description]').val(description);
+           $('#ediModal [name=name]').val(name);
 
            $('#ediModal [name=event_start]').daterangepicker({
                timePicker: true,
@@ -210,7 +214,7 @@
 
        $('#kt_datatable').DataTable({
            columnDefs: [
-               { orderable: false, "targets": [7,8] }//For Column Order
+               { orderable: false, "targets": [8,9] }//For Column Order
            ]
        });
 

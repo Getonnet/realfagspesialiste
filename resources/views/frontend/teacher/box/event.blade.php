@@ -2,6 +2,8 @@
 
     <x-modals id="addModal" action="{{route('teacher.events-save')}}" title="{{__('Add Tuition Plan')}}">
 
+        <x-ninput label="{{__('Title')}}" name="name" required="required" />
+
         <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
 
         <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
@@ -28,6 +30,8 @@
     <x-modals id="ediModal" action="#" title="{{__('Edit Tuition Plan')}}">
 
         @method('PUT')
+
+        <x-ninput label="{{__('Title')}}" name="name" required="required" />
 
         <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
 
@@ -57,10 +61,16 @@
 
        <div class="row">
            <div class="col">
-               <p><b>{{__('Student Name')}}:</b> <span id="student_names"></span></p>
-               <p><b>{{__('Subject Name')}}:</b> <span id="subject_names"></span></p>
-{{--               <x-ninput label="{{__('Start')}}" name="start_time" required="required" />--}}
-{{--               <x-ninput label="{{__('End')}}" name="end_time" required="required" />--}}
+               <x-ninput label="{{__('Title')}}" name="name" required="required" />
+               <x-ninput label="{{__('Start')}}" name="start_time" required="required" />
+               <x-ninput label="{{__('End')}}" name="end_time" required="required" />
+
+               <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
+                   <option value="">{{__('Select Subject')}}</option>
+                   @foreach($subjects as $row)
+                       <option value="{{$row->id}}">{{$row->name}}</option>
+                   @endforeach
+               </x-nselect>
 
                <x-nselect label="{{__('Transport Time')}}" name="hour_spend" required="required" >
                    <option value="">{{__('Select Time')}}</option>
@@ -72,11 +82,12 @@
                </x-nselect>
 
 
-               <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" type="number" min="1" max="10" required="required" />
-               <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" type="number" min="1" max="10" required="required" />
            </div>
 
            <div class="col">
+
+               <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" type="number" min="1" max="10" required="required" />
+               <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" type="number" min="1" max="10" required="required" />
 
                <div class="form-group">
                    <label for="descriptionx">{{__('Descriptions')}}</label>

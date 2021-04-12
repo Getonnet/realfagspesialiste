@@ -171,6 +171,7 @@ class FrontTeacherController extends Controller
         //dd($request->all());
 
         $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
             'event_start' => 'required|date',
             'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
@@ -186,6 +187,7 @@ class FrontTeacherController extends Controller
             $subject = Subject::find($request->subject_id);
 
             $table = new TimeLog();
+            $table->name = $request->name;
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
             $table->subject_id = $request->subject_id;
             $table->subject_name = $subject->name;
@@ -212,6 +214,7 @@ class FrontTeacherController extends Controller
        // dd($request->all());
 
         $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
             'event_start' => 'required|date',
             'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
@@ -227,6 +230,7 @@ class FrontTeacherController extends Controller
             $subject = Subject::find($request->subject_id);
 
             $table = TimeLog::find($id);
+            $table->name = $request->name;
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
             $table->subject_id = $request->subject_id;
             $table->subject_name = $subject->name;
@@ -270,9 +274,13 @@ class FrontTeacherController extends Controller
     public function end_status(Request $request, $id){
         //dd($request->all());
         $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date',
+            'subject_id' => 'required|numeric',
             'motivational' => 'required|numeric|min:1|max:10',
             'understanding' => 'required|numeric|min:1|max:10',
-            'hour_spend' => 'required|numeric',
+            'hour_spend' => 'required|numeric',//Transport Hour
         ]);
 
         if ($validator->fails()) {
@@ -281,13 +289,19 @@ class FrontTeacherController extends Controller
 
         try{
 
+            $subject = Subject::find($request->subject_id);
+
             $table = TimeLog::find($id);
-            $table->end_time = date('Y-m-d H:i:s');
+            $table->start_time = date('Y-m-d H:i:s', strtotime($request->start_time));
+            $table->end_time = date('Y-m-d H:i:s', strtotime($request->end_time));
+            $table->name = $request->name;
             $table->hour_spend = $request->hour_spend;
             $table->understanding = $request->understanding;
             $table->motivational = $request->motivational;
             $table->description = $request->description;
             $table->summery = $request->summery;
+            $table->subject_id = $request->subject_id;
+            $table->subject_name = $subject->name;
             $table->status = 'End';
             $table->save();
             $time_log_id = $table->id;
