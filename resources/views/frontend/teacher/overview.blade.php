@@ -1,6 +1,10 @@
 
     <table class="table table-bordered">
         <tr>
+            <th>{{__('Title')}}</th>
+            <td>{{$table->name}}</td>
+        </tr>
+        <tr>
             <th>{{__('Student Name')}}</th>
             <td>{{$table->student_name}}</td>
         </tr>
@@ -23,6 +27,14 @@
         <tr>
             <th>{{__('Travel Time')}}</th>
             <td>{{$table->hour_spend}} Min</td>
+        </tr>
+        <tr>
+            <th>{{__('Motivational Scale (1-10)')}}</th>
+            <td>{{$table->motivational}}</td>
+        </tr>
+        <tr>
+            <th>{{__('Understanding Scale (1-10)')}}</th>
+            <td>{{$table->understanding}}</td>
         </tr>
         <tr>
             <th colspan="2" class="text-center">{{__('Lesson Descriptions')}}</th>

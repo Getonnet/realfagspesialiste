@@ -1,6 +1,10 @@
 
 <table class="table table-bordered">
     <tr>
+        <th>{{__('Title')}}</th>
+        <td>{{$table->name}}</td>
+    </tr>
+    <tr>
         <th>{{__('Teacher Name')}}</th>
         <td>{{$table->teacher_name}}</td>
     </tr>

@@ -213,6 +213,7 @@
         });
 
        $('#kt_datatable').DataTable({
+           order: [],//Disable default sorting
            columnDefs: [
                { orderable: false, "targets": [8,9] }//For Column Order
            ]
