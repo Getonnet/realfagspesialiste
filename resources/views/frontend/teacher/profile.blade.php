@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('Gender')}}:</span>
-                                            <span class="text-muted text-hover-primary">{{$table->teacher->gender ?? ''}}</span>
+                                            <span class="text-muted text-hover-primary">{{__($table->teacher->gender ?? '')}}</span>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mb-2">
                                             <span class="font-weight-bold mr-2 text-hover-primary">{{__('Email')}}:</span>

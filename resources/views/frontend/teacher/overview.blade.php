@@ -5,16 +5,8 @@
             <td>{{$table->student_name}}</td>
         </tr>
         <tr>
-            <th>{{__('Student Email')}}</th>
-            <td>{{$table->student_email}}</td>
-        </tr>
-        <tr>
             <th>{{__('Subject')}}</th>
             <td>{{$table->subject_name}}</td>
-        </tr>
-        <tr>
-            <th>{{__('Event Date')}}</th>
-            <td>{{date('d, M h:i A', strtotime($table->event_start))}}</td>
         </tr>
         <tr>
             <th>{{__('Session Start')}}</th>
@@ -31,10 +23,6 @@
         <tr>
             <th>{{__('Travel Time')}}</th>
             <td>{{$table->hour_spend}} Min</td>
-        </tr>
-        <tr>
-            <th>{{__('Status')}}</th>
-            <td>{{$table->status}}</td>
         </tr>
         <tr>
             <th colspan="2" class="text-center">{{__('Lesson Descriptions')}}</th>

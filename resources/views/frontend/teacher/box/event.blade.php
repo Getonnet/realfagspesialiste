@@ -19,7 +19,7 @@
         </x-nselect>
 
         <div class="form-group">
-            <label for="exampleTextarea">Descriptions</label>
+            <label for="exampleTextarea">{{__('Descriptions')}}</label>
             <textarea class="form-control" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
         </div>
 
@@ -64,6 +64,7 @@
 
                <x-nselect label="{{__('Transport Time')}}" name="hour_spend" required="required" >
                    <option value="">{{__('Select Time')}}</option>
+                   <option value="0">0 min</option>
                    <option value="15">15 min</option>
                    <option value="20">20 min</option>
                    <option value="25">25 min</option>
