@@ -44,7 +44,7 @@ class TimeLog extends Model
     /**
      * @var array
      */
-    protected $fillable = ['subject_id', 'student_id', 'teacher_id', 'event_start', 'start_time', 'end_time', 'hour_spend', 'subject_name', 'student_name', 'student_email', 'teacher_name', 'teacher_email', 'description', 'summery', 'motivational', 'understanding', 'status', 'deleted_at', 'created_at', 'updated_at'];
+    protected $fillable = ['subject_id', 'student_id', 'teacher_id', 'name', 'event_start', 'start_time', 'end_time', 'hour_spend', 'subject_name', 'student_name', 'student_email', 'teacher_name', 'teacher_email', 'description', 'summery', 'motivational', 'understanding', 'status', 'deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

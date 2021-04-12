@@ -33,7 +33,7 @@
                     <div class="col">
                         <div class="card bg-danger">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Spend')}}:</b> {{number_format(($spend_times_hour), 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
+                                <h3 class="text-center text-white"><b>{{__('Spend')}}:</b> {{number_format(($spend_times_hour), 2, '.', ' ')}}<sup>Timer</sup></h3>
                             </div>
                         </div>
                     </div>

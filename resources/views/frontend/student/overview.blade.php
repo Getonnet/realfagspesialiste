@@ -5,32 +5,28 @@
         <td>{{$table->teacher_name}}</td>
     </tr>
     <tr>
-        <th>{{__('Teacher Email')}}</th>
-        <td>{{$table->teacher_email}}</td>
-    </tr>
-    <tr>
         <th>{{__('Subject')}}</th>
         <td>{{$table->subject_name}}</td>
     </tr>
     <tr>
-        <th>{{__('Event Date')}}</th>
-        <td>{{date('d, M h:i A', strtotime($table->event_start))}}</td>
-    </tr>
-    <tr>
         <th>{{__('Session Start')}}</th>
-        <td>{{isset($table->start_time) ? date('d, M h:i A', strtotime($table->start_time)) : ''}}</td>
+        <td>{{isset($table->start_time) ? date('d, M H:i', strtotime($table->start_time)) : ''}}</td>
     </tr>
     <tr>
         <th>{{__('Session End')}}</th>
-        <td>{{isset($table->end_time) ? date('d, M h:i A', strtotime($table->end_time)) : ''}}</td>
+        <td>{{isset($table->end_time) ? date('d, M H:i', strtotime($table->end_time)) : ''}}</td>
     </tr>
     <tr>
         <th>{{__('Hour Spend')}}</th>
-        <td>{{$table->spend_time('H')}}</td>
+        <td>{{$table->spend_time('H')}} timer</td>
     </tr>
     <tr>
-        <th>{{__('Status')}}</th>
-        <td>{{$table->status}}</td>
+        <th>{{__('Motivational Scale (1-10)')}}</th>
+        <td>{{$table->motivational}}</td>
+    </tr>
+    <tr>
+        <th>{{__('Understanding Scale (1-10)')}}</th>
+        <td>{{$table->understanding}}</td>
     </tr>
     <tr>
         <th colspan="2" class="text-center">{{__('Lesson Descriptions')}}</th>

@@ -95,9 +95,9 @@
                                                 <!--end::Svg Icon-->
                                             </span>
                                         </div>
-                                        <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{$row->hours}}<sup class="font-size-h3 font-weight-normal pl-1">{{__('Hr')}}</sup></span>
+                                        <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{$row->hours}}<sup class="font-size-h3 font-weight-normal pl-1">timer</sup></span>
                                         <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{$row->name}}</h4>
-                                        <h2>{{$row->price}}<sup class="font-size-h3 font-weight-normal pl-1">$</sup></h2>
+                                        <h2>{{$row->price}}<sup class="font-size-h3 font-weight-normal pl-1">Kr</sup></h2>
                                         <p class="mb-15 d-flex flex-column">
                                             <span>{{$row->description}}</span>
                                         </p>

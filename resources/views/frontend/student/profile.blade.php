@@ -66,7 +66,7 @@
                                         $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
 
                                     @endphp
-                                    <h1 class="text-center text-danger" style="font-size: 70px;">{{$spend_hour}}<sup>{{__('Hr')}}</sup></h1>
+                                    <h1 class="text-center text-danger" style="font-size: 60px;">{{$spend_hour}}<sup>Timer</sup></h1>
                                     <!--/Hour Calculation -->
                                 </div>
                                 <!--end::Body-->

@@ -36,7 +36,7 @@
                                 <tr>
                                     <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
                                     <td>{{$row->name}}</td>
-                                    <td>{{$row->hours}} <sup>{{__('Hr')}}</sup></td>
+                                    <td>{{$row->hours}} <sup>Timer</sup></td>
                                     <td>{{$row->price}} <small>Kr</small></td>
                                     <td>{{$row->status}}</td>
                                 </tr>
