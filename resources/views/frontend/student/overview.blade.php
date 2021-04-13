@@ -3,7 +3,7 @@
 <table class="table table-bordered">
     <tr>
         <th>{{__('Title')}}</th>
-        <td>{{$table->name}}</td>
+        <td>{{$table->name ?? __('No Title')}}</td>
     </tr>
     <tr>
         <th>{{__('Teacher Name')}}</th>
