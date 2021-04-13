@@ -82,6 +82,10 @@
                                     </li>
                                     @else
                                     <li class="navi-item">
+                                        <a href="{{route('teacher.events-edit-show', ['id' => $row->id])}}" class="navi-link" >
+                                            <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
+                                            <span class="navi-text">{{__('Edit')}}</span>
+                                        </a>
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#viewModal" onclick="viewFn(this)"
                                            data-href="{{route('teacher.events-overview', ['id' => $row->id])}}"
                                         >

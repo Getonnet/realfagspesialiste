@@ -400,4 +400,9 @@ class FrontTeacherController extends Controller
         return view('frontend.teacher.report_page')->with(['table' => $table]);
     }
 
+    public function event_edit_view($id){
+        $table = TimeLog::find($id);
+       return view('frontend.teacher.events_view')->with(['table' => $table]);
+    }
+
 }
