@@ -1,8 +1,21 @@
+@php
+    $hour = $table->student->purchase()->where('status', 'Active')->sum('hours');
+    $spends = $table->student->time_log()->where('status', 'End')->get();
+    $spend_times = 0;
+    foreach ($spends as $spend){
+        $spend_times += $spend->spend_time();
+    }
+    $hour_to_min = $hour * 60;
+    $remain_min = $hour_to_min - $spend_times;
+    $remaining = number_format(($remain_min / 60), 2, '.', ' ');
 
+//dd($remaining);
+
+@endphp
     <table class="table table-bordered">
         <tr>
             <th>{{__('Title')}}</th>
-            <td>{{$table->name}}</td>
+            <td>{{$table->name ?? __('No Title')}}</td>
         </tr>
         <tr>
             <th>{{__('Student Name')}}</th>
@@ -22,11 +35,15 @@
         </tr>
         <tr>
             <th>{{__('Hour Spend')}}</th>
-            <td>{{$table->spend_time('H')}} Hr</td>
+            <td>{{$table->spend_time('H')}} {{__('Hr')}}</td>
         </tr>
         <tr>
             <th>{{__('Travel Time')}}</th>
             <td>{{$table->hour_spend}} Min</td>
+        </tr>
+        <tr>
+            <th>{{__('Remaining Hours')}}</th>
+            <td>{{$remaining}} {{__('Hr')}}</td>
         </tr>
         <tr>
             <th>{{__('Motivational Scale (1-10)')}}</th>

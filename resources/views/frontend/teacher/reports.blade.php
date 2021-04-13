@@ -95,16 +95,19 @@
                 success: function(result)
                 {
                     $('#show_reports').html(result);
+
                 }
             });
         });
 
         function viewFn(e) {
             var link = e.getAttribute('data-href');
-            $.get( link, function( result ) {
+            $.get(link, function( result ) {
                 $( "#viewModal .modal-body" ).html( result );
             });
         }
+
+
 
         $('#pic_date').daterangepicker({
             locale: {

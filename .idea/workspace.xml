@@ -20,16 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/report.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/no.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/no.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/overview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/overview.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/overview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/overview.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +282,7 @@
       <workItem from="1618207551676" duration="22308000" />
       <workItem from="1618247625913" duration="6696000" />
       <workItem from="1618254668114" duration="820000" />
-      <workItem from="1618301851671" duration="10585000" />
+      <workItem from="1618301851671" duration="12100000" />
     </task>
     <servers />
   </component>

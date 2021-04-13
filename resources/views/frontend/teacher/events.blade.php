@@ -33,7 +33,7 @@
                 @foreach($table as $row)
                     <tr>
                         <td>{{date('d/m/Y', strtotime($row->event_start))}}</td>
-                        <td>{{$row->name}}</td>
+                        <td>{{$row->name ?? __('No Title')}}</td>
                         <td>{{$row->subject_name}}</td>
                         <td>{{$row->student_name}}</td>
                         <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
