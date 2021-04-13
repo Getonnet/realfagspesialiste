@@ -168,7 +168,7 @@ class FrontStudentController extends Controller
 
         $data = [];
         foreach ($table as $row){
-            $rowData['title'] = $row->teacher_name;
+            $rowData['url'] = route('student.events-overview', ['id' => $row->id]);
             $rowData['start'] = $row->event_start;
             $rowData['description'] = $row->description;
             $rowData['end'] = $row->event_start;

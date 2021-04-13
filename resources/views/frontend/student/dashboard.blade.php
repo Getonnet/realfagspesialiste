@@ -1,4 +1,5 @@
 @extends('layouts.general')
+@extends('frontend.student.box.report')
 
 @section('title')
     {{__('My Dashboard')}}
@@ -88,6 +89,11 @@
 
                     var calendarEl = document.getElementById('kt_calendar');
                     var calendar = new FullCalendar.Calendar(calendarEl, {
+                        eventTimeFormat: { // like '14:30:00'
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            hour12: false
+                        },
                         plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid', 'list' ],
                         themeSystem: 'bootstrap',
 
@@ -119,20 +125,11 @@
                         navLinks: true,
                         events: "{{route('student.events-all')}}",
 
-                        eventRender: function(info) {
-                            var element = $(info.el);
-
-                            if (info.event.extendedProps && info.event.extendedProps.description) {
-                                if (element.hasClass('fc-day-grid-event')) {
-                                    element.data('content', info.event.extendedProps.description);
-                                    element.data('placement', 'top');
-                                    KTApp.initPopover(element);
-                                } else if (element.hasClass('fc-time-grid-event')) {
-                                    element.find('.fc-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
-                                } else if (element.find('.fc-list-item-title').lenght !== 0) {
-                                    element.find('.fc-list-item-title').append('<div class="fc-description">' + info.event.extendedProps.description + '</div>');
-                                }
-                            }
+                        eventClick: function(info) {
+                            info.jsEvent.preventDefault();
+                            $('#viewModal').modal('show');
+                            viewFn(info.event.url);
+                            // alert('Event: ' + info.event.url);
                         }
                     });
 
@@ -140,6 +137,12 @@
                 }
             };
         }();
+
+        function viewFn(urls) {
+            $.get(urls, function( result ) {
+                $( "#viewModal .modal-body" ).html( result );
+            });
+        }
 
         jQuery(document).ready(function() {
             KTCalendarBasic.init();
