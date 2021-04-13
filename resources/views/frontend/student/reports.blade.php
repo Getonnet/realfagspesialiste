@@ -1,5 +1,5 @@
 @extends('layouts.general')
-
+@extends('frontend.student.box.report')
 @section('title')
     {{__('My Reports')}}
 @endsection
@@ -19,7 +19,7 @@
                             <h3 class="card-label">{{__('My Reports')}}</h3>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-gray-100">
                         <form id="reports_form" action="{{route('student.reports')}}" method="post">
                             @csrf
                             <div class="row">
@@ -97,6 +97,13 @@
                 }
             });
         });
+
+        function viewFn(e) {
+            var link = e.getAttribute('data-href');
+            $.get(link, function( result ) {
+                $( "#viewModal .modal-body" ).html( result );
+            });
+        }
 
         $('#pic_date').daterangepicker({
             locale: {
