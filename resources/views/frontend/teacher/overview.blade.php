@@ -14,11 +14,11 @@
         </tr>
         <tr>
             <th>{{__('Session Start')}}</th>
-            <td>{{isset($table->start_time) ? date('d, M h:i A', strtotime($table->start_time)) : ''}}</td>
+            <td>{{isset($table->start_time) ? date('d, M H:i', strtotime($table->start_time)) : ''}}</td>
         </tr>
         <tr>
             <th>{{__('Session End')}}</th>
-            <td>{{isset($table->end_time) ? date('d, M h:i A', strtotime($table->end_time)) : ''}}</td>
+            <td>{{isset($table->end_time) ? date('d, M H:i', strtotime($table->end_time)) : ''}}</td>
         </tr>
         <tr>
             <th>{{__('Hour Spend')}}</th>

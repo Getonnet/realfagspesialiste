@@ -16,7 +16,19 @@
         <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
             <option value="">{{__('Select Student')}}</option>
             @foreach($students as $row)
-                <option value="{{$row->student_id}}">{{$row->students->name ?? ''}}</option>
+                @php
+                    $hour = $row->students->purchase()->where('status', 'Active')->sum('hours');
+                    $spends = $row->students->time_log()->where('status', 'End')->get();
+                    $spend_times = 0;
+                    foreach ($spends as $spend){
+                        $spend_times += $spend->spend_time();
+                    }
+                    $hour_to_min = $hour * 60;
+                    $remain_min = $hour_to_min - $spend_times;
+                    $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
+
+                @endphp
+                <option value="{{$row->student_id}}">{{$row->students->name ?? ''}} ({{$spend_hour}})</option>
             @endforeach
         </x-nselect>
 
@@ -45,7 +57,20 @@
         <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
             <option value="">{{__('Select Student')}}</option>
             @foreach($students as $row)
-                <option value="{{$row->student_id}}">{{$row->students->name ?? ''}}</option>
+                @php
+                    $hour = $row->students->purchase()->where('status', 'Active')->sum('hours');
+                    $spends = $row->students->time_log()->where('status', 'End')->get();
+                    $spend_times = 0;
+                    foreach ($spends as $spend){
+                        $spend_times += $spend->spend_time();
+                    }
+                    $hour_to_min = $hour * 60;
+                    $remain_min = $hour_to_min - $spend_times;
+                    $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
+
+                @endphp
+
+                <option value="{{$row->student_id}}">{{$row->students->name ?? ''}} ({{$spend_hour}})</option>
             @endforeach
         </x-nselect>
 

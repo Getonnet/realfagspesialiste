@@ -30,11 +30,12 @@ class FrontTeacherController extends Controller
 
             $hours = 0;
             foreach ($time_log as $row){
-                $hours +=  $row->spend_time('H');
+                $hours += $row->spend_time('H');
             }
 
             $data[] = $hours;
         }
+
 
         return view('frontend.teacher.index')->with(['table' => $table, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
     }

@@ -27,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 /*
 Route::get('/', function () {
     return view('welcome');
-});*/
+});
+*/
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/', [FrontStudentController::class, 'index'])->name('student.package');
 
@@ -54,7 +55,6 @@ Route::prefix('teacher')->group(function () {
         Route::get('/', [FrontTeacherController::class, 'index'])->name('teacher.home');
         Route::get('/profile', [FrontTeacherController::class, 'profile'])->name('teacher.profile');
         Route::put('/profile/{id}', [FrontTeacherController::class, 'update_profile'])->name('update.teacher_profile');
-
 
         Route::put('/events/status/{id}', [FrontTeacherController::class, 'end_status'])->name('teacher.events-status-end');
         Route::get('/events/overview/{id}', [FrontTeacherController::class, 'overview'])->name('teacher.events-overview');//Overview light box
@@ -102,7 +102,6 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/reports/time', [ReportController::class, 'time_report'])->name('admin.time-log');
         Route::get('/reports/time', [ReportController::class, 'times'])->name('admin.time');
-
     });
 });
 

@@ -227,7 +227,7 @@
                     tooltip: {
                         y: {
                             formatter: function (val) {
-                                return val + " Hr"
+                                return val + " T"
                             }
                         }
                     },
