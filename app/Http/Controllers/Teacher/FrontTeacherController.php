@@ -383,7 +383,6 @@ class FrontTeacherController extends Controller
 
     public function show_reports(Request $request){
 
-       // dd($request->all());
         $sp_date = explode(" - ", $request->date_range);
         $dates = [];
         foreach ($sp_date as $row){

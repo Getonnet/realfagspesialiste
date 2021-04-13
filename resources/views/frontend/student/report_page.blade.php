@@ -43,7 +43,7 @@
                         <p><b>{{__('Teacher')}}</b></p>
                         <p class="bg-primary-o-100 p-1"><i class="flaticon2-user text-danger"></i> {{$row->teacher_name}}</p>
                         <p><b>{{__('Start')}}</b></p>
-                        {{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}
+                        {{isset($row->start_time) ? date('d-m-Y', strtotime($row->start_time)) : ''}}
                     </div>
                 </div>
             </div>
