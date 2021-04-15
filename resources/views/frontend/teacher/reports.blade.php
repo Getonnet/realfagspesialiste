@@ -12,12 +12,15 @@
 
                 <!--begin::Card-->
                 <div class="card card-custom">
-                    <div class="card-header">
+                    <div class="card-header flex-wrap border-0 pt-6 pb-0">
                         <div class="card-title">
-                        <span class="card-icon">
-                            <i class="flaticon-user text-danger"></i>
-                        </span>
+                            <span class="card-icon">
+                                <i class="flaticon-user text-danger"></i>
+                            </span>
                             <h3 class="card-label">{{__('My Reports')}}</h3>
+                        </div>
+                        <div class="card-toolbar">
+                            <a href="{{route('teacher.events')}}" class="btn btn-primary ml-1"><i class="flaticon2-add-1"></i> {{__('Add new reports')}}</a>
                         </div>
                     </div>
                     <div class="card-body bg-gray-100">

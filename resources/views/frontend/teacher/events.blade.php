@@ -159,11 +159,12 @@
                timePicker: true,
                timePicker24Hour: true,
                singleDatePicker: true,
+               startDate: start_time,
                locale: {
                    format: 'DD-MM-YYYY H:mm'
                }
            });
-           $('#endModal [name=start_time]').val(start_time);
+          // $('#endModal [name=start_time]').val(start_time);
 
            $('#endModal [name=end_time]').daterangepicker({
                timePicker: true,

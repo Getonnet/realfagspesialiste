@@ -106,7 +106,6 @@
                    <option value="30">30 min</option>
                </x-nselect>
 
-
            </div>
 
            <div class="col">

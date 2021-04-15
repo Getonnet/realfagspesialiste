@@ -75,7 +75,7 @@
                 @endphp
               <div class="list-group">
                     @foreach($mat as $row)
-                      <a class="list-group-item list-group-item-action" href="{{asset($row->file_name)}}">Download</a>
+                      <a class="list-group-item list-group-item-action" href="{{asset($row->file_name)}}">{{__('Download')}}</a>
                     @endforeach
                 </div>
             </td>
