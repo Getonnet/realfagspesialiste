@@ -64,7 +64,7 @@ Route::prefix('teacher')->group(function () {
         Route::delete('/events/file-delete/{id}', [FrontTeacherController::class, 'delete_up_file'])->name('teacher.events-file-del');
         Route::put('/events/updates/{id}', [FrontTeacherController::class, 'edit_events'])->name('teacher.events-update');
         Route::put('/events/{id}', [FrontTeacherController::class, 'event_edit'])->name('teacher.events-edit');
-        Route::get('/events/{id}/edit', [FrontTeacherController::class, 'event_edit_view'])->name('teacher.events-edit-show');
+        Route::get('/events/edit-view/{id}', [FrontTeacherController::class, 'event_edit_view'])->name('teacher.events-edit-show');
         Route::post('/events', [FrontTeacherController::class, 'event_save'])->name('teacher.events-save');
         Route::get('/events', [FrontTeacherController::class, 'events'])->name('teacher.events');
 
