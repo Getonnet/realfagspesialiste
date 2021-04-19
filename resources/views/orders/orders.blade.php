@@ -25,11 +25,11 @@
                     <tbody>
                     @foreach($table as $row)
                         <tr>
-                            <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                            <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                             <td>{{$row->user->name ?? ''}}</td>
                             <td>{{$row->name}}</td>
-                            <td>{{$row->hours}}</td>
-                            <td>{{$row->price}}</td>
+                            <td>{{$row->hours}} {{__('Hr')}}</td>
+                            <td>{{$row->price}} kr</td>
                             <td>{{$row->status}}</td>
                             <td class="text-right">
                                 <x-actions>
@@ -109,6 +109,10 @@
         });
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
                 { orderable: false, "targets": [6] }//For Column Order
             ]

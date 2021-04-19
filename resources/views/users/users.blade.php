@@ -99,6 +99,10 @@
         new KTImageInput('ediprofile_photo');
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
                 { orderable: false, "targets": [4] }//For Column Order
             ]

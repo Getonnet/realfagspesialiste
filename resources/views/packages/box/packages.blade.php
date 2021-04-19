@@ -6,10 +6,9 @@
             <div class="col">
                 <x-ninput label="{{__('Package Name')}}" name="name" required="required" />
                 <x-ninput label="{{__('Hours')}}" type="number" min="0" step="any" name="hours" required="required" />
-                <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
             </div>
             <div class="col">
-                <x-ninput label="{{__('Expire')}}" name="expire" />
+                <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
 
                 <div class="form-group mb-2">
                     <label for="exampleTextarea">Description</label>
@@ -39,10 +38,10 @@
             <div class="col">
                 <x-ninput label="{{__('Package Name')}}" name="name" required="required" />
                 <x-ninput label="{{__('Hours')}}" type="number" min="0" step="any" name="hours" required="required" />
-                <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
+
             </div>
             <div class="col">
-                <x-ninput label="{{__('Expire')}}" name="expire" />
+                <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
 
                 <div class="form-group mb-2">
                     <label for="exampleTextareae">Description</label>

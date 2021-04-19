@@ -183,11 +183,20 @@
         }
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
                 { orderable: false, "targets": [5] }//For Column Order
             ]
         });
 
-        $('#kt_datatable2').DataTable();
+        $('#kt_datatable2').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            }
+        });
     </script>
 @endsection

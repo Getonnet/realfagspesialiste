@@ -80,7 +80,7 @@
                     <li class="menu-item {{ (request()->is('admin/student*')) ? 'menu-item-open menu-item-here' : '' }}" aria-haspopup="true">
                         <a href="{{route('student.index')}}" class="menu-link">
                             <i class="menu-icon flaticon-customer"></i>
-                            <span class="menu-text">{{__('Student')}}</span>
+                            <span class="menu-text">{{__('Student2')}}</span>
                         </a>
                     </li>
                 @endcan

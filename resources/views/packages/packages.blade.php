@@ -22,7 +22,6 @@
                         <th>{{__('Hours')}}</th>
                         <th>{{__('Price')}}</th>
                         <th>{{__('Description')}}</th>
-                        <th>{{__('Expire')}}</th>
                         <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
@@ -31,9 +30,8 @@
                         <tr>
                             <td>{{$row->name}} <small class="text-danger">{{$row->isCoupon == true ? '*':''}}</small></td>
                             <td>{{$row->hours}}</td>
-                            <td>{{$row->price}}</td>
+                            <td>{{$row->price}} kr</td>
                             <td>{{Str::limit($row->description, 25)}}</td>
-                            <td>{{date('d-M-Y - h:i A', strtotime($row->expire))}}</td>
                             <td class="text-right">
                                 <x-actions>
                                     @can('Package Edit')
@@ -121,8 +119,12 @@
         });
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
-                { orderable: false, "targets": [5] }//For Column Order
+                { orderable: false, "targets": [4] }//For Column Order
             ]
         });
     </script>

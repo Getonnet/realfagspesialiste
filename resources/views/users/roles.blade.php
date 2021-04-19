@@ -113,6 +113,10 @@
 
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
                 { orderable: false, "targets": [2] }//For Column Order
             ]
