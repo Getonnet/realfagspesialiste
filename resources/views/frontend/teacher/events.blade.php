@@ -32,12 +32,12 @@
                 <tbody>
                 @foreach($table as $row)
                     <tr>
-                        <td>{{date('d/m/Y', strtotime($row->event_start))}}</td>
+                        <td data-sort="{{strtotime($row->event_start)}}">{{date('d.M.Y', strtotime($row->event_start))}}</td>
                         <td>{{$row->name ?? __('No Title')}}</td>
                         <td>{{$row->subject_name}}</td>
                         <td>{{$row->student_name}}</td>
-                        <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
-                        <td>{{isset($row->end_time) ? date('d, M H:i', strtotime($row->end_time)) : ''}}</td>
+                        <td data-sort="{{strtotime($row->start_time)}}">{{isset($row->start_time) ? date('d.M H:i', strtotime($row->start_time)) : ''}}</td>
+                        <td data-sort="{{strtotime($row->end_time)}}">{{isset($row->end_time) ? date('d.M H:i', strtotime($row->end_time)) : ''}}</td>
                         <td>{{$row->spend_time('H')}} {{__('Hr')}}</td>
                         <td>{{$row->hour_spend}} Min</td>
                             @if($row->status == 'Pending')
@@ -160,9 +160,7 @@
                timePicker24Hour: true,
                singleDatePicker: true,
                startDate: start_time,
-               locale: {
-                   format: 'DD-MM-YYYY H:mm'
-               }
+               locale: picker_loc
            });
           // $('#endModal [name=start_time]').val(start_time);
 
@@ -171,9 +169,7 @@
                timePicker24Hour: true,
                singleDatePicker: true,
                minDate:new Date(),
-               locale: {
-                   format: 'DD-MM-YYYY H:mm'
-               }
+               locale: picker_loc
            });
        }
 
@@ -200,9 +196,7 @@
                singleDatePicker: true,
                startDate: new Date(event),
                minDate:new Date(),
-               locale: {
-                   format: 'DD-MM-YYYY H:mm'
-               }
+               locale: picker_loc
            });
            $('#ediModal [name=event_start]').val(event_start);
        }
@@ -212,13 +206,14 @@
             timePicker24Hour: true,
             singleDatePicker: true,
             minDate:new Date(),
-            locale: {
-                format: 'DD-MM-YYYY H:mm'
-            }
+            locale: picker_loc
         });
 
        $('#kt_datatable').DataTable({
            order: [],//Disable default sorting
+           language: {
+               url: "{{asset('no.json')}}"
+           },
            columnDefs: [
                { orderable: false, "targets": [8,9] }//For Column Order
            ]

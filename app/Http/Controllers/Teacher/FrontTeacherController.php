@@ -354,7 +354,7 @@ class FrontTeacherController extends Controller
         foreach ($table as $row){
             $rowData['url'] = route('teacher.events-overview', ['id' => $row->id]);
             $rowData['start'] = $row->event_start;
-            //$rowData['description'] = $row->description;
+            $rowData['title'] = $row->student_name;
             //$rowData['end'] = $row->event_start;
             $rowData['allDay'] = false;
 
@@ -389,7 +389,9 @@ class FrontTeacherController extends Controller
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
 
-        $pre_table = TimeLog::where('teacher_id', Auth::id())->whereBetween('created_at', $dates);
+        //dd($request->all());
+
+        $pre_table = TimeLog::where('teacher_id', Auth::id())->orderBy('id','DESC')->whereBetween('created_at', $dates);
         if(isset($request->subject_id)){
             $pre_table->where('subject_id', $request->subject_id);
         }

@@ -23,7 +23,7 @@ class FrontStudentController extends Controller
      */
     public function index(){
         $today = date('Y-m-d H:i:s');
-        $table = Package::orderBy('price')->where('expire', '>=', $today)->get()->chunk(4);
+        $table = Package::orderBy('price')->get()->chunk(4);
         return view('frontend.student.index')->with(['table' => $table]);
     }
 
@@ -169,6 +169,7 @@ class FrontStudentController extends Controller
         $data = [];
         foreach ($table as $row){
             $rowData['url'] = route('student.events-overview', ['id' => $row->id]);
+            $rowData['title'] = $row->teacher_name;
             $rowData['start'] = $row->event_start;
             $rowData['description'] = $row->description;
             $rowData['end'] = $row->event_start;
@@ -198,7 +199,7 @@ class FrontStudentController extends Controller
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
 
-        $pre_table = TimeLog::where('student_id', Auth::id())->whereBetween('created_at', $dates);
+        $pre_table = TimeLog::where('student_id', Auth::id())->orderBy('id', 'DESC' )->whereBetween('created_at', $dates);
         if(isset($request->subject_id)){
             $pre_table->where('subject_id', $request->subject_id);
         }

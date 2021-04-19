@@ -23,7 +23,7 @@
                     <tbody>
                     @foreach($table as $row)
                         <tr>
-                            <td>{{date('d-M-Y', strtotime($row->created_at))}}</td>
+                            <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                             <td>{{$row->is_travel == 0 ? 'Regular' : 'Travel'}}</td>
                             <td>{{number_format($row->paid_hour, 2, '.', ' ')}}</td>
                             <td>{{number_format($row->amount, 2, '.', ' ')}}</td>
@@ -44,7 +44,12 @@
     <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <script type="text/javascript">
 
-        $('#kt_datatable').DataTable();
+        $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
+        });
 
     </script>
 @endsection

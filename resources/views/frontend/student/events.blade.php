@@ -26,7 +26,7 @@
                     <tbody>
                     @foreach($table as $row)
                         <tr>
-                            <td>{{date('d/m/Y', strtotime($row->event_start))}}</td>
+                            <td data-sort="{{strtotime($row->event_start)}}">{{date('d.M.Y', strtotime($row->event_start))}}</td>
                             <td>{{$row->subject_name}}</td>
                             <td>{{$row->teacher_name}}</td>
                             <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
@@ -71,6 +71,10 @@
         }
 
         $('#kt_datatable').DataTable({
+            order: [],//Disable default sorting
+            language: {
+                url: "{{asset('no.json')}}"
+            },
             columnDefs: [
                 { orderable: false, "targets": [6] }//For Column Order
             ]

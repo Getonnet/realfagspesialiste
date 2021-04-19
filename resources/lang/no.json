@@ -23,7 +23,7 @@
     "English": "Engelsk",
     "Math": "Matte",
     "Packages": "Timepakker",
-    "Package": "Pakke",
+    "Package": "Timepakker",
     "Package List": "Pakkeliste",
     "NAME": "NAVN",
     "HOURS": "TIMER",
@@ -277,7 +277,7 @@
     "Assign Students": "Tilordne studenter",
     "Student Reports": "Studentrapporter",
     "Time log Reports": "Tidslogg Rapporter",
-    "Hr": "T",
+    "Hr": "Timer",
     "Add new Teacher": "Legg til ny lærer",
     "Add new Student": "Legg til ny student",
     "Add new subject": "Legg til nytt emne",
@@ -298,5 +298,7 @@
     "Edit Event Data": "Rediger hendelsesdata",
     "Select Time": "Velg Tid",
     "Overview": "Oversikt",
-    "Add new reports": "Legg til nye rapporter"
+    "Add new reports": "Legg til nye rapporter",
+    "Motivational Scale (1-10)": "Motivasjon (1-10)",
+    "Understanding Scale (1-10)": "Forståelse (1-10)"
 }

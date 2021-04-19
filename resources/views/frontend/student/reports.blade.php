@@ -75,6 +75,31 @@
 @section('script')
     <script type="text/javascript">
 
+        $(function () {
+            var form = $('#reports_form');
+            var url = form.attr('action');
+            var token = $('#reports_form [name=_token]').val();
+            var date_range = "{{date('01/m/Y')}} - {{date('t/m/Y')}}";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {"_token": token, "date_range":date_range}, // serializes the form's elements.
+                beforeSend: function(){
+                    $("#loader").show();
+                    $("#show_reports").html('');
+                },
+                complete: function(){
+                    $("#loader").hide();
+                },
+                success: function(result)
+                {
+                    $('#show_reports').html(result);
+
+                }
+            });
+        });
+
         $('#reports_form').on('submit', function (e) {
             e.preventDefault();
             var form = $(this);

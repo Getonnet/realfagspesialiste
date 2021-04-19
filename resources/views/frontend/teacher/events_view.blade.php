@@ -131,9 +131,7 @@
                 timePicker24Hour: true,
                 singleDatePicker: true,
                 startDate: "{{date('d-m-Y H:i', strtotime($table->event_start))}}",
-                locale: {
-                    format: 'DD-MM-YYYY H:mm'
-                }
+                locale: picker_loc
             });
 
             $('#edit_form [name=start_time]').daterangepicker({
@@ -141,9 +139,7 @@
                 timePicker24Hour: true,
                 singleDatePicker: true,
                 startDate: "{{date('d-m-Y H:i', strtotime($table->start_time))}}",
-                locale: {
-                    format: 'DD-MM-YYYY H:mm'
-                }
+                locale: picker_loc
             });
 
             $('#edit_form [name=end_time]').daterangepicker({
@@ -151,9 +147,7 @@
                 timePicker24Hour: true,
                 singleDatePicker: true,
                 startDate: "{{date('d-m-Y H:i', strtotime($table->end_time))}}",
-                locale: {
-                    format: 'DD-MM-YYYY H:mm'
-                }
+                locale: picker_loc
             });
         });
     </script>
