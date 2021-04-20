@@ -4,7 +4,6 @@
         <thead>
         <tr>
             <th>{{__('Date')}}</th>
-            <th>{{__('Event Date')}}</th>
             <th>{{__('Student')}}</th>
             <th>{{__('Teacher')}}</th>
             <th>{{__('Subject')}}</th>
@@ -12,7 +11,6 @@
             <th>{{__('End')}}</th>
             <th>{{__('Hour')}}</th>
             <th>{{__('Travel')}}</th>
-            <th>{{__('Status')}}</th>
         </tr>
         </thead>
         <tbody>
@@ -22,16 +20,14 @@
         @endphp
         @foreach($table as $row)
             <tr>
-                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
-                <td>{{date('d, M h:i A', strtotime($row->event_start))}}</td>
+                <td>{{date('d.M.Y', strtotime($row->created_at))}}</td>
                 <td>{{$row->student_name}}</td>
                 <td>{{$row->teacher_name}}</td>
                 <td>{{$row->subject_name}}</td>
                 <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
                 <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
-                <td>{{$row->spend_time('H')}}</td>
-                <td>{{number_format(($row->hour_spend / 60), 2, '.', ' ')}}</td>
-                <td>{{__($row->status)}}</td>
+                <td>{{$row->spend_time('H')}} {{__('Hr')}}</td>
+                <td>{{number_format(($row->hour_spend / 60), 2, '.', ' ')}} {{__('Hr')}}</td>
             </tr>
             @php
                 $hours += $row->spend_time('H');
@@ -41,10 +37,9 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="7" class="text-right">Total Hour</th>
-                <th>{{$hours}}</th>
-                <th>{{number_format(($travels / 60), 2, '.', ' ')}}</th>
-                <th></th>
+                <th colspan="6" class="text-right">Total Hour</th>
+                <th>{{$hours}} {{__('Hr')}}</th>
+                <th>{{number_format(($travels / 60), 2, '.', ' ')}} {{__('Hr')}}</th>
             </tr>
         </tfoot>
     </table>

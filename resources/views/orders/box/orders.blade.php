@@ -5,30 +5,30 @@
 
         <table class="table table-sm table-bordered">
             <tr>
-                <th>Date</th>
+                <th>{{__('Date')}}</th>
                 <td id="o_date"></td>
             </tr>
             <tr>
-                <th>Student Name</th>
+                <th>{{__('Student')}}</th>
                 <td id="o_name"></td>
             </tr>
             <tr>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <th>Package</th>
+                <th>{{__('Package')}}</th>
                 <td id="o_package"></td>
             </tr>
             <tr>
-                <th>Coupon</th>
+                <th>{{__('Coupon')}}</th>
                 <td id="o_coupon"></td>
             </tr>
             <tr class="text-primary">
-                <th>Amount</th>
+                <th>{{__('Amount')}}</th>
                 <td id="o_price"></td>
             </tr>
             <tr class="text-danger">
-                <th>Hours</th>
+                <th>{{__('Hours')}}</th>
                 <td id="o_hour"></td>
             </tr>
         </table>

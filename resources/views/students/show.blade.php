@@ -107,11 +107,11 @@
                                         <tbody>
                                         @foreach($events as $row)
                                             <tr>
-                                                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                                                <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                                                 <td>{{$row->teacher_name}}</td>
                                                 <td>{{$row->teacher_email}}</td>
                                                 <td>{{$row->subject_name}}</td>
-                                                <td>{{$row->spend_time('H')}}</td>
+                                                <td data-sort="{{$row->spend_time('H')}}">{{$row->spend_time('H')}} {{__('Hr')}}</td>
                                                 <td>{{__($row->status)}}</td>
                                                 <td class="text-right">
 
@@ -149,12 +149,12 @@
                                         <tbody>
                                         @foreach($purchase as $row)
                                             <tr>
-                                                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                                                <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                                                 <td>{{$row->name}}</td>
-                                                <td>{{$row->hours}}</td>
+                                                <td data-sort="{{$row->hours}}">{{$row->hours}} {{__('Hr')}}</td>
                                                 <td>{{$row->coupon}}</td>
-                                                <td>{{$row->status}}</td>
-                                                <td>{{$row->price}}</td>
+                                                <td>{{__($row->status)}}</td>
+                                                <td data-sort="{{$row->price}}">{{$row->price}} kr</td>
                                         @endforeach
                                         </tbody>
                                     </table>

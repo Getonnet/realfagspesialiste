@@ -11,7 +11,7 @@
         <div class="col">
             <x-card title="{{__('Teacher Info')}}">
                 <x-slot name="button">
-                    <a href="{{route('teacher.index')}}" class="btn btn-info ml-1" ><i class="flaticon2-left-arrow"></i> {{__('Back to student list')}}</a>
+                    <a href="{{route('teacher.index')}}" class="btn btn-info ml-1" ><i class="flaticon2-left-arrow"></i> {{__('Back to teacher list')}}</a>
                 </x-slot>
 
                 <div class="row">
@@ -23,7 +23,7 @@
                                 <table class="table">
                                     <tr>
                                         <th>{{__('Birthday')}}</th>
-                                        <td>{{isset($table->teacher->dob) ? date('d-M-Y', strtotime($table->teacher->dob)) : ''}}</td>
+                                        <td>{{isset($table->teacher->dob) ? date('d.M.Y', strtotime($table->teacher->dob)) : ''}}</td>
                                     </tr>
                                     <tr>
                                         <th>{{__('Gender')}}</th>
@@ -143,10 +143,10 @@
                                         <tbody>
                                         @foreach($payments as $row)
                                             <tr>
-                                                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                                                <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                                                 <td>{{$row->is_travel == 0 ? 'Regular': 'Travel'}}</td>
-                                                <td>{{number_format(($row->paid_hour), 2, '.', ' ')}}</td>
-                                                <td>{{number_format(($row->amount), 2, '.', ' ')}}</td>
+                                                <td data-sort="{{$row->paid_hour}}">{{number_format(($row->paid_hour), 2, '.', ' ')}} {{__('Hr')}}</td>
+                                                <td data-sort="{{$row->amount}}">{{number_format(($row->amount), 2, '.', ' ')}} kr</td>
                                                 <td title="{{$row->description}}">{{Str::limit($row->description, 20)}}</td>
                                                 <td class="text-right">
                                                     <x-actions>
@@ -188,19 +188,17 @@
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Subject')}}</th>
                                             <th>{{__('Spend')}}</th>
-                                            <th>{{__('Status')}}</th>
                                             <th class="text-right">{{__('Action')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($events as $row)
                                             <tr>
-                                                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                                                <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                                                 <td>{{$row->student_name}}</td>
                                                 <td>{{$row->student_email}}</td>
                                                 <td>{{$row->subject_name}}</td>
-                                                <td>{{$row->spend_time('H')}}</td>
-                                                <td>{{__($row->status)}}</td>
+                                                <td data-sort="{{$row->spend_time('H')}}">{{$row->spend_time('H')}} {{__('Hr')}}</td>
                                                 <td class="text-right">
 
                                                     <x-actions>
@@ -233,15 +231,31 @@
                                             <th>{{__('Student')}}</th>
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Contact')}}</th>
+                                            <th>{{__('Hour')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($assign as $row)
+                                            @php
+
+                                                $hour = $row->students->purchase()->where('status', 'Active')->sum('hours');
+                                                $spends = $row->students->time_log()->where('status', 'End')->get();
+                                                $spend_times = 0;
+                                                foreach ($spends as $spend){
+                                                    $spend_times += $spend->spend_time();
+                                                }
+                                                $hour_to_min = $hour * 60;
+                                                $remain_min = $hour_to_min - $spend_times;
+                                                $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
+
+                                            @endphp
+
                                             <tr>
                                                 <td><img src="{{asset($row->students->profile_photo_path ?? 'assets/media/users/blank.png')}}" style="height: 30px;" class="img-fluid img-thumbnail" /></td>
                                                 <td>{{$row->students->name ?? ''}}</td>
                                                 <td>{{$row->students->email ?? ''}}</td>
                                                 <td>{{$row->students->student->contact ?? ''}}</td>
+                                                <td data-sort="{{$spend_hour}}">{{$spend_hour}} {{__('Hr')}}</td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -313,7 +327,7 @@
                 url: "{{asset('no.json')}}"
             },
             columnDefs: [
-                { orderable: false, "targets": [4] }//For Column Order
+                { orderable: false, "targets": [5] }//For Column Order
             ]
         });
     </script>

@@ -12,7 +12,7 @@
             <x-card title="{{__('User Roles List')}}">
                 @can('Role Create')
                     <x-slot name="button">
-                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> Legg til ny rolle</button>
                     </x-slot>
                 @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">

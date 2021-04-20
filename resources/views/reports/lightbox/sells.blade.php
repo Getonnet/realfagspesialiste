@@ -22,13 +22,13 @@
             @endphp
         @foreach($table as $row)
             <tr>
-                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                <td>{{date('d.M.Y', strtotime($row->created_at))}}</td>
                 <td>{{$row->user->name ?? ''}}</td>
                 <td>{{$row->user->email ?? ''}}</td>
                 <td>{{$row->name}}</td>
-                <td>{{$row->hours}}</td>
-                <td>{{$row->price}}</td>
-                <td>{{$row->discount}}</td>
+                <td>{{$row->hours}} {{__('Hr')}}</td>
+                <td>{{$row->price}} kr</td>
+                <td>{{$row->discount}} kr</td>
                 <td>{{__($row->status)}}</td>
 
             </tr>
@@ -42,9 +42,9 @@
         <tfoot>
             <tr>
                 <th colspan="4" class="text-right">{{__('Total')}}</th>
-                <th>{{$hour}}</th>
-                <th>{{$price}}</th>
-                <th>{{$discount}}</th>
+                <th>{{$hour}} {{__('Hr')}}</th>
+                <th>{{$price}} kr</th>
+                <th>{{$discount}} kr</th>
                 <th></th>
             </tr>
         </tfoot>

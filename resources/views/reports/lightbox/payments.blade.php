@@ -21,12 +21,12 @@
         @endphp
         @foreach($table as $row)
             <tr>
-                <td>{{date('d/m/Y', strtotime($row->created_at))}}</td>
+                <td>{{date('d.M.Y', strtotime($row->created_at))}}</td>
                 <td>{{$row->user->name ?? ''}}</td>
                 <td>{{$row->user->email ?? ''}}</td>
                 <td>{{$row->is_travel == 0 ? 'Regular' : 'Travel'}}</td>
-                <td>{{$row->paid_hour}}</td>
-                <td>{{$row->amount}}</td>
+                <td>{{$row->paid_hour}} {{__('Hr')}}</td>
+                <td>{{$row->amount}} Kr</td>
                 <td>{{$row->description}}</td>
             </tr>
             @php
@@ -38,8 +38,8 @@
         <tfoot>
         <tr>
             <th colspan="4" class="text-right">{{__('Total')}}</th>
-            <th>{{$hour}}</th>
-            <th>{{$amount}}</th>
+            <th>{{$hour}} {{__('Hr')}}</th>
+            <th>{{$amount}} kr</th>
             <th></th>
         </tr>
         </tfoot>

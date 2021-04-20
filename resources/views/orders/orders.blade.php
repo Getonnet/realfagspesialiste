@@ -28,21 +28,21 @@
                             <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                             <td>{{$row->user->name ?? ''}}</td>
                             <td>{{$row->name}}</td>
-                            <td>{{$row->hours}} {{__('Hr')}}</td>
-                            <td>{{$row->price}} kr</td>
-                            <td>{{$row->status}}</td>
+                            <td data-sort="{{$row->hours}}">{{$row->hours}} {{__('Hr')}}</td>
+                            <td data-sort="{{$row->price}}">{{$row->price}} kr</td>
+                            <td>{{__($row->status)}}</td>
                             <td class="text-right">
                                 <x-actions>
                                     @can('Purchase View')
                                         <li class="navi-item">
                                             <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#ediModal" onclick="ediFn(this)"
                                                data-href="{{route('orders.update', ['order' => $row->id])}}"
-                                               data-date="{{date('d/m/Y', strtotime($row->created_at))}}"
+                                               data-date="{{date('d.M.Y', strtotime($row->created_at))}}"
                                                data-student="{{$row->user->name}}"
                                                data-package="{{$row->name}}"
                                                data-coupon="{{$row->coupon}}"
-                                               data-hours="{{$row->hours}}"
-                                               data-price="{{$row->price}}"
+                                               data-hours="{{$row->hours}} {{__('Hr')}}"
+                                               data-price="{{$row->price}} Kr"
                                                data-description="{{$row->description}}"
                                                data-expire="{{date('Y-m-d h:i A', strtotime($row->expire))}}"
                                                data-status="{{$row->status}}">

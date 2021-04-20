@@ -99,9 +99,6 @@
         </div>
     </x-modals>
 
-    <x-modals id="viewModal" title="{{__('Event overview')}}">
-
-    </x-modals>
 
     <x-modals id="payModal" action="#" title="{{__('Teacher Payment')}}">
         @method('PUT')

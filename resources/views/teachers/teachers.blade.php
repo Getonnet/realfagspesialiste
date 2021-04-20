@@ -12,7 +12,7 @@
             <x-card title="{{__('Teacher List')}}">
                 @can('Teacher Create')
                     <x-slot name="button">
-                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new record')}}</button>
+                        <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> Legg til ny lærer</button>
                     </x-slot>
                 @endcan
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
@@ -53,8 +53,8 @@
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->teacher->contact ?? ''}}</td>
-                            <td>{{$unpaid_travel}}</td>
-                            <td>{{$unpaid_hour}}</td>
+                            <td>{{$unpaid_travel}} {{__('Hr')}}</td>
+                            <td>{{$unpaid_hour}} {{__('Hr')}}</td>
                             <td class="text-right">
                                 <x-actions>
                                     @can('Teacher Edit')

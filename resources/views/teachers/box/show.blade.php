@@ -9,4 +9,8 @@
         </x-nselect>
         <x-ninput label="{{__('Description')}}" name="description"/>
     </x-modals>
+
+    <x-modals id="viewModal" title="{{__('Event overview')}}">
+
+    </x-modals>
 @endsection

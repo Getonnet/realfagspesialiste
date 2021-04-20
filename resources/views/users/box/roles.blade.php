@@ -27,7 +27,7 @@
                                 <label class="checkbox checkbox-success">
                                     <input type="checkbox" id="checkedPerm{{$row->id}}" name="permissions[]" value="{{$row->id}}"/>
                                     <span></span>
-                                    {{$row->name}}
+                                    {{__($row->name)}}
                                 </label>
                             @endforeach
                         </div>
