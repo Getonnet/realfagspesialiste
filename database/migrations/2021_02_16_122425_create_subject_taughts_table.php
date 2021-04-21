@@ -19,6 +19,8 @@ class CreateSubjectTaughtsTable extends Migration
             $table->foreignId('user_id')->comment('Teacher ID')->constrained()->onDelete('cascade')->onUpdate('No Action');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->unique(['subject_id', 'user_id']);
         });
     }
 

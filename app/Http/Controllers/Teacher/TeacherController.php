@@ -18,11 +18,7 @@ class TeacherController extends Controller
 {
 
     use UploadTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $table = User::orderBy('id', 'DESC')->where('user_type', 'Teacher')->get();
@@ -30,22 +26,13 @@ class TeacherController extends Controller
         return view('teachers.teachers')->with(['table' => $table, 'students' => $students]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //dd($request->all());
@@ -114,12 +101,7 @@ class TeacherController extends Controller
         return redirect()->back()->with(config('naz.save'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         if(!Auth::user()->can('Teacher View')){
@@ -129,25 +111,14 @@ class TeacherController extends Controller
         return view('teachers.show')->with(['table' => $table]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $table = TimeLog::find($id);
         return view('frontend.teacher.overview')->with(['table' => $table]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //dd($request->all());
@@ -215,12 +186,7 @@ class TeacherController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         User::destroy($id);

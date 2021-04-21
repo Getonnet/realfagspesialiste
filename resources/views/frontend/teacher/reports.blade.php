@@ -20,7 +20,7 @@
                             <h3 class="card-label">{{__('My Reports')}}</h3>
                         </div>
                         <div class="card-toolbar">
-                            <a href="{{route('teacher.events')}}" class="btn btn-primary ml-1"><i class="flaticon2-add-1"></i> {{__('Add new reports')}}</a>
+                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new reports')}}</button>
                         </div>
                     </div>
                     <div class="card-body bg-gray-100">
@@ -32,8 +32,8 @@
                                         <div class="input-group-prepend"><span class="input-group-text">{{__('Subject')}}</span></div>
                                         <select name="subject_id" class="form-control">
                                             <option value="">{{__('All')}}</option>
-                                            @foreach($subject as $row)
-                                                <option value="{{$row->id}}">{{$row->name}}</option>
+                                            @foreach($subjects as $row)
+                                                <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -134,6 +134,21 @@
                 $( "#viewModal .modal-body" ).html( result );
             });
         }
+
+        $('#addModal [name=event_start]').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            singleDatePicker: true,
+            locale: picker_loc
+        });
+
+        $('#addModal [name=start_end_time]').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            //singleDatePicker: true,
+            locale: picker_loc
+        });
+
 
 
 

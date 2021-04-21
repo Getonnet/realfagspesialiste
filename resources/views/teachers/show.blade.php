@@ -59,6 +59,19 @@
                                         <td>{{$table->teacher->grade ?? ''}}</td>
                                     </tr>
                                     <tr>
+                                        <th>{{__('Favourite Subject')}}</th>
+                                        @php
+                                            $fav_subject = $table->subject_thought()->get();
+                                        @endphp
+                                        <td>
+                                            <ul>
+                                                @foreach($fav_subject as $row)
+                                                    <li>{{$row->subject->name ?? ''}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <th>{{__('CV')}}</th>
                                         <td><a href="{{asset($table->teacher->cv ?? '')}}">{{__('Download')}}</a></td>
                                     </tr>

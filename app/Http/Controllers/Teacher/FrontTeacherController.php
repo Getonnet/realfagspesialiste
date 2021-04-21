@@ -7,6 +7,7 @@ use App\Models\AssignStudent;
 use App\Models\Payment;
 use App\Models\StudyMaterial;
 use App\Models\Subject;
+use App\Models\SubjectTaught;
 use App\Models\TeacherProfile;
 use App\Models\TimeLog;
 use App\Models\User;
@@ -55,12 +56,11 @@ class FrontTeacherController extends Controller
      */
     public function profile(){
         $table = User::find(Auth::id());
-        return view('frontend.teacher.profile')->with(['table' => $table]);
+        $subject = Subject::orderBy('name')->get();
+        return view('frontend.teacher.profile')->with(['table' => $table, 'subject' => $subject]);
     }
 
     public function update_profile(Request $request, $id){
-        //dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'password' => 'sometimes|nullable|alpha_num|min:8|confirmed',
@@ -71,7 +71,8 @@ class FrontTeacherController extends Controller
             'contact' => 'required|string|min:10|max:20',
             'grade' => 'required|numeric',
             'working_hour' => 'required|numeric',
-            'gender' => 'required|in:Male,Female,Other'
+            'gender' => 'required|in:Male,Female,Other',
+            'subject_id' => 'required|array'
         ]);
 
         if ($validator->fails()) {
@@ -152,6 +153,18 @@ class FrontTeacherController extends Controller
             }
             $file_upload->save();
 
+            $subjects = $request->subject_id;
+
+            SubjectTaught::where('user_id', $user_id)->delete();
+
+            foreach ($subjects as $subject_id){
+                $thought = new SubjectTaught();
+                $thought->subject_id = $subject_id;
+                $thought->user_id = $user_id;
+                $thought->save();
+            }
+
+
         }catch (\Exception $ex) {
             return redirect()->back()->with(config('naz.db_error'));
         }
@@ -162,15 +175,13 @@ class FrontTeacherController extends Controller
 
 
     public function events(){
-        $subjects = Subject::orderBy('name')->get();
+        $subjects = SubjectTaught::all();
         $students = AssignStudent::where('teacher_id', Auth::id())->get();
         $table = TimeLog::orderBy('Id', 'DESC')->where('teacher_id', Auth::id())->get();
         return view('frontend.teacher.events')->with(['subjects' => $subjects, 'students' => $students, 'table' => $table]);
     }
 
     public function event_save(Request $request){
-        //dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
@@ -212,8 +223,6 @@ class FrontTeacherController extends Controller
     }
 
     public function event_edit(Request $request, $id){
-       // dd($request->all());
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
@@ -273,7 +282,6 @@ class FrontTeacherController extends Controller
     }
 
     public function end_status(Request $request, $id){
-        //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'start_time' => 'required|date',
@@ -376,9 +384,10 @@ class FrontTeacherController extends Controller
     }
 
     public function reports(){
-        $subject = Subject::orderBy('name')->get();
+        $subjects = SubjectTaught::all();
         $students = TimeLog::orderBy('student_name')->groupBy('student_id')->having('teacher_id', Auth::id())->get();
-        return view('frontend.teacher.reports')->with(['subject' => $subject, 'students' => $students]);
+        $student = AssignStudent::where('teacher_id', Auth::id())->get();
+        return view('frontend.teacher.reports')->with(['subjects' => $subjects, 'student' => $student, 'students' => $students]);
     }
 
     public function show_reports(Request $request){
@@ -388,8 +397,6 @@ class FrontTeacherController extends Controller
         foreach ($sp_date as $row){
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
-
-        //dd($request->all());
 
         $pre_table = TimeLog::where('teacher_id', Auth::id())->orderBy('id','DESC')->whereBetween('created_at', $dates);
         if(isset($request->subject_id)){
@@ -404,13 +411,80 @@ class FrontTeacherController extends Controller
 
     public function event_edit_view($id){
         $table = TimeLog::find($id);
-        $subjects = Subject::orderBy('name')->get();
+        $subjects = SubjectTaught::all();
         $students = AssignStudent::where('teacher_id', Auth::id())->get();
        return view('frontend.teacher.events_view')->with(['table' => $table, 'subjects' => $subjects, 'students' => $students]);
     }
 
+    public function add_new_event(Request $request){//Create from report
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:191',
+            'event_start' => 'required|date',
+            'start_end_time' => 'required',
+            'student_id' => 'required|numeric',
+            'subject_id' => 'required|numeric',
+            'motivational' => 'required|numeric|min:1|max:10',
+            'understanding' => 'required|numeric|min:1|max:10',
+            'hour_spend' => 'required|numeric'//Transport Hour
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+            $student = User::find($request->student_id);
+            $subject = Subject::find($request->subject_id);
+
+            $sp_date = explode(" - ", $request->start_end_time);
+            
+            $table = new TimeLog();
+            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
+            $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
+            $table->name = $request->name;
+            $table->teacher_name = Auth::user()->name;
+            $table->teacher_email = Auth::user()->email;
+            $table->teacher_id  = Auth::id();
+            $table->student_id = $request->student_id;
+            $table->student_name = $student->name;
+            $table->student_email = $student->email;
+            $table->hour_spend = $request->hour_spend;
+            $table->understanding = $request->understanding;
+            $table->motivational = $request->motivational;
+            $table->description = $request->description;
+            $table->summery = $request->summery;
+            $table->subject_id = $request->subject_id;
+            $table->subject_name = $subject->name;
+            $table->status = 'End';
+            $table->save();
+            $time_log_id = $table->id;
+
+            if (isset($request->materials)){
+                $materials = $request->materials;
+                foreach ($materials as $i => $row){
+                    $image = $request->file('materials')[$i];
+                    $name = md5(date('Y-m-d H:i:s').$i);
+                    $folder = '/uploads/materials/';
+                    $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
+                    $this->uploadOne($image, $folder, 'public', $name);
+
+                    $st_mat = new StudyMaterial();
+                    $st_mat->file_name = $filePath;
+                    $st_mat->time_log_id = $time_log_id;
+                    $st_mat->save();
+                }
+            }
+        }catch (\Exception $ex) {
+            return redirect()->back()->with(config('naz.db_error'));
+        }
+
+        return redirect()->back()->with(config('naz.save'));
+
+    }
+
     public function edit_events(Request $request, $id){
-       // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',

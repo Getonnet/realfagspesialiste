@@ -9,7 +9,7 @@
         <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
             <option value="">{{__('Select Subject')}}</option>
             @foreach($subjects as $row)
-            <option value="{{$row->id}}">{{$row->name}}</option>
+                <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
             @endforeach
         </x-nselect>
 
@@ -50,7 +50,7 @@
         <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
             <option value="">{{__('Select Subject')}}</option>
             @foreach($subjects as $row)
-                <option value="{{$row->id}}">{{$row->name}}</option>
+                <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
             @endforeach
         </x-nselect>
 
@@ -93,7 +93,7 @@
                <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
                    <option value="">{{__('Select Subject')}}</option>
                    @foreach($subjects as $row)
-                       <option value="{{$row->id}}">{{$row->name}}</option>
+                       <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
                    @endforeach
                </x-nselect>
 

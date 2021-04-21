@@ -74,6 +74,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Payment');
     }
 
+    public function subject_thought()
+    {
+        return $this->hasMany('App\Models\SubjectTaught');
+    }
+
     public function student_assign()
     {
         return $this->hasMany('App\Models\AssignStudent', 'teacher_id');

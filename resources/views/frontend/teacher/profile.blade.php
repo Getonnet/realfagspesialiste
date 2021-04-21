@@ -254,6 +254,23 @@
                                                 </div>
                                             </div>
 
+                                            @php
+                                                $subjects = $table->subject_thought()->select('subject_id')->get()->pluck('subject_id');
+                                            @endphp
+                                            <div class="form-group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">{{__('Favourite Subject')}} <small class="text-danger">*</small></label>
+                                                <div class="col-lg-9 col-xl-6">
+                                                    <select name="subject_id[]"  class="form-control form-control-lg form-control-solid select2"  id="kt_select2_3" id="subject_id"  multiple="multiple" required>
+                                                        @foreach($subject as $row)
+                                                            <option value="{{$row->id}}">{{$row->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('subject_id')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">{{__('VGS Grade')}} <small class="text-danger">*</small></label>
                                                 <div class="col-lg-9 col-xl-6">
@@ -326,10 +343,16 @@
 
 @section('script')
     <script type="text/javascript">
+
+        $('#kt_select2_3').select2({
+            placeholder: "{{__('Select Subject')}}"
+        });
+
         $(function () {
             $('#working_hour').val("{{$table->teacher->working_hour ?? 2}}");
             $('#grade').val("{{$table->teacher->grade ?? 2}}");
             $('#gender').val("{{$table->teacher->gender ?? 'Male'}}");
+            $('#kt_select2_3').val({{$subjects}}).select2();
         });
 
         $('.profile_photo').css('background-image', 'url("{{asset($table->profile_photo_path ?? 'assets/media/users/blank.png')}}")');
