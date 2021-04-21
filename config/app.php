@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Dhaka',//'Europe/Oslo',
+    'timezone' => 'Europe/Oslo',//'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
