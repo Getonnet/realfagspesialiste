@@ -438,7 +438,7 @@ class FrontTeacherController extends Controller
             $subject = Subject::find($request->subject_id);
 
             $sp_date = explode(" - ", $request->start_end_time);
-            
+
             $table = new TimeLog();
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
@@ -477,6 +477,7 @@ class FrontTeacherController extends Controller
                 }
             }
         }catch (\Exception $ex) {
+            dd($ex);
             return redirect()->back()->with(config('naz.db_error'));
         }
 
