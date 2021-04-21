@@ -418,6 +418,7 @@ class FrontTeacherController extends Controller
 
     public function add_new_event(Request $request){//Create from report
 
+        dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
