@@ -127,12 +127,12 @@
            var link = e.getAttribute('data-href');
 
            Swal.fire({
-               title: "Are you sure?",
-               text: "You wont be able to revert this!",
+               title: "{{__('Are you sure?')}}",
+               text: "{{__('You wont be able to revert this!')}}",
                icon: "warning",
                showCancelButton: true,
-               confirmButtonText: "Yes, time start!",
-               cancelButtonText: "No, cancel!",
+               confirmButtonText: "{{__('Yes, delete it!')}}",
+               cancelButtonText: "{{__('No, cancel!')}}",
                reverseButtons: true
            }).then(function(result) {
                //alert(link);

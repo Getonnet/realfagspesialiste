@@ -131,9 +131,7 @@
         }
 
         $('#pic_date').daterangepicker({
-            locale: {
-                format: 'DD/MM/YYYY'
-            }
+            locale: picker_loc
         });
 
     </script>

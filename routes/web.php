@@ -29,6 +29,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/', [FrontStudentController::class, 'index'])->name('student.package');
 

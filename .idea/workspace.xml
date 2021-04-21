@@ -20,25 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/profile/pala_1618912512.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/no.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/no.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/box/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/box/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/lightbox/payments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/payments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/lightbox/sells.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/sells.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reports/time_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/time_log.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/students/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/students/students.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/students.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teachers/box/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/box/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teachers/box/teachers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/box/teachers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teachers/teachers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/teachers.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/box/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/box/roles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/roles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/roles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/users.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/general.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/general.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +188,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -299,7 +286,8 @@
       <workItem from="1618477772799" duration="6848000" />
       <workItem from="1618817765930" duration="18507000" />
       <workItem from="1618896823468" duration="715000" />
-      <workItem from="1618904607759" duration="7872000" />
+      <workItem from="1618904607759" duration="12176000" />
+      <workItem from="1618989865307" duration="2102000" />
     </task>
     <servers />
   </component>
@@ -338,10 +326,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1618898036485">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1618918963970">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1618898036485" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1618918963970" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -350,10 +338,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="829" y="455" key="NewPhpFileDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1618323093167" />
-    <state x="248" y="84" key="SettingsEditor" timestamp="1615530606940">
+    <state x="248" y="84" key="SettingsEditor" timestamp="1618990372585">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="248" y="84" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615530606940" />
+    <state x="248" y="84" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1618990372585" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
