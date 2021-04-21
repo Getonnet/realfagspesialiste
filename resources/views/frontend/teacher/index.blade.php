@@ -1,5 +1,5 @@
 @extends('layouts.general')
-@extends('frontend.teacher.box.report')
+@extends('frontend.teacher.box.home')
 
 @section('title')
     {{__('My Dashboard')}}
