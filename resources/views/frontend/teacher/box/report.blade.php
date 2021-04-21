@@ -24,7 +24,7 @@
 
                         @endphp
 
-                        <option value="{{$row->students->id}}">{{$row->students->name ?? ''}} ({{$remaining}})</option>
+                        <option value="{{$row->student_id}}">{{$row->students->name ?? ''}} ({{$remaining}})</option>
                     @endforeach
                 </x-nselect>
 
