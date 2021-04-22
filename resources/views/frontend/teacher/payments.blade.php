@@ -25,8 +25,8 @@
                         <tr>
                             <td data-sort="{{strtotime($row->created_at)}}">{{date('d.M.Y', strtotime($row->created_at))}}</td>
                             <td>{{$row->is_travel == 0 ? 'Regular' : 'Travel'}}</td>
-                            <td>{{number_format($row->paid_hour, 2, '.', ' ')}}</td>
-                            <td>{{number_format($row->amount, 2, '.', ' ')}}</td>
+                            <td>{{number_format($row->paid_hour, 2, '.', ' ')}} {{__('Hr')}}</td>
+                            <td>{{number_format($row->amount, 2, '.', ' ')}} kr</td>
                             <td>{{$row->description}}</td>
                         </tr>
                     @endforeach

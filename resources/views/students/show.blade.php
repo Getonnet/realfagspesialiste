@@ -100,7 +100,6 @@
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Subject')}}</th>
                                             <th>{{__('Spend')}}</th>
-                                            <th>{{__('Status')}}</th>
                                             <th class="text-right">{{__('Action')}}</th>
                                         </tr>
                                         </thead>
@@ -112,7 +111,6 @@
                                                 <td>{{$row->teacher_email}}</td>
                                                 <td>{{$row->subject_name}}</td>
                                                 <td data-sort="{{$row->spend_time('H')}}">{{$row->spend_time('H')}} {{__('Hr')}}</td>
-                                                <td>{{__($row->status)}}</td>
                                                 <td class="text-right">
 
                                                     <x-actions>
