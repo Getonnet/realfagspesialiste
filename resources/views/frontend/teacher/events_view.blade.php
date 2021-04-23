@@ -130,7 +130,7 @@
                 timePicker: true,
                 timePicker24Hour: true,
                 singleDatePicker: true,
-                startDate: "{{date('d-m-Y H:i', strtotime($table->event_start))}}",
+                startDate: "{{date('d.M.Y H:i', strtotime($table->event_start))}}",
                 locale: picker_loc
             });
 
@@ -138,7 +138,7 @@
                 timePicker: true,
                 timePicker24Hour: true,
                 singleDatePicker: true,
-                startDate: "{{date('d-m-Y H:i', strtotime($table->start_time))}}",
+                startDate: "{{date('d.M.Y H:i', strtotime($table->start_time))}}",
                 locale: picker_loc
             });
 
@@ -146,7 +146,7 @@
                 timePicker: true,
                 timePicker24Hour: true,
                 singleDatePicker: true,
-                startDate: "{{date('d-m-Y H:i', strtotime($table->end_time))}}",
+                startDate: "{{date('d.M.Y H:i', strtotime($table->end_time))}}",
                 locale: picker_loc
             });
         });

@@ -51,7 +51,7 @@
                                        data-description="{{$row->description}}"
                                        data-start="{{date('d.M.Y H:i', strtotime($row->start_time))}}"
                                        data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
-                                       data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
+                                       data-toggle="modal" data-target="#endModal">{{__('Stop')}}</a></td>
                             @else
                                 <td>{{__($row->status)}}</td>
                             @endif
