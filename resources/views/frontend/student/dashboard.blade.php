@@ -20,7 +20,7 @@
                     $spend_times_hour = $spend_times/60;
                     $hour_to_min = $hour * 60;
                     $remain_min = $hour_to_min - $spend_times;
-                    $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
+                    $spend_hour = (double) number_format(($remain_min / 60), 2, '.', ' ');
                 @endphp
 
                 <div class="row mb-5">

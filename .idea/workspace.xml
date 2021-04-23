@@ -21,7 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/reports.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/time_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/time_log.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +298,7 @@
       <workItem from="1619155781664" duration="7260000" />
       <workItem from="1619166272439" duration="2102000" />
       <workItem from="1619168787415" duration="5285000" />
-      <workItem from="1619175357162" duration="312000" />
+      <workItem from="1619175357162" duration="2020000" />
     </task>
     <servers />
   </component>

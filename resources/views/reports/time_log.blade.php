@@ -74,7 +74,7 @@
             var form = $('#reports_form');
             var url = form.attr('action');
             var token = $('#reports_form [name=_token]').val();
-            var date_range = "{{date('01/m/Y')}} - {{date('t/m/Y')}}";
+            var date_range = "{{date('01.M.Y')}} - {{date('t.M.Y')}}";
 
             $.ajax({
                 type: "POST",
@@ -119,7 +119,7 @@
         });
 
         $('#pic_date').daterangepicker({
-            locale: picker_loc
+            locale: picker_loc_repo
         });
     </script>
 @endsection

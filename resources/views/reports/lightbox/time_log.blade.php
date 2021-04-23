@@ -30,8 +30,8 @@
                 <td>{{number_format(($row->hour_spend / 60), 2, '.', ' ')}} {{__('Hr')}}</td>
             </tr>
             @php
-                $hours += $row->spend_time('H');
-                $travels += $row->hour_spend;
+                $hours += (double) $row->spend_time('H');
+                $travels += (double) $row->hour_spend;
             @endphp
         @endforeach
         </tbody>

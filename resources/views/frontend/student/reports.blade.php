@@ -131,7 +131,7 @@
         }
 
         $('#pic_date').daterangepicker({
-            locale: picker_loc
+            locale: picker_loc_repo
         });
 
     </script>

@@ -230,11 +230,11 @@
 
 
         $('#pic_date').daterangepicker({
-            locale: picker_loc
+            locale: picker_loc_repo
         });
 
         $('#pic_date_pay').daterangepicker({
-            locale: picker_loc
+            locale: picker_loc_repo
         });
     </script>
 @endsection

@@ -13,9 +13,9 @@
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Profile Personal Information-->
-                    <div class="d-flex flex-row">
+                    <div class="row">
                         <!--begin::Aside-->
-                        <div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
+                        <div class="col-md-4" id="kt_profile_aside">
                             <!--begin::Profile Card-->
                             <div class="card card-custom card-stretch">
                                 <!--begin::Body-->
@@ -75,7 +75,7 @@
                         </div>
                         <!--end::Aside-->
                         <!--begin::Content-->
-                        <div class="flex-row-fluid ml-lg-8">
+                        <div class="col-md-8">
                             <!--begin::Card-->
                             <form action="{{route('update.myprofile', ['id' => $table->id])}}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -92,8 +92,6 @@
                                     </div>
                                 </div>
                                 <!--end::Header-->
-                                <!--begin::Form-->
-                                <form class="form">
                                     <!--begin::Body-->
                                     <div class="card-body">
                                         <div class="row">
@@ -191,8 +189,6 @@
 
                                     </div>
                                     <!--end::Body-->
-                                </form>
-                                <!--end::Form-->
                             </div>
                             </form>
                         </div>
