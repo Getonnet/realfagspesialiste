@@ -49,7 +49,7 @@
                                        data-subject="{{$row->subject_id}}"
                                        data-student="{{$row->student_name}}"
                                        data-description="{{$row->description}}"
-                                       data-start="{{date('d-m-Y H:i', strtotime($row->start_time))}}"
+                                       data-start="{{date('d.M.Y H:i', strtotime($row->start_time))}}"
                                        data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
                                        data-toggle="modal" data-target="#endModal">{{__($row->status)}}</a></td>
                             @else
