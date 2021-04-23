@@ -99,10 +99,11 @@
                                 $spend_times += $spend->spend_time();
                                 $total_travel += $spend->hour_spend;
                             }
-                            $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
-                            $unpaid_travel_hour = number_format(($travel_hour - $paid_travel_hour), 2, '.', ' ');
+                            $travel_hour = (double) number_format(($total_travel / 60), 2, '.', ' ');
+
+                            $unpaid_travel_hour = (double) number_format(($travel_hour - $paid_travel_hour), 2, '.', ' ');
                             $spend_hour = $spend_times / 60;
-                            $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
+                            $unpaid_hour = (double) number_format(($spend_hour - $paid_hour), 2, '.', ' ');
                     @endphp
 
                     <div class="col-lg-9">

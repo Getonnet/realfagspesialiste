@@ -13,6 +13,7 @@ use App\Models\TimeLog;
 use App\Models\User;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -21,6 +22,13 @@ class FrontTeacherController extends Controller
 {
     use UploadTrait;
     public function index(){
+
+        $startTime = Carbon::parse("2004-01-23 19:01:00");
+        $finishTime = Carbon::parse("2021-04-23 14:01:00");
+        $totalDuration = $startTime->diffInMinutes($finishTime, false);
+
+       // dd(number_format(($totalDuration / 60), 2, '.', ' '));
+
         $table = User::find(Auth::id());
 
         $subjects_id = TimeLog::select('subject_id')->where('teacher_id', Auth::id())->groupBy('subject_id')->pluck('subject_id')->toArray();
@@ -31,12 +39,11 @@ class FrontTeacherController extends Controller
 
             $hours = 0;
             foreach ($time_log as $row){
-                $hours += $row->spend_time('H');
+                $hours += (double)$row->spend_time('H');
             }
 
             $data[] = $hours;
         }
-
 
         return view('frontend.teacher.index')->with(['table' => $table, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
     }
