@@ -15,7 +15,7 @@
                 </x-slot>
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-lg-3 overflow-hidden">
                         <div class="card">
                             <img src="{{asset($table->profile_photo_path ?? 'assets/media/users/blank.png')}}" class="card-img-top" alt="{{$table->name}}">
                             <div class="card-body">
@@ -27,7 +27,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{__('Gender')}}</th>
-                                        <td>{{$table->teacher->gender ?? ''}}</td>
+                                        <td>{{__($table->teacher->gender ?? '')}}</td>
                                     </tr>
                                     <tr>
                                         <th>{{__('Contact')}}</th>
@@ -52,7 +52,7 @@
                                     </tr>
                                     <tr>
                                         <th>{{__('Working Hour')}}</th>
-                                        <td>{{$table->teacher->working_hour ?? ''}}/Week</td>
+                                        <td>{{$table->teacher->working_hour ?? ''}}/{{__('Week')}}</td>
                                     </tr>
                                     <tr>
                                         <th>{{__('VGS Grade')}}</th>
@@ -105,7 +105,7 @@
                             $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
                     @endphp
 
-                    <div class="col-md-9">
+                    <div class="col-lg-9">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row font-size-h3">
@@ -200,7 +200,7 @@
                                             <th>{{__('Student')}}</th>
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Subject')}}</th>
-                                            <th>{{__('Spend')}}</th>
+                                            <th>Gjenstående</th>
                                             <th class="text-right">{{__('Action')}}</th>
                                         </tr>
                                         </thead>
@@ -244,7 +244,7 @@
                                             <th>{{__('Student')}}</th>
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Contact')}}</th>
-                                            <th>{{__('Hour')}}</th>
+                                            <th>Gjenstående</th>
                                         </tr>
                                         </thead>
                                         <tbody>

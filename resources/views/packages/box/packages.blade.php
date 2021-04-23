@@ -11,7 +11,7 @@
                 <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
 
                 <div class="form-group mb-2">
-                    <label for="exampleTextarea">Description</label>
+                    <label for="exampleTextarea">{{__('Description')}}</label>
                     <textarea class="form-control" id="exampleTextarea" name="description" rows="3">{{old('description')}}</textarea>
                 </div>
 
@@ -44,7 +44,7 @@
                 <x-ninput label="{{__('Price')}}" type="number" min="0" step="any" name="price" required="required" />
 
                 <div class="form-group mb-2">
-                    <label for="exampleTextareae">Description</label>
+                    <label for="exampleTextareae">{{__('Description')}}</label>
                     <textarea class="form-control" id="exampleTextareae" name="description" rows="3"></textarea>
                 </div>
 

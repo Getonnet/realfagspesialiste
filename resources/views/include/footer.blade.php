@@ -10,9 +10,8 @@
         <!--end::Copyright-->
         <!--begin::Nav-->
         <div class="nav nav-dark">
-            <a href="https://getonnet.no/om-oss/" target="_blank" class="nav-link pl-0 pr-5">{{__('About')}}</a>
-            <a href="https://getonnet.no/support/" target="_blank" class="nav-link pl-0 pr-5">{{__('Support')}}</a>
-            <a href="https://getonnet.no/kontakt/" target="_blank" class="nav-link pl-0 pr-0">{{__('Contact')}}</a>
+            <a href="https://realfagspesialisten.getonnet.dev/om-oss/" target="_blank" class="nav-link pl-0 pr-5">{{__('About')}}</a>
+            <a href="https://realfagspesialisten.getonnet.dev/kontakt/" target="_blank" class="nav-link pl-0 pr-0">{{__('Contact')}}</a>
         </div>
         <!--end::Nav-->
     </div>

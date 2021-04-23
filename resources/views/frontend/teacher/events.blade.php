@@ -66,8 +66,7 @@
                                            data-subject="{{$row->subject_id}}"
                                            data-student="{{$row->student_id}}"
                                            data-description="{{$row->description}}"
-                                           data-event="{{date('Y-m-d H:i', strtotime($row->event_start))}}"
-                                           data-events="{{date('d-m-Y H:i', strtotime($row->event_start))}}"
+                                           data-event="{{date('d.M.Y H:i', strtotime($row->event_start))}}"
                                         >
                                             <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
                                             <span class="navi-text">{{__('Edit')}}</span>
@@ -180,7 +179,6 @@
            var student_id = e.getAttribute('data-student');
            var description = e.getAttribute('data-description');
            var event = e.getAttribute('data-event');
-           var event_start = e.getAttribute('data-events');
            var name = e.getAttribute('data-name');
 
            $('#ediModal form').attr('action', link);
@@ -198,7 +196,7 @@
                minDate:new Date(),
                locale: picker_loc
            });
-           $('#ediModal [name=event_start]').val(event_start);
+           //$('#ediModal [name=event_start]').val(event_start);
        }
 
         $('#addModal [name=event_start]').daterangepicker({

@@ -130,7 +130,7 @@
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">{{__('Password')}}</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control form-control-lg form-control-solid" name="password" type="password"/>
+                                                <input class="form-control form-control-lg form-control-solid" name="password" type="password" autocomplete="off"/>
                                                 @error('password')
                                                 <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -139,7 +139,7 @@
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label">{{__('Confirm Password')}}</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input class="form-control form-control-lg form-control-solid" name="password_confirmation" type="password" />
+                                                <input class="form-control form-control-lg form-control-solid" name="password_confirmation" type="password" autocomplete="off" />
                                             </div>
                                         </div>
                                         <div class="row">

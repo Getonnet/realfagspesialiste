@@ -170,7 +170,7 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">{{__('Password')}}</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control form-control-lg form-control-solid" name="password" type="password"/>
+                                                    <input class="form-control form-control-lg form-control-solid" name="password" type="password" autocomplete="off"/>
                                                     @error('password')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                     @enderror
@@ -179,7 +179,7 @@
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-lg-3 col-form-label">{{__('Confirm Password')}}</label>
                                                 <div class="col-lg-9 col-xl-6">
-                                                    <input class="form-control form-control-lg form-control-solid" name="password_confirmation" type="password" />
+                                                    <input class="form-control form-control-lg form-control-solid" name="password_confirmation" type="password" autocomplete="off" />
                                                 </div>
                                             </div>
 
@@ -241,12 +241,12 @@
                                                 <label class="col-xl-3 col-lg-3 col-form-label">{{__('Weekly Working Hour')}} <small class="text-danger">*</small></label>
                                                 <div class="col-lg-9 col-xl-6">
                                                     <select name="working_hour"  class="form-control form-control-lg form-control-solid" id="working_hour">
-                                                        <option value="2">2 Hours</option>
-                                                        <option value="4">2-4 Hours</option>
-                                                        <option value="6">4-6 Hours</option>
-                                                        <option value="8">6-8 Hours</option>
-                                                        <option value="10">8-10 Hours</option>
-                                                        <option value="12">12+ Hours</option>
+                                                        <option value="2">2 {{__('Hr')}}</option>
+                                                        <option value="4">2-4 {{__('Hr')}}</option>
+                                                        <option value="6">4-6 {{__('Hr')}}</option>
+                                                        <option value="8">6-8 {{__('Hr')}}</option>
+                                                        <option value="10">8-10 {{__('Hr')}}</option>
+                                                        <option value="12">12+ {{__('Hr')}}</option>
                                                     </select>
                                                     @error('working_hour')
                                                     <span class="form-text text-danger">{{ $message }}</span>

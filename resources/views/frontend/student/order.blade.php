@@ -38,7 +38,7 @@
                                     <td>{{$row->name}}</td>
                                     <td>{{$row->hours}} <sup>Timer</sup></td>
                                     <td>{{$row->price}} <small>Kr</small></td>
-                                    <td>{{$row->status}}</td>
+                                    <td>{{__($row->status)}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

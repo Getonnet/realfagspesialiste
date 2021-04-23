@@ -20,7 +20,7 @@
                                 <td id="p_name"></td>
                             </tr>
                             <tr>
-                                <th>{{__('Hours')}}</th>
+                                <th>Antall timer</th>
                                 <td id="p_hour"></td>
                             </tr>
                             <tr>

@@ -398,7 +398,7 @@ class FrontTeacherController extends Controller
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
 
-        $pre_table = TimeLog::where('teacher_id', Auth::id())->orderBy('id','DESC')->whereBetween('created_at', $dates);
+        $pre_table = TimeLog::where('teacher_id', Auth::id())->where('status', 'End')->orderBy('id','DESC')->whereBetween('created_at', $dates);
         if(isset($request->subject_id)){
             $pre_table->where('subject_id', $request->subject_id);
         }

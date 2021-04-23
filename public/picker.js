@@ -1,5 +1,5 @@
 let picker_loc = {
-    "format": "DD-MM-YYYY H:mm",
+    "format": "DD.MMM.YYYY H:mm",
     "separator": " - ",
     "applyLabel": "OK",
     "cancelLabel": "Avbryt",

@@ -139,8 +139,8 @@
             var coupon = e.getAttribute('data-coupon');
 
             $('#p_name').html(name);
-            $('#p_hour').html(hour+'hr');
-            $('#p_price').html('&#36;'+price);
+            $('#p_hour').html(hour);
+            $('#p_price').html(price+' kr');
 
             $('#orderModal [name=id]').val(id);
 

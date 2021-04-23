@@ -20,11 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/materials/b30d918e6c7fc3bc45a1edab33bd768a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/materials/e9a64b06ac582161145cc48497295c31.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/payments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/payments.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/FrontStudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/FrontStudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/no.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/no.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/box/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/box/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/order.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/report_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/report_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/report_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/include/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/packages/box/packages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/box/packages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/packages/packages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/packages/packages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reports/lightbox/time_log.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/students/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,7 +304,8 @@
       <workItem from="1618989865307" duration="16451000" />
       <workItem from="1619025934383" duration="10000" />
       <workItem from="1619076421504" duration="722000" />
-      <workItem from="1619089518430" duration="337000" />
+      <workItem from="1619089518430" duration="1092000" />
+      <workItem from="1619155781664" duration="6660000" />
     </task>
     <servers />
   </component>
@@ -328,10 +344,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1619077535253">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1619090673839">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1619077535253" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1619090673839" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

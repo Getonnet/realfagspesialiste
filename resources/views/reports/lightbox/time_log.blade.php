@@ -24,8 +24,8 @@
                 <td>{{$row->student_name}}</td>
                 <td>{{$row->teacher_name}}</td>
                 <td>{{$row->subject_name}}</td>
-                <td>{{isset($row->start_time) ? date('d, M h:i A', strtotime($row->start_time)) : ''}}</td>
-                <td>{{isset($row->end_time) ? date('d, M h:i A', strtotime($row->end_time)) : ''}}</td>
+                <td>{{isset($row->start_time) ? date('d.M.Y H:i', strtotime($row->start_time)) : ''}}</td>
+                <td>{{isset($row->end_time) ? date('d.M.Y H:i', strtotime($row->end_time)) : ''}}</td>
                 <td>{{$row->spend_time('H')}} {{__('Hr')}}</td>
                 <td>{{number_format(($row->hour_spend / 60), 2, '.', ' ')}} {{__('Hr')}}</td>
             </tr>
@@ -37,7 +37,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="6" class="text-right">Total Hour</th>
+                <th colspan="6" class="text-right">{{__('Total')}}</th>
                 <th>{{$hours}} {{__('Hr')}}</th>
                 <th>{{number_format(($travels / 60), 2, '.', ' ')}} {{__('Hr')}}</th>
             </tr>
