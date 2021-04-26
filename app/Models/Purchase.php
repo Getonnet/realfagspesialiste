@@ -24,7 +24,7 @@ class Purchase extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -32,7 +32,7 @@ class Purchase extends Model
     /**
      * @var array
      */
-    protected $fillable = ['package_id', 'user_id', 'name', 'hours', 'price', 'discount', 'coupon', 'status', 'deleted_at', 'created_at', 'updated_at'];
+    protected $fillable = ['package_id', 'user_id', 'name', 'hours', 'price', 'discount', 'coupon', 'note', 'status', 'deleted_at', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

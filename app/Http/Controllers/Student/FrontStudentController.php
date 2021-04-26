@@ -199,7 +199,7 @@ class FrontStudentController extends Controller
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
 
-        $pre_table = TimeLog::where('student_id', Auth::id())->where('status', 'End')->orderBy('id', 'DESC' )->whereBetween('created_at', $dates);
+        $pre_table = TimeLog::where('student_id', Auth::id())->where('status', 'End')->orderBy('start_time', 'DESC' )->whereBetween('start_time', $dates);
         if(isset($request->subject_id)){
             $pre_table->where('subject_id', $request->subject_id);
         }

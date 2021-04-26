@@ -26,8 +26,9 @@
                                 <div class="col">
                                     <x-ninput label="{{__('Title')}}" name="name" required="required" />
                                     <x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />
-                                    <x-ninput label="{{__('Start')}}" name="start_time" required="required" />
-                                    <x-ninput label="{{__('End')}}" name="end_time" required="required" />
+                                    <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
+{{--                                    <x-ninput label="{{__('Start')}}" name="start_time" required="required" />--}}
+{{--                                    <x-ninput label="{{__('End')}}" name="end_time" required="required" />--}}
                                     <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
                                         <option value="">{{__('Select Student')}}</option>
                                         @foreach($students as $row)
@@ -134,21 +135,22 @@
                 locale: picker_loc
             });
 
-            $('#edit_form [name=start_time]').daterangepicker({
+            $('#edit_form [name=start_end_time]').daterangepicker({
                 timePicker: true,
                 timePicker24Hour: true,
-                singleDatePicker: true,
+                //singleDatePicker: true,
                 startDate: "{{date('d.M.Y H:i', strtotime($table->start_time))}}",
+                endDate: "{{date('d.M.Y H:i', strtotime($table->end_time))}}",
                 locale: picker_loc
             });
 
-            $('#edit_form [name=end_time]').daterangepicker({
-                timePicker: true,
-                timePicker24Hour: true,
-                singleDatePicker: true,
-                startDate: "{{date('d.M.Y H:i', strtotime($table->end_time))}}",
-                locale: picker_loc
-            });
+            {{--$('#edit_form [name=end_time]').daterangepicker({--}}
+            {{--    timePicker: true,--}}
+            {{--    timePicker24Hour: true,--}}
+            {{--    singleDatePicker: true,--}}
+            {{--    startDate: "{{date('d.M.Y H:i', strtotime($table->end_time))}}",--}}
+            {{--    locale: picker_loc--}}
+            {{--});--}}
         });
     </script>
 @endsection

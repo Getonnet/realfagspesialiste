@@ -23,6 +23,9 @@ class FrontTeacherController extends Controller
     use UploadTrait;
     public function index(){
 
+        $subjects = SubjectTaught::all();
+        $student = AssignStudent::where('teacher_id', Auth::id())->get();
+
         $startTime = Carbon::parse("2004-01-23 19:01:00");
         $finishTime = Carbon::parse("2021-04-23 14:01:00");
         $totalDuration = $startTime->diffInMinutes($finishTime, false);
@@ -45,7 +48,7 @@ class FrontTeacherController extends Controller
             $data[] = $hours;
         }
 
-        return view('frontend.teacher.index')->with(['table' => $table, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
+        return view('frontend.teacher.index')->with(['table' => $table, 'student' => $student, 'subjects' => $subjects, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
     }
 
     public function register(){
@@ -405,7 +408,7 @@ class FrontTeacherController extends Controller
             $dates[] = date('Y-m-d', strtotime(str_replace("/","-", $row)));
         }
 
-        $pre_table = TimeLog::where('teacher_id', Auth::id())->where('status', 'End')->orderBy('id','DESC')->whereBetween('created_at', $dates);
+        $pre_table = TimeLog::where('teacher_id', Auth::id())->where('status', 'End')->orderBy('start_time','DESC')->whereBetween('start_time', $dates);
         if(isset($request->subject_id)){
             $pre_table->where('subject_id', $request->subject_id);
         }
@@ -497,8 +500,7 @@ class FrontTeacherController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
-            'start_time' => 'required|date',
-            'end_time' => 'required|date',
+            'start_end_time' => 'required',
             'student_id' => 'required|numeric',
             'subject_id' => 'required|numeric',
             'motivational' => 'required|numeric|min:1|max:10',
@@ -514,10 +516,12 @@ class FrontTeacherController extends Controller
             $student = User::find($request->student_id);
             $subject = Subject::find($request->subject_id);
 
+            $sp_date = explode(" - ", $request->start_end_time);
+
             $table = TimeLog::find($id);
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
-            $table->start_time = date('Y-m-d H:i:s', strtotime($request->start_time));
-            $table->end_time = date('Y-m-d H:i:s', strtotime($request->end_time));
+            $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
+            $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
             $table->name = $request->name;
             $table->student_id = $request->student_id;
             $table->student_name = $student->name;

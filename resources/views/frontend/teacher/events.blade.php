@@ -11,9 +11,9 @@
     <div class="col">
 
         <x-card title="{{__('Events List')}}">
-            <x-slot name="button">
-                <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add Tuition Plan')}}</button>
-            </x-slot>
+{{--            <x-slot name="button">--}}
+{{--                <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add Tuition Plan')}}</button>--}}
+{{--            </x-slot>--}}
             <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                 <thead>
                 <tr>
@@ -25,7 +25,7 @@
                     <th>{{__('End')}}</th>
                     <th>{{__('Hour')}}</th>
                     <th>{{__('Travel')}}</th>
-                    <th>{{__('Status')}}</th>
+{{--                    <th>{{__('Status')}}</th>--}}
                     <th class="text-right">{{__('Action')}}</th>
                 </tr>
                 </thead>
@@ -40,21 +40,21 @@
                         <td data-sort="{{strtotime($row->end_time)}}">{{isset($row->end_time) ? date('d.M H:i', strtotime($row->end_time)) : ''}}</td>
                         <td>{{$row->spend_time('H')}} {{__('Hr')}}</td>
                         <td>{{$row->hour_spend}} Min</td>
-                            @if($row->status == 'Pending')
-                            <td><a href="javascript:;" data-href="{{route('teacher.events-status-running', ['id' => $row->id])}}" onclick="runFn(this)">{{__('Start')}}</a></td>
-                            @elseif($row->status == 'Running')
-                                <td><a href="javascript:;"
-                                       onclick="endFn(this)"
-                                       data-name="{{$row->name}}"
-                                       data-subject="{{$row->subject_id}}"
-                                       data-student="{{$row->student_name}}"
-                                       data-description="{{$row->description}}"
-                                       data-start="{{date('d.M.Y H:i', strtotime($row->start_time))}}"
-                                       data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"
-                                       data-toggle="modal" data-target="#endModal">{{__('Stop')}}</a></td>
-                            @else
-                                <td>{{__($row->status)}}</td>
-                            @endif
+{{--                            @if($row->status == 'Pending')--}}
+{{--                            <td><a href="javascript:;" data-href="{{route('teacher.events-status-running', ['id' => $row->id])}}" onclick="runFn(this)">{{__('Start')}}</a></td>--}}
+{{--                            @elseif($row->status == 'Running')--}}
+{{--                                <td><a href="javascript:;"--}}
+{{--                                       onclick="endFn(this)"--}}
+{{--                                       data-name="{{$row->name}}"--}}
+{{--                                       data-subject="{{$row->subject_id}}"--}}
+{{--                                       data-student="{{$row->student_name}}"--}}
+{{--                                       data-description="{{$row->description}}"--}}
+{{--                                       data-start="{{date('d.M.Y H:i', strtotime($row->start_time))}}"--}}
+{{--                                       data-href="{{route('teacher.events-status-end', ['id' => $row->id])}}"--}}
+{{--                                       data-toggle="modal" data-target="#endModal">{{__('Stop')}}</a></td>--}}
+{{--                            @else--}}
+{{--                                <td>{{__($row->status)}}</td>--}}
+{{--                            @endif--}}
                         <td class="text-right">
 
                             <x-actions>
@@ -213,7 +213,7 @@
                url: "{{asset('no.json')}}"
            },
            columnDefs: [
-               { orderable: false, "targets": [8,9] }//For Column Order
+               { orderable: false, "targets": [8] }//For Column Order
            ]
        });
 

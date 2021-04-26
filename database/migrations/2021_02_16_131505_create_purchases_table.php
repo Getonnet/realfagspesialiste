@@ -20,6 +20,7 @@ class CreatePurchasesTable extends Migration
             $table->double('price')->default(0);
             $table->double('discount')->default(0)->comment('Based on coupon or other else');
             $table->string('coupon')->nullable()->comment('Based on package if coupon applicable');
+            $table->string('note')->nullable();
             $table->enum('status',['Pending', 'Paid', 'Unpaid','Active'])->default('Active');
             $table->foreignId('package_id')->nullable()->constrained()->onDelete('Set Null')->onUpdate('No Action');
             $table->foreignId('user_id')->comment('Student ID')->constrained()->onDelete('cascade')->onUpdate('No Action');

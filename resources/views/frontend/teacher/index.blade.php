@@ -93,6 +93,9 @@
                         </span>
                             <h3 class="card-label">{{__('My Calender')}}</h3>
                         </div>
+                        <div class="card-toolbar">
+                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new reports')}}</button>
+                        </div>
                     </div>
                     <div class="card-body">
 
@@ -187,6 +190,21 @@
                 $( "#viewModal .modal-body" ).html( result );
             });
         }
+
+        $('#addModal [name=event_start]').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            singleDatePicker: true,
+            minDate:new Date(),
+            locale: picker_loc
+        });
+
+        $('#addModal [name=start_end_time]').daterangepicker({
+            timePicker: true,
+            timePicker24Hour: true,
+            //singleDatePicker: true,
+            locale: picker_loc
+        });
 
         var KTApexChartsDemo = function () {
             var thoughts = function () {
