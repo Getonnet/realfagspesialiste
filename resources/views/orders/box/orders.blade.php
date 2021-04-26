@@ -23,6 +23,10 @@
                 <th>{{__('Coupon')}}</th>
                 <td id="o_coupon"></td>
             </tr>
+            <tr>
+                <th>{{__('Purchase Note')}}</th>
+                <td id="o_note"></td>
+            </tr>
             <tr class="text-primary">
                 <th>{{__('Amount')}}</th>
                 <td id="o_price"></td>
@@ -31,6 +35,7 @@
                 <th>{{__('Hours')}}</th>
                 <td id="o_hour"></td>
             </tr>
+
         </table>
 
         <x-nselect label="{{__('Change Status')}}" name="status" >

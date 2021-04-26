@@ -19,6 +19,7 @@
                         <th>{{__('Hours')}}</th>
                         <th>{{__('Amount')}}</th>
                         <th>{{__('Status')}}</th>
+                        <th>{{__('Purchase Note')}}</th>
                         <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
@@ -31,6 +32,7 @@
                             <td data-sort="{{$row->hours}}">{{$row->hours}} {{__('Hr')}}</td>
                             <td data-sort="{{$row->price}}">{{$row->price}} kr</td>
                             <td>{{__($row->status)}}</td>
+                            <td>{{$row->note}}</td>
                             <td class="text-right">
                                 <x-actions>
                                     @can('Purchase View')
@@ -41,6 +43,7 @@
                                                data-student="{{$row->user->name}}"
                                                data-package="{{$row->name}}"
                                                data-coupon="{{$row->coupon}}"
+                                               data-note="{{$row->note}}"
                                                data-hours="{{$row->hours}} {{__('Hr')}}"
                                                data-price="{{$row->price}} Kr"
                                                data-description="{{$row->description}}"
@@ -83,6 +86,7 @@
             var coupon = e.getAttribute('data-coupon');
             var hours = e.getAttribute('data-hours');
             var price = e.getAttribute('data-price');
+            var note = e.getAttribute('data-note');
 
             var status = e.getAttribute('data-status');
 
@@ -97,6 +101,7 @@
             $('#o_hour').html(hours);
             $('#o_price').html(price);
             $('#o_coupon').html(coupon);
+            $('#o_note').html(note);
 
         }
 
@@ -114,7 +119,7 @@
                 url: "{{asset('no.json')}}"
             },
             columnDefs: [
-                { orderable: false, "targets": [6] }//For Column Order
+                { orderable: false, "targets": [7] }//For Column Order
             ]
         });
 

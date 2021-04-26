@@ -45,6 +45,7 @@ class FrontStudentController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required|numeric',
             'coupon' => 'sometimes|nullable|max:191',
+            'note' => 'sometimes|nullable|max:191',
         ]);
 
         if ($validator->fails()) {
@@ -60,6 +61,7 @@ class FrontStudentController extends Controller
             $table->price = $package->price;
             $table->hours = $package->hours;
             $table->coupon = $request->coupon;
+            $table->note = $request->note;
             $table->status = 'Pending';
             $table->package_id = $request->id;
             $table->user_id = Auth::id();

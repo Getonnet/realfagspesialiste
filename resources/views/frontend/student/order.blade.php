@@ -29,6 +29,7 @@
                                 <th>{{__('Hours')}}</th>
                                 <th>{{__('Price')}}</th>
                                 <th>{{__('Status')}}</th>
+                                <th>{{__('Purchase Note')}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,6 +40,7 @@
                                     <td>{{$row->hours}} <sup>Timer</sup></td>
                                     <td>{{$row->price}} <small>Kr</small></td>
                                     <td>{{__($row->status)}}</td>
+                                    <td>{{$row->note}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

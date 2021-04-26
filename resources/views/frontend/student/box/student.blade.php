@@ -29,6 +29,18 @@
                             </tr>
                         </table>
 
+                        <div class="form-group">
+                            <div class="checkbox-list">
+                                <label class="checkbox">
+                                    <input id="is_note" type="checkbox" value="note" name="Checkboxes1"/>
+                                    <span></span>
+                                    {{__('Add additional note')}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="show_note"></div>
+
                         <div id="show_coupon"></div>
 
                     </div>
@@ -44,5 +56,4 @@
     <x-modals id="viewModal" title="{{__('Tuition overview')}}">
 
     </x-modals>
-
 @endsection

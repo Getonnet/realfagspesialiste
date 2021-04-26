@@ -89,20 +89,16 @@
                                                     <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" />
                                                 </svg>
                                             </span>
-                                            <span class="svg-icon svg-icon-5x svg-icon-{{$asset_data[$i]['color']}}">
-                                                <!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box3.svg-->
-                                                {!! $asset_data[$i]['icon'] !!}
-                                                <!--end::Svg Icon-->
-                                            </span>
+                                            <h2 class="font-size-h1 d-block font-weight-boldest">{{$row->name}}</h2>
                                         </div>
                                         <span class="font-size-h1 d-block font-weight-boldest text-dark-75 py-2">{{$row->hours}}<sup class="font-size-h3 font-weight-normal pl-1">timer</sup></span>
-                                        <h4 class="font-size-h6 d-block font-weight-bold mb-7 text-dark-50">{{$row->name}}</h4>
+
                                         <h2>{{$row->price}}<sup class="font-size-h3 font-weight-normal pl-1">Kr</sup></h2>
                                         <p class="mb-15 d-flex flex-column">
                                             <span>{{$row->description}}</span>
                                         </p>
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" id="conf_order" class="btn btn-{{$asset_data[$i]['color']}} text-uppercase font-weight-bolder px-15 py-3" onclick="ediFn(this)"
+                                            <button type="button" id="conf_order" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3" onclick="ediFn(this)"
                                                 data-name="{{$row->name}}"
                                                 data-hour="{{$row->hours}}"
                                                 data-price="{{$row->price}}"
@@ -131,12 +127,24 @@
 @section('script')
     <script type="text/javascript">
 
+
+        $('#is_note').on('change', function() {
+            if($(this).is(":checked")) {
+                $('#show_note').html(`<x-ninput label="{{__('Kjøpsnotat')}}" name="note" />`);
+            }else{
+                $('#show_note').html('');
+            }
+        });
+
         function ediFn(e){
             var name = e.getAttribute('data-name');
             var hour = e.getAttribute('data-hour');
             var price = e.getAttribute('data-price');
             var id = e.getAttribute('data-id');
             var coupon = e.getAttribute('data-coupon');
+
+            $("#is_note").prop("checked", false);
+            $('#show_note').html('');
 
             $('#p_name').html(name);
             $('#p_hour').html(hour);
