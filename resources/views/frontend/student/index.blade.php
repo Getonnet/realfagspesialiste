@@ -130,7 +130,7 @@
 
         $('#is_note').on('change', function() {
             if($(this).is(":checked")) {
-                $('#show_note').html(`<x-ninput label="{{__('Kjøpsnotat')}}" name="note" />`);
+                $('#show_note').html(`<x-ninput label="Jeg ønsker delbetaling" name="note" />`);
             }else{
                 $('#show_note').html('');
             }
