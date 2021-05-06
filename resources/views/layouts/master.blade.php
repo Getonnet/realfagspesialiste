@@ -130,12 +130,12 @@
         $('#delForm').attr('action', link);
 
         Swal.fire({
-            title: "Are you sure?",
-            text: "You wont be able to revert this!",
+            title: "Er du sikker",
+            text: "Du vil ikke kunne angre dette!",
         icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
+            confirmButtonText: "Ja, slett!",
+            cancelButtonText: "Nei, avbryt!",
             reverseButtons: true
         }).then(function(result) {
                 if (result.value) {

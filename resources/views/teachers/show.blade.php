@@ -201,7 +201,7 @@
                                             <th>{{__('Student')}}</th>
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Subject')}}</th>
-                                            <th>Gjenstående</th>
+                                            <th>Varighet</th>
                                             <th class="text-right">{{__('Action')}}</th>
                                         </tr>
                                         </thead>

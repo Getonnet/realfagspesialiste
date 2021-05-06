@@ -29,7 +29,7 @@
                                 <th>{{__('Hours')}}</th>
                                 <th>{{__('Price')}}</th>
                                 <th>{{__('Status')}}</th>
-                                <th>{{__('Purchase Note')}}</th>
+                                <th>Delbetaling</th>
                             </tr>
                             </thead>
                             <tbody>

@@ -19,7 +19,7 @@
                         <th>{{__('Hours')}}</th>
                         <th>{{__('Amount')}}</th>
                         <th>{{__('Status')}}</th>
-                        <th>{{__('Purchase Note')}}</th>
+                        <th>Delbetaling</th>
                         <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>

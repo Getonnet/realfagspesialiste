@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <div class="checkbox-list">
                                 <label class="checkbox">
-                                    <input id="is_note" type="checkbox" value="note" name="Checkboxes1"/>
+                                    <input id="is_note" type="checkbox" value="note" name="adi_note"/>
                                     <span></span>
                                     {{__('Add additional note')}}
                                 </label>

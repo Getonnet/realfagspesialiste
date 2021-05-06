@@ -98,7 +98,7 @@
                                             <span>{{$row->description}}</span>
                                         </p>
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" id="conf_order" class="btn btn-primary text-uppercase font-weight-bolder px-15 py-3" onclick="ediFn(this)"
+                                            <button type="button" id="conf_order" class="btn btn-{{$asset_data[$i]['color']}} text-uppercase font-weight-bolder px-15 py-3" onclick="ediFn(this)"
                                                 data-name="{{$row->name}}"
                                                 data-hour="{{$row->hours}}"
                                                 data-price="{{$row->price}}"
@@ -128,13 +128,13 @@
     <script type="text/javascript">
 
 
-        $('#is_note').on('change', function() {
+        /*$('#is_note').on('change', function() {
             if($(this).is(":checked")) {
                 $('#show_note').html(`<x-ninput label="Jeg ønsker delbetaling" name="note" />`);
             }else{
                 $('#show_note').html('');
             }
-        });
+        });*/
 
         function ediFn(e){
             var name = e.getAttribute('data-name');

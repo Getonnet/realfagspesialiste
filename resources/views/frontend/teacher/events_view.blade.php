@@ -25,10 +25,8 @@
                             <div class="row">
                                 <div class="col">
                                     <x-ninput label="{{__('Title')}}" name="name" required="required" />
-                                    <x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />
+                                    <!--<x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />-->
                                     <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
-{{--                                    <x-ninput label="{{__('Start')}}" name="start_time" required="required" />--}}
-{{--                                    <x-ninput label="{{__('End')}}" name="end_time" required="required" />--}}
                                     <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
                                         <option value="">{{__('Select Student')}}</option>
                                         @foreach($students as $row)
@@ -54,9 +52,6 @@
                                             <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
                                         @endforeach
                                     </x-nselect>
-
-                                </div>
-                                <div class="col">
                                     <x-nselect label="{{__('Transport Time')}}" name="hour_spend" required="required" >
                                         <option value="">{{__('Select Time')}}</option>
                                         <option value="0">0 min</option>
@@ -65,6 +60,9 @@
                                         <option value="25">25 min</option>
                                         <option value="30">30 min</option>
                                     </x-nselect>
+                                </div>
+                                <div class="col">
+
                                     <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" type="number" min="1" max="10" required="required" />
                                     <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" type="number" min="1" max="10" required="required" />
 

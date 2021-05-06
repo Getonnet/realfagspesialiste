@@ -45,7 +45,7 @@
                     <div class="col">
                         <div class="card bg-info">
                             <div class="card-body">
-                                <h3 class="text-center text-white"><b>{{__('Hours')}}:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
+                                <h3 class="text-center text-white"><b>Undervisning:</b> {{number_format($spend_hour, 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h3>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <h3 class="card-label">{{__('My Calender')}}</h3>
                         </div>
                         <div class="card-toolbar">
-                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> {{__('Add new reports')}}</button>
+                            <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> Legg til ny hendelse</button>
                         </div>
                     </div>
                     <div class="card-body">
@@ -239,6 +239,11 @@
                     yaxis: {
                         title: {
                             text: "{{__('Hours')}}"
+                        },
+                        labels: {
+                            formatter: function(val) {
+                                return Math.floor(val)
+                            }
                         }
                     },
                     fill: {

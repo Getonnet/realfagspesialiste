@@ -23,7 +23,7 @@ class FrontTeacherController extends Controller
     use UploadTrait;
     public function index(){
 
-        $subjects = SubjectTaught::all();
+        //$subjects = SubjectTaught::all();
         $student = AssignStudent::where('teacher_id', Auth::id())->get();
 
         $startTime = Carbon::parse("2004-01-23 19:01:00");
@@ -48,7 +48,7 @@ class FrontTeacherController extends Controller
             $data[] = $hours;
         }
 
-        return view('frontend.teacher.index')->with(['table' => $table, 'student' => $student, 'subjects' => $subjects, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
+        return view('frontend.teacher.index')->with(['table' => $table, 'student' => $student, 'categories' => json_encode($categories), 'data' => json_encode($data)]);
     }
 
     public function register(){
@@ -195,7 +195,8 @@ class FrontTeacherController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
-            'subject_id' => 'required|numeric',
+            'start_end_time' => 'required',
+            //'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
         ]);
 
@@ -206,13 +207,18 @@ class FrontTeacherController extends Controller
         try{
 
             $student = User::find($request->student_id);
-            $subject = Subject::find($request->subject_id);
+            //$subject = Subject::find($request->subject_id);
+
+            $sp_date = explode(" - ", $request->start_end_time);
 
             $table = new TimeLog();
             $table->name = $request->name;
+            $table->status = 'End';
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
-            $table->subject_id = $request->subject_id;
-            $table->subject_name = $subject->name;
+            $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
+            $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
+            //$table->subject_id = $request->subject_id;
+            //$table->subject_name = $subject->name;
 
             $table->student_id = $request->student_id;
             $table->student_name = $student->name;
@@ -431,7 +437,7 @@ class FrontTeacherController extends Controller
         //dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'event_start' => 'required|date',
+            //'event_start' => 'required|date',
             'start_end_time' => 'required',
             'student_id' => 'required|numeric',
             'subject_id' => 'required|numeric',
@@ -451,7 +457,7 @@ class FrontTeacherController extends Controller
             $sp_date = explode(" - ", $request->start_end_time);
 
             $table = new TimeLog();
-            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
             $table->name = $request->name;
@@ -499,7 +505,7 @@ class FrontTeacherController extends Controller
     public function edit_events(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'event_start' => 'required|date',
+            //'event_start' => 'required|date',
             'start_end_time' => 'required',
             'student_id' => 'required|numeric',
             'subject_id' => 'required|numeric',
@@ -519,7 +525,7 @@ class FrontTeacherController extends Controller
             $sp_date = explode(" - ", $request->start_end_time);
 
             $table = TimeLog::find($id);
-            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
             $table->name = $request->name;
