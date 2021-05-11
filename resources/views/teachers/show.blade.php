@@ -15,10 +15,10 @@
                 </x-slot>
 
                 <div class="row">
-                    <div class="col-lg-3 overflow-hidden">
+                    <div class="col-xl-4 profile-column overflow-hidden">
                         <div class="card">
                             <img src="{{asset($table->profile_photo_path ?? 'assets/media/users/blank.png')}}" class="card-img-top" alt="{{$table->name}}">
-                            <div class="card-body">
+                            <div class="card-body profile-details">
                                 <h5 class="card-title text-center text-primary">{{$table->name}}</h5>
                                 <table class="table">
                                     <tr>
@@ -106,7 +106,7 @@
                             $unpaid_hour = (double) number_format(($spend_hour - $paid_hour), 2, '.', ' ');
                     @endphp
 
-                    <div class="col-lg-9">
+                    <div class="col-xl-8 details-column">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row font-size-h3">
