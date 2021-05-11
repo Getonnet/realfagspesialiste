@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/FrontStudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/FrontStudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/box/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/box/student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/order.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/order.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/report.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/report.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/orders/orders.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +176,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../university" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -311,6 +297,7 @@
       <workItem from="1619501916034" duration="182000" />
       <workItem from="1619623488725" duration="602000" />
       <workItem from="1620290535055" duration="11432000" />
+      <workItem from="1620329947697" duration="90000" />
     </task>
     <servers />
   </component>
@@ -349,10 +336,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1619625642600">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1620330037347">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1619625642600" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1620330037347" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
