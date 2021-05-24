@@ -178,7 +178,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gunproject" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -301,6 +301,7 @@
       <workItem from="1620290535055" duration="11432000" />
       <workItem from="1620329947697" duration="90000" />
       <workItem from="1620724867374" duration="898000" />
+      <workItem from="1621838778935" duration="24355000" />
     </task>
     <servers />
   </component>

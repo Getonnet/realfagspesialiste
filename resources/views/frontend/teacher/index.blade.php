@@ -137,6 +137,7 @@
 
                     var calendarEl = document.getElementById('kt_calendar');
                     var calendar = new FullCalendar.Calendar(calendarEl, {
+                        firstDay: 1,
                         eventTimeFormat: { // like '14:30:00'
                             hour: '2-digit',
                             minute: '2-digit',
