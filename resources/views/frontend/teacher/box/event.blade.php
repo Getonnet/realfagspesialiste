@@ -47,12 +47,12 @@
 
         <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
 
-        <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >
-            <option value="">{{__('Select Subject')}}</option>
-            @foreach($subjects as $row)
-                <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>
-            @endforeach
-        </x-nselect>
+{{--        <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >--}}
+{{--            <option value="">{{__('Select Subject')}}</option>--}}
+{{--            @foreach($subjects as $row)--}}
+{{--                <option value="{{$row->subject_id}}">{{$row->subject->name ?? ''}}</option>--}}
+{{--            @endforeach--}}
+{{--        </x-nselect>--}}
 
         <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
             <option value="">{{__('Select Student')}}</option>
@@ -74,10 +74,7 @@
             @endforeach
         </x-nselect>
 
-        <div class="form-group">
-            <label for="exampleTextarea">{{__('Descriptions')}}</label>
-            <textarea class="form-control" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
-        </div>
+        <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
 
     </x-modals>
 

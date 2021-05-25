@@ -205,15 +205,47 @@ class FrontTeacherController extends Controller
         }
 
         try{
+            $sp_date = explode(" - ", $request->start_end_time);
+
+            $ev = date('Y-m-d', strtotime($request->event_start));
+            $st = date('Y-m-d', strtotime($sp_date[0]));
+
+            if ($ev != $st) {
+                return redirect()->back()->with(['message' => 'Invalid event start date',  'type' => 'error'])->withInput();
+            }
+            if (strtotime($request->event_start) > strtotime($sp_date[0])) {
+                //dd(strtotime($request->event_start));
+                return redirect()->back()->with(['message' => 'Invalid start & end date',  'type' => 'error'])->withInput();
+            }
+
+            $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'Pending')->get();
+
+            $startB = date(strtotime($sp_date[0]));
+            $endB = date(strtotime($sp_date[1]));
+
+            if ($old_date->count() > 0) {
+
+                foreach ($old_date as $row){
+                    $startA = date(strtotime($row->start_time));
+                    $endA = date(strtotime($row->end_time));
+
+                    if (($startA <= $endB) && ($endA >= $startB)){
+                        return redirect()->back()->with(['message' => 'Date is overlapping, please change stat & end date.',  'type' => 'error'])->withInput();
+                    }
+                }
+            }
 
             $student = User::find($request->student_id);
             //$subject = Subject::find($request->subject_id);
 
-            $sp_date = explode(" - ", $request->start_end_time);
-
             $table = new TimeLog();
             $table->name = $request->name;
-            $table->status = 'End';
+            if (isset($request->status)){
+                $table->status = $request->status;
+            }else{
+                $table->status = 'End';
+            }
+
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
@@ -242,7 +274,8 @@ class FrontTeacherController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
             'event_start' => 'required|date',
-            'subject_id' => 'required|numeric',
+            'start_end_time' => 'required',
+            //'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
         ]);
 
@@ -251,15 +284,46 @@ class FrontTeacherController extends Controller
         }
 
         try{
+            $sp_date = explode(" - ", $request->start_end_time);
+
+            $ev = date('Y-m-d', strtotime($request->event_start));
+            $st = date('Y-m-d', strtotime($sp_date[0]));
+
+            if ($ev != $st) {
+                return redirect()->back()->with(['message' => 'Invalid event start date',  'type' => 'error'])->withInput();
+            }
+            if (strtotime($request->event_start) > strtotime($sp_date[0])) {
+                //dd(strtotime($request->event_start));
+                return redirect()->back()->with(['message' => 'Invalid start & end date',  'type' => 'error'])->withInput();
+            }
+
+            $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'Pending')->whereNotIn('id', [$id])->get();
+
+            $startB = date(strtotime($sp_date[0]));
+            $endB = date(strtotime($sp_date[1]));
+
+            if ($old_date->count() > 0) {
+
+                foreach ($old_date as $row){
+                    $startA = date(strtotime($row->start_time));
+                    $endA = date(strtotime($row->end_time));
+
+                    if (($startA <= $endB) && ($endA >= $startB)){
+                        return redirect()->back()->with(['message' => 'Date is overlapping, please change stat & end date.',  'type' => 'error'])->withInput();
+                    }
+                }
+            }
 
             $student = User::find($request->student_id);
-            $subject = Subject::find($request->subject_id);
+           // $subject = Subject::find($request->subject_id);
 
             $table = TimeLog::find($id);
             $table->name = $request->name;
             $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
-            $table->subject_id = $request->subject_id;
-            $table->subject_name = $subject->name;
+            $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
+            $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
+            //$table->subject_id = $request->subject_id;
+            //$table->subject_name = $subject->name;
 
             $table->student_id = $request->student_id;
             $table->student_name = $student->name;
@@ -372,7 +436,7 @@ class FrontTeacherController extends Controller
     }
 
     public function all_events(){
-        $table = TimeLog::where('teacher_id', Auth::id())->get();
+        $table = TimeLog::where('teacher_id', Auth::id())->where('status', 'Pending')->get();
 
         $data = [];
         foreach ($table as $row){
@@ -451,10 +515,26 @@ class FrontTeacherController extends Controller
         }
 
         try{
+            $sp_date = explode(" - ", $request->start_end_time);
+            $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'End')->get();
+
+            $startB = date(strtotime($sp_date[0]));
+            $endB = date(strtotime($sp_date[1]));
+
+            if ($old_date->count() > 0) {
+
+                foreach ($old_date as $row){
+                    $startA = date(strtotime($row->start_time));
+                    $endA = date(strtotime($row->end_time));
+
+                    if (($startA <= $endB) && ($endA >= $startB)){
+                        return redirect()->back()->with(['message' => 'Date is overlapping, please change stat & end date.',  'type' => 'error'])->withInput();
+                    }
+                }
+            }
+
             $student = User::find($request->student_id);
             $subject = Subject::find($request->subject_id);
-
-            $sp_date = explode(" - ", $request->start_end_time);
 
             $table = new TimeLog();
             $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));
@@ -519,10 +599,27 @@ class FrontTeacherController extends Controller
         }
 
         try{
-            $student = User::find($request->student_id);
-            $subject = Subject::find($request->subject_id);
 
             $sp_date = explode(" - ", $request->start_end_time);
+            $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'End')->whereNotIn('id', [$id])->get();
+
+            $startB = date(strtotime($sp_date[0]));
+            $endB = date(strtotime($sp_date[1]));
+
+            if ($old_date->count() > 0) {
+
+                foreach ($old_date as $row){
+                    $startA = date(strtotime($row->start_time));
+                    $endA = date(strtotime($row->end_time));
+
+                    if (($startA <= $endB) && ($endA >= $startB)){
+                        return redirect()->back()->with(['message' => 'Date is overlapping, please change stat & end date.',  'type' => 'error'])->withInput();
+                    }
+                }
+            }
+
+            $student = User::find($request->student_id);
+            $subject = Subject::find($request->subject_id);
 
             $table = TimeLog::find($id);
             $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));

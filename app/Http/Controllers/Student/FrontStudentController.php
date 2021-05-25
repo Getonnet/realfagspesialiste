@@ -168,7 +168,7 @@ class FrontStudentController extends Controller
     }
 
     public function all_events(){
-        $table = TimeLog::where('student_id', Auth::id())->get();
+        $table = TimeLog::where('student_id', Auth::id())->where('status', 'Pending')->get();
 
         $data = [];
         foreach ($table as $row){

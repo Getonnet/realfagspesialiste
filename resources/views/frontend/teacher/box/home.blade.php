@@ -4,7 +4,7 @@
 </x-modals>
 
 <x-modals id="addModal" action="{{route('teacher.events-save')}}" title="Legg til ny hendelse">
-
+    <input type="hidden" name="status" value="Pending" />
     <x-ninput label="{{__('Title')}}" name="name" required="required" />
     <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
         <option value="">{{__('Select Student')}}</option>

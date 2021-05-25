@@ -33,7 +33,7 @@
                 @foreach($table as $row)
                     <tr>
                         <td data-sort="{{strtotime($row->event_start)}}">{{date('d.M.Y', strtotime($row->event_start))}}</td>
-                        <td>{{$row->name ?? __('No Title')}}</td>
+                        <td class="{{$row->status != 'End' ? 'text-primary': ''}}">{{$row->name ?? __('No Title')}}</td>
                         <td>{{$row->subject_name}}</td>
                         <td>{{$row->student_name}}</td>
                         <td data-sort="{{strtotime($row->start_time)}}">{{isset($row->start_time) ? date('d.M H:i', strtotime($row->start_time)) : ''}}</td>
@@ -67,6 +67,8 @@
                                            data-student="{{$row->student_id}}"
                                            data-description="{{$row->description}}"
                                            data-event="{{date('d.M.Y H:i', strtotime($row->event_start))}}"
+                                           data-start="{{date('d.M.Y H:i', strtotime($row->start_time))}}"
+                                           data-end="{{date('d.M.Y H:i', strtotime($row->end_time))}}"
                                         >
                                             <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
                                             <span class="navi-text">{{__('Edit')}}</span>
@@ -179,6 +181,8 @@
            var student_id = e.getAttribute('data-student');
            var description = e.getAttribute('data-description');
            var event = e.getAttribute('data-event');
+           var start = e.getAttribute('data-start');
+           var end = e.getAttribute('data-end');
            var name = e.getAttribute('data-name');
 
            $('#ediModal form').attr('action', link);
@@ -192,11 +196,19 @@
                timePicker: true,
                timePicker24Hour: true,
                singleDatePicker: true,
-               startDate: new Date(event),
-               minDate:new Date(),
+               startDate: event,
                locale: picker_loc
            });
            //$('#ediModal [name=event_start]').val(event_start);
+
+           $('#ediModal [name=start_end_time]').daterangepicker({
+               timePicker: true,
+               timePicker24Hour: true,
+               //singleDatePicker: true,
+               startDate: start,
+               endDate: end,
+               locale: picker_loc
+           });
        }
 
         $('#addModal [name=event_start]').daterangepicker({

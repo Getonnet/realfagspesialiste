@@ -15,6 +15,7 @@
                     <thead>
                     <tr>
                         <th>{{__('Event Date')}}</th>
+                        <th>{{__('Title')}}</th>
                         <th>{{__('Subject')}}</th>
                         <th>{{__('Teacher')}}</th>
                         <th>{{__('Start')}}</th>
@@ -27,6 +28,7 @@
                     @foreach($table as $row)
                         <tr>
                             <td data-sort="{{strtotime($row->event_start)}}">{{date('d.M.Y', strtotime($row->event_start))}}</td>
+                            <td class="{{$row->status != 'End' ? 'text-primary': ''}}">{{$row->name ?? __('No Title')}}</td>
                             <td>{{$row->subject_name}}</td>
                             <td>{{$row->teacher_name}}</td>
                             <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
