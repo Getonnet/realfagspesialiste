@@ -90,7 +90,7 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                     @php
-                                        $events = $table->time_log()->orderBy('id', 'DESC')->get();
+                                        $events = $table->time_log()->orderBy('id', 'DESC')->where('status', 'End')->get();
                                     @endphp
                                     <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                                         <thead>

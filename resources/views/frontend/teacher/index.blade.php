@@ -21,6 +21,13 @@
                      $total_travel += $spend->hour_spend;
                  }
 
+                 $planeds = $table->time_log_teacher()->where('status', 'Pending')->get();
+
+                 $planed_times = 0;
+                 foreach ($planeds as $planed){
+                     $planed_times += $planed->spend_time('H');
+                 }
+
                  $travel_hour = number_format(($total_travel / 60), 2, '.', ' ');
                  $spend_hour = $spend_times / 60;
                  $unpaid_hour = number_format(($spend_hour - $paid_hour), 2, '.', ' ');
@@ -64,11 +71,15 @@
                 <div class="row">
                    <div class="col-md-3">
                        <ul class="list-group">
-                           <li class="list-group-item bg-info text-white pt-lg-20 pb-lg-20">
+                           <li class="list-group-item bg-primary text-white pt-lg-5 pb-lg-5">
+                               <h1 class="text-center">{{__('Total Planed hours')}}</h1>
+                               <h2 class="text-center">{{$planed_times}}<sup>{{__('Hr')}}</sup></h2>
+                           </li>
+                           <li class="list-group-item bg-info text-white pt-lg-5 pb-lg-5">
                                <h1 class="text-center">{{__('Total hours taught')}}</h1>
                                <h2 class="text-center">{{number_format(($spend_hour + $travel_hour), 2, '.', ' ')}}<sup>{{__('Hr')}}</sup></h2>
                            </li>
-                           <li class="list-group-item bg-success text-white pt-lg-20 pb-lg-20">
+                           <li class="list-group-item bg-success text-white pt-lg-5 pb-lg-5">
                                <h1 class="text-center">{{__('Total salary paid')}}</h1>
                                <h2 class="text-center">{{$paid}}<sup>kr</sup></h2>
                            </li>

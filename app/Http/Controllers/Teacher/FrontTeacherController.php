@@ -26,9 +26,9 @@ class FrontTeacherController extends Controller
         //$subjects = SubjectTaught::all();
         $student = AssignStudent::where('teacher_id', Auth::id())->get();
 
-        $startTime = Carbon::parse("2004-01-23 19:01:00");
-        $finishTime = Carbon::parse("2021-04-23 14:01:00");
-        $totalDuration = $startTime->diffInMinutes($finishTime, false);
+        //$startTime = Carbon::parse("2004-01-23 19:01:00");
+        //$finishTime = Carbon::parse("2021-04-23 14:01:00");
+        //$totalDuration = $startTime->diffInMinutes($finishTime, false);
 
        // dd(number_format(($totalDuration / 60), 2, '.', ' '));
 
@@ -38,7 +38,7 @@ class FrontTeacherController extends Controller
         $categories = Subject::select('name')->whereIn('id', $subjects_id)->pluck('name')->toArray();
         $data = [];
         foreach ($subjects_id as $subject_id){
-            $time_log = TimeLog::where('teacher_id', Auth::id())->where('subject_id', $subject_id)->get();
+            $time_log = TimeLog::where('teacher_id', Auth::id())->where('subject_id', $subject_id)->where('status', 'End')->get();
 
             $hours = 0;
             foreach ($time_log as $row){

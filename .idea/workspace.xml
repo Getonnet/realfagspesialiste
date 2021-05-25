@@ -22,9 +22,10 @@
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/no.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/no.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/students/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/students/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teachers/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +308,9 @@
       <workItem from="1620724867374" duration="898000" />
       <workItem from="1621838778935" duration="25756000" />
       <workItem from="1621916966115" duration="5484000" />
-      <workItem from="1621923009720" duration="11543000" />
+      <workItem from="1621923009720" duration="12366000" />
+      <workItem from="1621946781841" duration="7000" />
+      <workItem from="1621947545010" duration="3855000" />
     </task>
     <servers />
   </component>
@@ -346,10 +349,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1621922727532">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1621946787248">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1621922727532" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1621946787248" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -370,44 +373,6 @@
           <url>file://$PROJECT_DIR$/resources/views/frontend/student/order.blade.php</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>195</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>197</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>274</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>277</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>193</line>
-          <properties>
-            <option name="className" value="\App\Http\Controllers\Teacher\FrontTeacherController" />
-            <option name="methodName" value="event_save" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>272</line>
-          <properties>
-            <option name="className" value="\App\Http\Controllers\Teacher\FrontTeacherController" />
-            <option name="methodName" value="event_edit" />
-          </properties>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     @php
-                                        $events = $table->time_log_teacher()->orderBy('id', 'DESC')->get();
+                                        $events = $table->time_log_teacher()->orderBy('id', 'DESC')->where('status', 'End')->get();
                                     @endphp
                                     <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                                         <thead>
