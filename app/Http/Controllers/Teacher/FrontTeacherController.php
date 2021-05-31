@@ -450,7 +450,17 @@ class FrontTeacherController extends Controller
             $rowData['edit'] = route('teacher.events-edit', ['id' => $row->id]);
             $rowData['start'] = $row->event_start;
             $rowData['title'] = $row->student_name;
-            //$rowData['end'] = $row->event_start;
+            $rowData['names'] = $row->name;
+            $rowData['identity'] = $row->student_id;
+            $rowData['ev'] = date('d, M H:i', strtotime($row->event_start));
+            $rowData['st'] = date('d, M H:i', strtotime($row->start_time));
+            $rowData['en'] = date('d, M H:i', strtotime($row->end_time));
+
+            $rowData['calev'] = date('d.M.Y H:i', strtotime($row->event_start));
+            $rowData['calst'] = date('d.M.Y H:i', strtotime($row->start_time));
+            $rowData['calen'] = date('d.M.Y H:i', strtotime($row->end_time));
+
+            $rowData['spend'] = $row->spend_time('H');
             $rowData['allDay'] = false;
 
             if ($row->status == 'Pending') {

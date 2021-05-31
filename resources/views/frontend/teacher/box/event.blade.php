@@ -45,8 +45,6 @@
 
         <x-ninput label="{{__('Title')}}" name="name" required="required" />
 
-        <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
-
 {{--        <x-nselect label="{{__('Subject Select')}}" name="subject_id" required="required" >--}}
 {{--            <option value="">{{__('Select Subject')}}</option>--}}
 {{--            @foreach($subjects as $row)--}}
@@ -73,6 +71,8 @@
                 <option value="{{$row->student_id}}">{{$row->students->name ?? ''}} ({{$remaining}})</option>
             @endforeach
         </x-nselect>
+
+        <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
 
         <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
 

@@ -186,11 +186,41 @@
 
                         eventClick: function(info) {
                             info.jsEvent.preventDefault();
-                            
+
                             $('#del_events').attr('data-href', info.event.del);
+                            $('#viewModal .titles').html(info.event.extendedProps.names);
+                            $('#viewModal .student').html(info.event.title);
+                            $('#viewModal .event_date').html(info.event.extendedProps.ev);
+                            $('#viewModal .st').html(info.event.extendedProps.st);
+                            $('#viewModal .end').html(info.event.extendedProps.en);
+                            $('#viewModal .spend').html(info.event.extendedProps.spend);
+
+                            $('#del_events').attr('data-href', info.event.extendedProps.del);
+
                             $('#viewModal').modal('show');
-                            viewFn(info.event.url);
-                           // alert('Event: ' + info.event.url);
+
+                            $('#ediModal form').attr('action', info.event.extendedProps.edit);
+                            $('#ediModal [name=student_id]').val(info.event.extendedProps.identity);
+                            $('#ediModal [name=name]').val(info.event.extendedProps.names);
+
+                            $('#ediModal [name=event_start]').daterangepicker({
+                                timePicker: true,
+                                timePicker24Hour: true,
+                                singleDatePicker: true,
+                                startDate: info.event.extendedProps.calev,
+                                locale: picker_loc
+                            });
+                            //$('#ediModal [name=event_start]').val(event_start);
+
+                            $('#ediModal [name=start_end_time]').daterangepicker({
+                                timePicker: true,
+                                timePicker24Hour: true,
+                                //singleDatePicker: true,
+                                startDate: info.event.extendedProps.calst,
+                                endDate: info.event.extendedProps.calen,
+                                locale: picker_loc
+                            });
+
                         }
                     });
 
@@ -199,11 +229,11 @@
             };
         }();
 
-        function viewFn(urls) {
-            $.get(urls, function( result ) {
+        //function viewFn(urls) {
+            /*$.get(urls, function( result ) {
                 $( "#viewModal .modal-body" ).html( result );
-            });
-        }
+            });*/
+        //}
 
         $('#addModal [name=event_start]').daterangepicker({
             timePicker: true,
