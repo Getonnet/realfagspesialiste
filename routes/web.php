@@ -45,6 +45,7 @@ Route::middleware(['auth', 'student'])->group(function () {
 
     Route::get('/events', [FrontStudentController::class, 'events'])->name('student.events');
     Route::get('/events/overview/{id}', [FrontStudentController::class, 'overview'])->name('student.events-overview');//Overview light box
+    Route::get('/events/overview-mini/{id}', [FrontStudentController::class, 'overview_mini'])->name('student.events-overview-mini');//Overview light box
     Route::get('/events/all', [FrontStudentController::class, 'all_events'])->name('student.events-all');//Json for calender api
 });
 

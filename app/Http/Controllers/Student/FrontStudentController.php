@@ -161,6 +161,11 @@ class FrontStudentController extends Controller
         return view('frontend.student.overview')->with(['table' => $table]);
     }
 
+    public function overview_mini($id){
+        $table = TimeLog::find($id);
+        return view('frontend.student.overview_mini')->with(['table' => $table]);
+    }
+
 
     public function events(){
         $table = TimeLog::orderBy('Id', 'DESC')->where('student_id', Auth::id())->get();
@@ -172,7 +177,7 @@ class FrontStudentController extends Controller
 
         $data = [];
         foreach ($table as $row){
-            $rowData['url'] = route('student.events-overview', ['id' => $row->id]);
+            $rowData['url'] = route('student.events-overview-mini', ['id' => $row->id]);
             $rowData['title'] = $row->teacher_name;
             $rowData['start'] = $row->event_start;
             $rowData['description'] = $row->description;
