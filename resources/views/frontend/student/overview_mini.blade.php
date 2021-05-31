@@ -10,10 +10,6 @@
         <td>{{$table->teacher_name}}</td>
     </tr>
     <tr>
-        <th>{{__('Subject')}}</th>
-        <td>{{$table->subject_name}}</td>
-    </tr>
-    <tr>
         <th>{{__('Event Date')}}</th>
         <td>{{isset($table->event_start) ? date('d, M H:i', strtotime($table->event_start)) : ''}}</td>
     </tr>
