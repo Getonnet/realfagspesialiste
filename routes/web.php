@@ -59,6 +59,7 @@ Route::prefix('teacher')->group(function () {
 
         Route::put('/events/status/{id}', [FrontTeacherController::class, 'end_status'])->name('teacher.events-status-end');
         Route::get('/events/overview/{id}', [FrontTeacherController::class, 'overview'])->name('teacher.events-overview');//Overview light box
+        Route::get('/events/overview-mini/{id}', [FrontTeacherController::class, 'overview_mini'])->name('teacher.events-overview-mini');//Overview Mini light box
         Route::get('/events/status/{id}', [FrontTeacherController::class, 'running_status'])->name('teacher.events-status-running');
         Route::get('/events/all', [FrontTeacherController::class, 'all_events'])->name('teacher.events-all');//Json for calender api
         Route::delete('/events/{id}', [FrontTeacherController::class, 'del_event'])->name('teacher.events-del');

@@ -435,12 +435,17 @@ class FrontTeacherController extends Controller
         return view('frontend.teacher.overview')->with(['table' => $table]);
     }
 
+    public function overview_mini($id){
+        $table = TimeLog::find($id);
+        return view('frontend.teacher.overview_mini')->with(['table' => $table]);
+    }
+
     public function all_events(){
         $table = TimeLog::where('teacher_id', Auth::id())->where('status', 'Pending')->get();
 
         $data = [];
         foreach ($table as $row){
-            $rowData['url'] = route('teacher.events-overview', ['id' => $row->id]);
+            $rowData['url'] = route('teacher.events-overview-mini', ['id' => $row->id]);
             $rowData['start'] = $row->event_start;
             $rowData['title'] = $row->student_name;
             //$rowData['end'] = $row->event_start;

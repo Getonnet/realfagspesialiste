@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/overview_mini.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +180,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gunproject" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -306,6 +308,7 @@
       <workItem from="1621923009720" duration="12366000" />
       <workItem from="1621946781841" duration="7000" />
       <workItem from="1621947545010" duration="4461000" />
+      <workItem from="1622451221739" duration="2052000" />
     </task>
     <servers />
   </component>
@@ -352,10 +355,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="540" y="260" key="IDE.errors.dialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615554608086" />
-    <state x="829" y="455" key="NewPhpFileDialog" timestamp="1619003908390">
+    <state x="829" y="455" key="NewPhpFileDialog" timestamp="1622453084528">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="829" y="455" key="NewPhpFileDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1619003908390" />
+    <state x="829" y="455" key="NewPhpFileDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1622453084528" />
     <state x="248" y="84" key="SettingsEditor" timestamp="1618990372585">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -368,6 +371,20 @@
           <url>file://$PROJECT_DIR$/resources/views/frontend/student/order.blade.php</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
+          <line>443</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php-line-method">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
+          <line>442</line>
+          <properties>
+            <option name="className" value="\App\Http\Controllers\Teacher\FrontTeacherController" />
+            <option name="methodName" value="all_events" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
