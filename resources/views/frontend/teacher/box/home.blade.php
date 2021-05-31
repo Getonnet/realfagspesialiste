@@ -1,7 +1,28 @@
 @section('box')
-<x-modals id="viewModal" title="{{__('Tuition overview')}}">
 
-</x-modals>
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class = "modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{__('Tuition overview')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-light-success font-weight-bold">{{__('Edit')}}</button>
+                    <a class="btn btn-light-dark font-weight-bold" id="del_events" href="javascript:;" data-href="" class="navi-link" onclick="delFn(this)">{{__('Delete')}}</a>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">{{__('Close')}}</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+
 
 <x-modals id="addModal" action="{{route('teacher.events-save')}}" title="Legg til ny hendelse">
     <input type="hidden" name="status" value="Pending" />

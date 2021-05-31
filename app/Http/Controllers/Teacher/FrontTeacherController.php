@@ -446,6 +446,8 @@ class FrontTeacherController extends Controller
         $data = [];
         foreach ($table as $row){
             $rowData['url'] = route('teacher.events-overview-mini', ['id' => $row->id]);
+            $rowData['del'] = route('teacher.events-del', ['id' => $row->id]);
+            $rowData['edit'] = route('teacher.events-edit', ['id' => $row->id]);
             $rowData['start'] = $row->event_start;
             $rowData['title'] = $row->student_name;
             //$rowData['end'] = $row->event_start;
