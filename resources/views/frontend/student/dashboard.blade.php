@@ -128,6 +128,9 @@
 
                         eventClick: function(info) {
                             info.jsEvent.preventDefault();
+
+                            alert(info.event.url);
+
                             $('#del_events').attr('data-href', info.event.del);
                             $('#viewModal').modal('show');
                             viewFn(info.event.url);
