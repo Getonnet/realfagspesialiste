@@ -77,7 +77,7 @@
         @endforeach
     </x-nselect>
 
-    <x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />
+{{--    <x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />--}}
     <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
 
 </x-modals>
@@ -88,7 +88,7 @@
 
     <x-ninput label="{{__('Title')}}" name="name" required="required" />
 
-    <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
+{{--    <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />--}}
 
 
     <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >

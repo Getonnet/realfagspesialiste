@@ -22,9 +22,7 @@
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,7 +308,10 @@
       <workItem from="1621923009720" duration="12366000" />
       <workItem from="1621946781841" duration="7000" />
       <workItem from="1621947545010" duration="4461000" />
-      <workItem from="1622451221739" duration="10663000" />
+      <workItem from="1622451221739" duration="11392000" />
+      <workItem from="1622470416447" duration="2553000" />
+      <workItem from="1622523281793" duration="599000" />
+      <workItem from="1622640472648" duration="4305000" />
     </task>
     <servers />
   </component>
@@ -349,10 +350,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1621953506135">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1622530838051">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1621953506135" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1622530838051" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -373,20 +374,6 @@
           <url>file://$PROJECT_DIR$/resources/views/frontend/student/order.blade.php</url>
           <line>25</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>443</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php-line-method">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Teacher/FrontTeacherController.php</url>
-          <line>442</line>
-          <properties>
-            <option name="className" value="\App\Http\Controllers\Teacher\FrontTeacherController" />
-            <option name="methodName" value="all_events" />
-          </properties>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

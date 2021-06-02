@@ -72,7 +72,7 @@
             @endforeach
         </x-nselect>
 
-        <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />
+{{--        <x-ninput label="{{__('Event Start')}}" name="event_start" required="required" />--}}
 
         <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
 

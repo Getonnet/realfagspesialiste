@@ -194,7 +194,7 @@ class FrontTeacherController extends Controller
     public function event_save(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'event_start' => 'required|date',
+            //'event_start' => 'required|date',
             'start_end_time' => 'required',
             //'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
@@ -207,7 +207,7 @@ class FrontTeacherController extends Controller
         try{
             $sp_date = explode(" - ", $request->start_end_time);
 
-            $ev = date('Y-m-d', strtotime($request->event_start));
+            /*$ev = date('Y-m-d', strtotime($request->event_start));
             $st = date('Y-m-d', strtotime($sp_date[0]));
 
             if ($ev != $st) {
@@ -216,7 +216,7 @@ class FrontTeacherController extends Controller
             if (strtotime($request->event_start) > strtotime($sp_date[0])) {
                 //dd(strtotime($request->event_start));
                 return redirect()->back()->with(['message' => 'Invalid start & end date',  'type' => 'error'])->withInput();
-            }
+            }*/
 
             $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'Pending')->get();
 
@@ -246,7 +246,7 @@ class FrontTeacherController extends Controller
                 $table->status = 'End';
             }
 
-            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
             //$table->subject_id = $request->subject_id;
@@ -273,7 +273,7 @@ class FrontTeacherController extends Controller
     public function event_edit(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:191',
-            'event_start' => 'required|date',
+            //'event_start' => 'required|date',
             'start_end_time' => 'required',
             //'subject_id' => 'required|numeric',
             'student_id' => 'required|numeric',
@@ -286,6 +286,7 @@ class FrontTeacherController extends Controller
         try{
             $sp_date = explode(" - ", $request->start_end_time);
 
+            /*
             $ev = date('Y-m-d', strtotime($request->event_start));
             $st = date('Y-m-d', strtotime($sp_date[0]));
 
@@ -296,6 +297,7 @@ class FrontTeacherController extends Controller
                 //dd(strtotime($request->event_start));
                 return redirect()->back()->with(['message' => 'Invalid start & end date',  'type' => 'error'])->withInput();
             }
+            */
 
             $old_date = TimeLog::select('start_time', 'end_time')->orderBy('event_start', 'desc')->where('status', 'Pending')->whereNotIn('id', [$id])->get();
 
@@ -319,7 +321,7 @@ class FrontTeacherController extends Controller
 
             $table = TimeLog::find($id);
             $table->name = $request->name;
-            $table->event_start = date('Y-m-d H:i:s', strtotime($request->event_start));
+            $table->event_start = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->start_time = date('Y-m-d H:i:s', strtotime($sp_date[0]));
             $table->end_time = date('Y-m-d H:i:s', strtotime($sp_date[1]));
             //$table->subject_id = $request->subject_id;
