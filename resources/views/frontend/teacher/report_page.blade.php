@@ -21,15 +21,22 @@
                                         <li class="navi-item">
                                             <a href="javascript:;" class="navi-link text-success"  data-toggle="modal" data-target="#viewModal" onclick="viewFn(this)"
                                                data-href="{{route('teacher.events-overview', ['id' => $row->id])}}">
-                                                <span class="navi-text">
+                                                <span class="navi-text text-info">
                                                     {{__('Overview')}}
                                                 </span>
                                             </a>
                                         </li>
                                         <li class="navi-item">
                                             <a href="{{route('teacher.events-edit-show', ['id' => $row->id])}}" class="navi-link text-danger">
-                                                <span class="navi-text">
+                                                <span class="navi-text text-success">
                                                     {{__('Edit')}}
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="navi-item">
+                                            <a href="javascript:;" data-href="{{route('teacher.events-del', ['id' => $row->id])}}" class="navi-link text-danger"  onclick="delFn(this)">
+                                                <span class="navi-text text-danger">
+                                                    {{__('Delete')}}
                                                 </span>
                                             </a>
                                         </li>

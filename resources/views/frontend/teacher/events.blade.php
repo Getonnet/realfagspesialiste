@@ -87,11 +87,19 @@
                                             <span class="navi-icon"><i class="la la-pencil-square-o text-success"></i></span>
                                             <span class="navi-text">{{__('Edit')}}</span>
                                         </a>
+                                    </li>
+                                    <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#viewModal" onclick="viewFn(this)"
                                            data-href="{{route('teacher.events-overview', ['id' => $row->id])}}"
                                         >
                                             <span class="navi-icon"><i class="fab la-phabricator text-info"></i></span>
                                             <span class="navi-text">{{__('View')}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="navi-item">
+                                        <a href="javascript:;" data-href="{{route('teacher.events-del', ['id' => $row->id])}}" class="navi-link" onclick="delFn(this)">
+                                            <span class="navi-icon"><i class="la la-trash-o text-danger"></i></span>
+                                            <span class="navi-text">{{__('Delete')}}</span>
                                         </a>
                                     </li>
                                 @endif
