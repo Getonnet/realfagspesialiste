@@ -21,10 +21,10 @@
                             <td class="student"></td>
                         </tr>
 
-                        <tr>
-                            <th>{{__('Event Date')}}</th>
-                            <td class="event_date"></td>
-                        </tr>
+{{--                        <tr>--}}
+{{--                            <th>{{__('Event Date')}}</th>--}}
+{{--                            <td class="event_date"></td>--}}
+{{--                        </tr>--}}
 
                         <tr>
                             <th>{{__('Session Start')}}</th>

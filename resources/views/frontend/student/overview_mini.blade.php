@@ -9,10 +9,10 @@
         <th>{{__('Teacher Name')}}</th>
         <td>{{$table->teacher_name}}</td>
     </tr>
-    <tr>
-        <th>{{__('Event Date')}}</th>
-        <td>{{isset($table->event_start) ? date('d, M H:i', strtotime($table->event_start)) : ''}}</td>
-    </tr>
+{{--    <tr>--}}
+{{--        <th>{{__('Event Date')}}</th>--}}
+{{--        <td>{{isset($table->event_start) ? date('d, M H:i', strtotime($table->event_start)) : ''}}</td>--}}
+{{--    </tr>--}}
     <tr>
         <th>{{__('Session Start')}}</th>
         <td>{{isset($table->start_time) ? date('d, M H:i', strtotime($table->start_time)) : ''}}</td>
