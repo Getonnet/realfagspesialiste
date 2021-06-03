@@ -100,6 +100,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
+                            <button type="button" class="btn btn-light-danger font-weight-bold" onclick="window.history.back();">{{__('Cancel')}}</button>
                             <button type="submit" class="btn btn-success">{{__('Save changes')}}</button>
                         </div>
                     </form>

@@ -17,7 +17,7 @@
                     {{$slot}}
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">{{__('Close')}}</button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">{{__('Cancel')}}</button>
                     @if(isset($action))
                     <button type="submit" class="btn btn-primary font-weight-bold">{{__('Save changes')}}</button>
                     @endif
