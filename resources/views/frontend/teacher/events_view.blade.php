@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <button type="button" class="btn btn-light-danger font-weight-bold" onclick="window.history.back();">{{__('Cancel')}}</button>
+                            <a href="{{route('teacher.reports')}}" class="btn btn-light-danger font-weight-bold">{{__('Cancel')}}</a>
                             <button type="submit" class="btn btn-success">{{__('Save changes')}}</button>
                         </div>
                     </form>
