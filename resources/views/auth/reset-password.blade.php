@@ -9,7 +9,7 @@
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
             <!--begin::Title-->
             <div class="pb-5 pb-lg-15">
-                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{ __('Password Reset ?') }}</h3>
+                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{ __('Password Reset') }}?</h3>
                 <p class="text-muted font-weight-bold font-size-h4">{{ __('Enter your new password') }}</p>
             </div>
             <!--end::Title-->
