@@ -4,22 +4,44 @@
 
     <!--begin::Signin-->
     <div class="login-form">
-        <form class="form" id="kt_login_forgot_form" action="">
+        <form method="POST" class="form" id="kt_login_forgot_form" action="{{ route('password.update') }}">
+            @csrf
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
             <!--begin::Title-->
             <div class="pb-5 pb-lg-15">
-                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{ __('Forgotten Password ?') }}</h3>
-                <p class="text-muted font-weight-bold font-size-h4">{{ __('Enter your email to reset your password') }}</p>
+                <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">{{ __('Password Reset ?') }}</h3>
+                <p class="text-muted font-weight-bold font-size-h4">{{ __('Enter your new password') }}</p>
             </div>
             <!--end::Title-->
             <!--begin::Form group-->
             <div class="form-group">
-                <input class="form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6" type="email" placeholder="Email" name="email" autocomplete="off" />
+                <x-jet-label for="email" class="font-size-h6 font-weight-bolder text-dark" req="true" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="email" name="email" value="{{old('email', $request->email)}}" required autofocus />
+                @if ($errors->has('email'))
+                    <span class="form-text text-danger">{{ $errors->first('email') }}</span>
+                @endif
+            </div>
+            <!--end::Form group-->
+            <!--begin::Form group-->
+            <div class="form-group">
+                <x-jet-label for="password" class="font-size-h6 font-weight-bolder text-dark" req="true" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="password" name="password" required autocomplete="new-password" />
+                @if ($errors->has('password'))
+                    <span class="form-text text-danger">{{ $errors->first('password') }}</span>
+                @endif
+            </div>
+            <!--end::Form group-->
+
+            <!--begin::Form group-->
+            <div class="form-group">
+                <x-jet-label for="password_confirmation" class="font-size-h6 font-weight-bolder text-dark" req="true" value="{{ __('Password Confirmation') }}" />
+                <x-jet-input id="password_confirmation" class="form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             <!--end::Form group-->
             <!--begin::Form group-->
             <div class="form-group d-flex flex-wrap">
-                <button type="submit" id="kt_login_forgot_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">Submit</button>
-                <a href="custom/pages/login/login-4/signin.html" id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bolder font-size-h6 px-8 py-4 my-3">Cancel</a>
+                <button type="submit" id="kt_login_forgot_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">
+                    {{__('Reset Password')}}</button>
             </div>
             <!--end::Form group-->
         </form>
