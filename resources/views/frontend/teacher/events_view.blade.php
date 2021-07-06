@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <x-ninput label="{{__('Title')}}" name="name" required="required" />
+                                    <x-ninput label="{{__('Title')}}" name="name" value="{{$table->name}}" required="required" />
                                     <!--<x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />-->
                                     <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
                                     <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
@@ -63,17 +63,17 @@
                                 </div>
                                 <div class="col">
 
-                                    <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" type="number" min="1" max="10" required="required" />
-                                    <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" type="number" min="1" max="10" required="required" />
+                                    <x-ninput label="{{__('Motivational Scale (1-10)')}}" name="motivational" value="{{$table->motivational}}" type="number" min="1" max="10" required="required" />
+                                    <x-ninput label="{{__('Understanding Scale (1-10)')}}" name="understanding" value="{{$table->understanding}}" type="number" min="1" max="10" required="required" />
 
                                     <div class="form-group">
                                         <label for="descriptionx">{{__('Descriptions')}}</label>
-                                        <textarea class="form-control" id="descriptionx" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3"></textarea>
+                                        <textarea class="form-control" id="descriptionx" name="description" placeholder="{{__('Lesson Descriptions')}}" rows="3">{{$table->description}}</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="summeryx">{{__('Summery')}}</label>
-                                        <textarea class="form-control" id="summeryx" name="summery" placeholder="{{__('Summery this session')}}" rows="3"></textarea>
+                                        <textarea class="form-control" id="summeryx" name="summery" placeholder="{{__('Summery this session')}}" rows="3">{{$table->summery}}</textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -85,14 +85,16 @@
                                         @php
                                             $mat = $table->studyMaterials()->get();
                                         @endphp
-                                        <table class="table table-sm">
-                                            @foreach($mat as $row)
-                                                <tr>
-                                                    <td><a class="btn btn-sm btn-success" href="{{asset($row->file_name)}}">{{__('Download')}}</a></td>
-                                                    <td class="text-right"><a class="btn btn-sm btn-danger" href="javascript:;" data-href="{{route('teacher.events-file-del',['id' => $row->id])}}"  onclick="delFn(this)">{{__('Delete')}}</a></td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
+                                        @if (isset($mat))
+                                            <table class="table table-sm">
+                                                @foreach($mat as $row)
+                                                    <tr>
+                                                        <td><a class="btn btn-sm btn-success" href="{{asset($row->file_name)}}">{{__('Download')}}</a></td>
+                                                        <td class="text-right"><a class="btn btn-sm btn-danger" href="javascript:;" data-href="{{route('teacher.events-file-del',['id' => $row->id])}}"  onclick="delFn(this)">{{__('Delete')}}</a></td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        @endif
                                     </div>
 
 
@@ -116,14 +118,14 @@
 @section('script')
     <script type="text/javascript">
         $(function () {
-            $('#edit_form [name=name]').val("{{$table->name}}");
+            //$('#edit_form [name=name]').val("");
             $('#edit_form [name=student_id]').val("{{$table->student_id}}");
             $('#edit_form [name=subject_id]').val("{{$table->subject_id}}");
             $('#edit_form [name=hour_spend]').val("{{$table->hour_spend}}");
-            $('#edit_form [name=motivational]').val("{{$table->motivational}}");
-            $('#edit_form [name=understanding]').val("{{$table->understanding}}");
-            $('#edit_form [name=description]').val("{{$table->description}}");
-            $('#edit_form [name=summery]').val("{{$table->summery}}");
+            //$('#edit_form [name=motivational]').val("");
+            //$('#edit_form [name=understanding]').val("");
+            //$('#edit_form [name=description]').val("");
+            //$('#edit_form [name=summery]').val("");
 
 
             $('#edit_form [name=event_start]').daterangepicker({
