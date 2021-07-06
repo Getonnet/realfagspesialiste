@@ -89,7 +89,7 @@
                                             <table class="table table-sm">
                                                 @foreach($mat as $row)
                                                     <tr>
-                                                        <td><a class="btn btn-sm btn-success" href="{{asset($row->file_name)}}">{{__('Download')}}</a></td>
+                                                        <td><a class="btn btn-sm btn-success" href="{{public_path($row->file_name)}}">{{__('Download')}}</a></td>
                                                         <td class="text-right"><a class="btn btn-sm btn-danger" href="javascript:;" data-href="{{route('teacher.events-file-del',['id' => $row->id])}}"  onclick="delFn(this)">{{__('Delete')}}</a></td>
                                                     </tr>
                                                 @endforeach
