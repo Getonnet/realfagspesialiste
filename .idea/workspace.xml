@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/reset-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/reset-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +178,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../intranetair-new" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -318,7 +318,8 @@
       <workItem from="1623301252363" duration="84000" />
       <workItem from="1623304452887" duration="2416000" />
       <workItem from="1623309229236" duration="322000" />
-      <workItem from="1623338883699" duration="6642000" />
+      <workItem from="1623338883699" duration="7300000" />
+      <workItem from="1623415036101" duration="23000" />
     </task>
     <servers />
   </component>
@@ -357,10 +358,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1623309552545">
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1623415057424">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1623309552545" />
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1623415057424" />
     <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
