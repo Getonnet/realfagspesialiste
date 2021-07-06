@@ -7,6 +7,9 @@
 
         <div class="row">
             <div class="col">
+
+                <x-ninput label="{{__('Title')}}" name="name" required="required" />
+
                 <x-nselect label="{{__('Select Student')}}" name="student_id" required="required" >
                     <option value="">{{__('Select Student')}}</option>
                     @foreach($student as $row)
@@ -28,7 +31,6 @@
                     @endforeach
                 </x-nselect>
 
-                <x-ninput label="{{__('Title')}}" name="name" required="required" />
                 <!--<x-ninput label="{{__('Event Date')}}" name="event_start" required="required" />-->
                 <x-ninput label="{{__('Start')}} & {{__('End')}}" name="start_end_time" required="required" />
 
