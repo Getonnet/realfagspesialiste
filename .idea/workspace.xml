@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/box/report.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/box/report.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/events_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/events_view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/overview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/overview.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/teacher/overview_mini.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/teacher/overview_mini.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +322,7 @@
       <workItem from="1623415036101" duration="23000" />
       <workItem from="1625558332956" duration="14892000" />
       <workItem from="1625638176331" duration="9531000" />
-      <workItem from="1625655892917" duration="616000" />
+      <workItem from="1625655892917" duration="1525000" />
     </task>
     <servers />
   </component>
