@@ -49,13 +49,15 @@
                     @php
                         $hour = $table->purchase()->where('status', 'Active')->sum('hours');
                         $spends = $table->time_log()->orderBy('id', 'DESC')->where('status', 'End')->get();
+                        $travel_times = 0;
                         $spend_times = 0;
                         foreach ($spends as $spend){
                             $spend_times += $spend->spend_time();
+                            $travel_times += $spend->hour_spend;
                         }
-                        $spend_times_hour = $spend_times/60;
+                        $spend_times_hour = ($spend_times + $travel_times)/60;
                         $hour_to_min = $hour * 60;
-                        $remain_min = $hour_to_min - $spend_times;
+                        $remain_min = $hour_to_min - ($spend_times + $travel_times);
                         $spend_hour = number_format(($remain_min / 60), 2, '.', ' ');
                     @endphp
 
@@ -100,6 +102,7 @@
                                             <th>{{__('Email')}}</th>
                                             <th>{{__('Subject')}}</th>
                                             <th>{{__('Spend')}}</th>
+                                            <th>{{__('Travel')}}</th>
                                             <th class="text-right">{{__('Action')}}</th>
                                         </tr>
                                         </thead>
@@ -111,6 +114,7 @@
                                                 <td>{{$row->teacher_email}}</td>
                                                 <td>{{$row->subject_name}}</td>
                                                 <td data-sort="{{$row->spend_time('H')}}">{{$row->spend_time('H')}} {{__('Hr')}}</td>
+                                                <td data-sort="{{$row->hour_spend}}">{{$row->hour_spend}} Min</td>
                                                 <td class="text-right">
 
                                                     <x-actions>
@@ -186,7 +190,7 @@
                 url: "{{asset('no.json')}}"
             },
             columnDefs: [
-                { orderable: false, "targets": [5] }//For Column Order
+                { orderable: false, "targets": [6] }//For Column Order
             ]
         });
 
