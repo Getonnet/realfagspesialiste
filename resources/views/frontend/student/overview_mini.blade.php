@@ -25,5 +25,9 @@
         <th>{{__('Hour Spend')}}</th>
         <td>{{$table->spend_time('H')}} timer</td>
     </tr>
+    <tr>
+        <th>{{__('Travel')}}</th>
+        <td>{{$table->hour_spend}} Min</td>
+    </tr>
 </table>
 
