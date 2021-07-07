@@ -9,7 +9,6 @@
 
     <div class="row">
         <div class="col">
-
             <x-card title="{{__('Events List')}}">
                 <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
                     <thead>
@@ -21,6 +20,7 @@
                         <th>{{__('Start')}}</th>
                         <th>{{__('End')}}</th>
                         <th>{{__('Hour')}}</th>
+                        <th>{{__('Travel')}}</th>
                         <th class="text-right">{{__('Action')}}</th>
                     </tr>
                     </thead>
@@ -34,8 +34,8 @@
                             <td>{{isset($row->start_time) ? date('d, M H:i', strtotime($row->start_time)) : ''}}</td>
                             <td>{{isset($row->end_time) ? date('d, M H:i', strtotime($row->end_time)) : ''}}</td>
                             <td>{{$row->spend_time('H')}}</td>
+                            <td>{{$row->hour_spend}} Min</td>
                             <td class="text-right">
-
                                 <x-actions>
                                     <li class="navi-item">
                                         <a href="javascript:;" class="navi-link" data-toggle="modal" data-target="#viewModal" onclick="viewFn(this)"
@@ -45,17 +45,14 @@
                                         </a>
                                     </li>
                                 </x-actions>
-
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </x-card>
-
         </div>
     </div>
-
 
 @endsection
 
@@ -78,7 +75,7 @@
                 url: "{{asset('no.json')}}"
             },
             columnDefs: [
-                { orderable: false, "targets": [6] }//For Column Order
+                { orderable: false, "targets": [8] }//For Column Order
             ]
         });
 

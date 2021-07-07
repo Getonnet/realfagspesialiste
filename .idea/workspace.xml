@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e0efa3f-5aeb-4638-a0fd-36cba0605a7d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/right-panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/right-panel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/student/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,7 +321,8 @@
       <workItem from="1623309229236" duration="322000" />
       <workItem from="1623338883699" duration="7300000" />
       <workItem from="1623415036101" duration="23000" />
-      <workItem from="1625558332956" duration="4154000" />
+      <workItem from="1625558332956" duration="14892000" />
+      <workItem from="1625638176331" duration="7942000" />
     </task>
     <servers />
   </component>
@@ -344,30 +345,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="540" y="180" key="#CLI_Interpreters" timestamp="1615526447030">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="540" y="180" key="#CLI_Interpreters/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615526447030" />
-    <state x="845" y="388" key="#Notifications" timestamp="1615553210775">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="845" y="388" key="#Notifications/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615553210775" />
     <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1619167282011">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="690" y="280" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1619167282011" />
-    <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1615451135572">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="707" y="369" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615451135572" />
     <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1623415057424">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1623415057424" />
-    <state x="540" y="260" key="IDE.errors.dialog" timestamp="1615554608086">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="540" y="260" key="IDE.errors.dialog/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1615554608086" />
     <state x="829" y="455" key="NewPhpFileDialog" timestamp="1622453933060">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -376,6 +361,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="248" y="84" key="SettingsEditor/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1618990372585" />
+    <state x="623" y="227" key="search.everywhere.popup" timestamp="1625644434342">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" key="search.everywhere.popup/-1920.0.1920.1050/0.0.1920.1050@0.0.1920.1050" timestamp="1625644434342" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
