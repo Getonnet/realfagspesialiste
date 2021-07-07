@@ -15,7 +15,7 @@
                         <button class="btn btn-primary ml-1" data-toggle="modal" data-target="#addModal"><i class="flaticon2-add-1"></i> Legg til ny lærer</button>
                     </x-slot>
                 @endcan
-                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped teacher mobile-table" id="kt_datatable">
                     <thead>
                         <tr>
                             <th>{{__('Photo')}}</th>

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col">
             <x-card title="{{__('Purchase Order')}}">
-                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped orders mobile-table" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>{{__('Date')}}</th>
