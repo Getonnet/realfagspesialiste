@@ -10,9 +10,6 @@
     $hour_to_min = $hour * 60;
     $remain_min = $hour_to_min -($spend_times + $travel_times);
     $remaining = number_format(($remain_min / 60), 2, '.', ' ');
-
-//dd($remaining);
-
 @endphp
     <table class="table table-bordered">
         <tr>
