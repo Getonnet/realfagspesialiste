@@ -324,4 +324,59 @@
         right: 0px;
     }
     /* End of Student Assign */
+
+    /* Payment History */
+    #kt_datatable.mobile-table.history td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(2):before {
+        content: "HVA";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(3):before {
+        content: "TIMER";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(4):before {
+        content: "BELØP";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(5):before {
+        content: "BESKRIVELSE";
+    }
+
+    #kt_datatable.mobile-table.history thead tr th:last-child {
+        display: block;
+    }
+
+    #kt_datatable.mobile-table.history td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Payment History */
+
+    /* Events */
+    #kt_datatable.mobile-table.events td:nth-of-type(1):before {
+        content: "HENDELSESDATO";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(2):before {
+        content: "TITTEL";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(3):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(4):before {
+        content: "ELEV";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(5):before {
+        content: "START";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(6):before {
+        content: "SLUTT";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(7):before {
+        content: "VARIGHET";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(8):before {
+        content: "REISETID";
+    }
+    /* End of Events */
 }

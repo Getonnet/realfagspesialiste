@@ -10,7 +10,7 @@
         <div class="col">
 
             <x-card title="{{__('Payment History')}}">
-                <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
+                <table class="table table-separate table-head-custom table-sm table-striped history mobile-table" id="kt_datatable">
                     <thead>
                     <tr>
                         <th>{{__('Date')}}</th>
