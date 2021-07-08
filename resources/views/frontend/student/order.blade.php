@@ -21,7 +21,7 @@
                     </div>
                     <div class="card-body">
 
-                        <table class="table">
+                        <table class="table order-student mobile-table">
                             <thead>
                             <tr>
                                 <th>{{__('Date')}}</th>

@@ -34,19 +34,26 @@
     #kt_datatableAs.mobile-table tbody,
     #kt_datatableAs.mobile-table th,
     #kt_datatableAs.mobile-table td,
-    #kt_datatableAs.mobile-table tr {
+    #kt_datatableAs.mobile-table tr,
+    .mobile-table thead,
+    .mobile-table tbody,
+    .mobile-table th,
+    .mobile-table td,
+    .mobile-table tr {
         display: block;
     }
 
     #kt_datatable.mobile-table thead tr,
     #kt_datatable2.mobile-table thead tr,
-    #kt_datatableAs.mobile-table thead tr {
+    #kt_datatableAs.mobile-table thead tr,
+    .mobile-table thead tr {
         max-width: 100%;
     }
 
     #kt_datatable.mobile-table thead tr th,
     #kt_datatable2.mobile-table thead tr th,
-    #kt_datatableAs.mobile-table thead tr th {
+    #kt_datatableAs.mobile-table thead tr th,
+    .mobile-table thead tr th {
         max-width: 100%;
         width: 100% !important;
         text-align: center !important;
@@ -56,14 +63,16 @@
 
     #kt_datatable.mobile-table td,
     #kt_datatable2.mobile-table td,
-    #kt_datatableAs.mobile-table td {
+    #kt_datatableAs.mobile-table td,
+    .mobile-table td {
         position: relative;
         padding-left: 50% !important;
     }
 
     #kt_datatable.mobile-table td:before,
     #kt_datatable2.mobile-table td:before,
-    #kt_datatableAs.mobile-table td:before {
+    #kt_datatableAs.mobile-table td:before,
+    .mobile-table td:before {
         position: absolute;
         top: 13px;
         left: 12px;
@@ -73,7 +82,8 @@
 
     #kt_datatable.mobile-table td:last-child,
     #kt_datatable2.mobile-table td:last-child,
-    #kt_datatableAs.mobile-table td:last-child {
+    #kt_datatableAs.mobile-table td:last-child,
+    .mobile-table td:last-child {
         position: absolute;
         top: -8px;
         right: 0px;
@@ -81,7 +91,8 @@
 
     #kt_datatable.mobile-table td.dataTables_empty:last-child,
     #kt_datatable2.mobile-table td.dataTables_empty:last-child,
-    #kt_datatableAs.mobile-table td.dataTables_empty:last-child {
+    #kt_datatableAs.mobile-table td.dataTables_empty:last-child,
+    .mobile-table td.dataTables_empty:last-child {
         position: relative;
         top: 0px;
         right: 0px;
@@ -90,19 +101,22 @@
 
     #kt_datatable.mobile-table thead tr th:last-child,
     #kt_datatable2.mobile-table thead tr th:last-child,
-    #kt_datatableAs.mobile-table thead tr th:last-child {
+    #kt_datatableAs.mobile-table thead tr th:last-child,
+    .mobile-table thead tr th:last-child {
         display: none;
     }
 
     #kt_datatable.mobile-table tbody tr,
     #kt_datatable2.mobile-table tbody tr,
-    #kt_datatableAs.mobile-table tbody tr {
+    #kt_datatableAs.mobile-table tbody tr,
+    .mobile-table tbody tr {
         position: relative;
     }
 
     #kt_datatable.mobile-table td.dataTables_empty:nth-of-type(1):before,
     #kt_datatable2.mobile-table td.dataTables_empty:nth-of-type(1):before,
-    #kt_datatableAs.mobile-table td.dataTables_empty:nth-of-type(1):before {
+    #kt_datatableAs.mobile-table td.dataTables_empty:nth-of-type(1):before,
+    .mobile-table td.dataTables_empty:nth-of-type(1):before {
         display: none;
     }
 
@@ -379,4 +393,62 @@
         content: "REISETID";
     }
     /* End of Events */
+
+    /* Events Student */
+    #kt_datatable.mobile-table.events-student td:nth-of-type(1):before {
+        content: "HENDELSESDATO";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(2):before {
+        content: "TITTEL";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(3):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(4):before {
+        content: "LÆRER";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(5):before {
+        content: "START";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(6):before {
+        content: "SLUTT";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(7):before {
+        content: "VARIGHET";
+    }
+    /* End of Events Student */
+
+    /* Order Student */
+    .mobile-table.order-student td:nth-of-type(1):before {
+        content: "Dato";
+    }
+    .mobile-table.order-student td:nth-of-type(2):before {
+        content: "Pakkens navn";
+    }
+    .mobile-table.order-student td:nth-of-type(3):before {
+        content: "Timer";
+    }
+    .mobile-table.order-student td:nth-of-type(4):before {
+        content: "Pris";
+    }
+    .mobile-table.order-student td:nth-of-type(5):before {
+        content: "Status";
+    }
+    .mobile-table.order-student td:nth-of-type(6):before {
+        content: "Delbetaling";
+    }
+    .mobile-table.order-student td:nth-of-type(6) {
+        min-height: 37px;
+    }
+
+    .mobile-table.order-student thead tr th:last-child {
+        display: block;
+    }
+
+    .mobile-table.order-student td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Order Student */
 }
