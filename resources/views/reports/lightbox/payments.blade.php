@@ -1,6 +1,6 @@
 @if($table->count() > 0)
 
-    <table class="table table-separate table-sm table-striped">
+    <table class="table table-separate table-sm table-striped payment-report mobile-table">
         <thead>
         <tr>
             <th>{{__('Date')}}</th>

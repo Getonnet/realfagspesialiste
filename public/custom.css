@@ -451,4 +451,213 @@
         right: 0px;
     }
     /* End of Order Student */
+
+    /* Reports Time */
+    .mobile-table.reports-time td:nth-of-type(1) {
+        padding-left: 50% !important;
+    }
+    .mobile-table.reports-time td:nth-of-type(1):before {
+        content: "Dato";
+    }
+    .mobile-table.reports-time td:nth-of-type(2):before {
+        content: "Elev";
+    }
+    .mobile-table.reports-time td:nth-of-type(3):before {
+        content: "Lærer";
+    }
+    .mobile-table.reports-time td:nth-of-type(4):before {
+        content: "Fag";
+    }
+    .mobile-table.reports-time td:nth-of-type(5):before {
+        content: "Start";
+    }
+    .mobile-table.reports-time td:nth-of-type(6):before {
+        content: "Slutt";
+    }
+    .mobile-table.reports-time td:nth-of-type(7):before {
+        content: "Varighet";
+    }
+    .mobile-table.reports-time td:nth-of-type(8):before {
+        content: "Reisetid";
+    }
+
+    .mobile-table.reports-time thead tr th:last-child {
+        display: block;
+    }
+
+    .mobile-table.reports-time td:before {
+        top: 5px;
+    }
+
+    .mobile-table.reports-time td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Reports Time */
+
+    /* Sales Report */
+    .mobile-table.sales-report td:nth-of-type(1) {
+        padding-left: 50% !important;
+    }
+    .mobile-table.sales-report td:nth-of-type(1):before {
+        content: "Dato";
+    }
+    .mobile-table.sales-report td:nth-of-type(2):before {
+        content: "Elev";
+    }
+    .mobile-table.sales-report td:nth-of-type(3):before {
+        content: "E-post";
+    }
+    .mobile-table.sales-report td:nth-of-type(4):before {
+        content: "Timepakker";
+    }
+    .mobile-table.sales-report td:nth-of-type(5):before {
+        content: "Timer";
+    }
+    .mobile-table.sales-report td:nth-of-type(6):before {
+        content: "Pris";
+    }
+    .mobile-table.sales-report td:nth-of-type(7):before {
+        content: "Rabatt";
+    }
+    .mobile-table.sales-report td:nth-of-type(8):before {
+        content: "Status";
+    }
+
+    .mobile-table.sales-report thead tr th:last-child {
+        display: block;
+    }
+
+    .mobile-table.sales-report td:before {
+        top: 5px;
+    }
+
+    .mobile-table.sales-report td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Sales Report */
+
+    /* Payment Report */
+    .mobile-table.payment-report td:nth-of-type(1) {
+        padding-left: 50% !important;
+    }
+    .mobile-table.payment-report td:nth-of-type(1):before {
+        content: "Dato";
+    }
+    .mobile-table.payment-report td:nth-of-type(2):before {
+        content: "Lærer";
+    }
+    .mobile-table.payment-report td:nth-of-type(3):before {
+        content: "E-post";
+    }
+    .mobile-table.payment-report td:nth-of-type(4):before {
+        content: "Hva";
+    }
+    .mobile-table.payment-report td:nth-of-type(5):before {
+        content: "TIMER";
+    }
+    .mobile-table.payment-report td:nth-of-type(6):before {
+        content: "BELØP";
+    }
+    .mobile-table.payment-report td:nth-of-type(7):before {
+        content: "Beskrivelse";
+    }
+
+    .mobile-table.payment-report thead tr th:last-child {
+        display: block;
+    }
+
+    .mobile-table.payment-report td:before {
+        top: 5px;
+    }
+
+    .mobile-table.payment-report td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Payment Report */
+
+    /* Table Footer */
+    /* Reports Time */
+    .mobile-table.reports-time tfoot > tr > th {
+        position: relative;
+        padding-left: 50% !important;
+    }
+    .mobile-table.reports-time tfoot > tr > th:first-child {
+        text-align: center !important;
+        padding-left: 0% !important;
+    }
+    .mobile-table.reports-time tfoot > tr > th:before {
+        position: absolute;
+        top: 4px;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+    }
+
+    .mobile-table.reports-time tfoot > tr > th:nth-of-type(2):before {
+        content: "Varighet";
+    }
+
+    .mobile-table.reports-time tfoot > tr > th:nth-of-type(3):before {
+        content: "Reisetid";
+    }
+
+    /* Sales Report */
+    .mobile-table.sales-report tfoot > tr > th {
+        position: relative;
+        padding-left: 50% !important;
+    }
+    .mobile-table.sales-report tfoot > tr > th:first-child {
+        text-align: center !important;
+        padding-left: 0% !important;
+    }
+    .mobile-table.sales-report tfoot > tr > th:before {
+        position: absolute;
+        top: 4px;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+    }
+
+    .mobile-table.sales-report tfoot > tr > th:nth-of-type(2):before {
+        content: "Timer";
+    }
+
+    .mobile-table.sales-report tfoot > tr > th:nth-of-type(3):before {
+        content: "Pris";
+    }
+
+    .mobile-table.sales-report tfoot > tr > th:nth-of-type(4):before {
+        content: "Rabatt";
+    }
+
+    /* Payment Report */
+    .mobile-table.payment-report tfoot > tr > th {
+        position: relative;
+        padding-left: 50% !important;
+    }
+    .mobile-table.payment-report tfoot > tr > th:first-child {
+        text-align: center !important;
+        padding-left: 0% !important;
+    }
+    .mobile-table.payment-report tfoot > tr > th:before {
+        position: absolute;
+        top: 4px;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+    }
+
+    .mobile-table.payment-report tfoot > tr > th:nth-of-type(2):before {
+        content: "TIMER";
+    }
+
+    .mobile-table.payment-report tfoot > tr > th:nth-of-type(3):before {
+        content: "BELØP";
+    }
 }
