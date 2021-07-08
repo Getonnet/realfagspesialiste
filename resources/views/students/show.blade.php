@@ -94,7 +94,7 @@
                                     @php
                                         $events = $table->time_log()->orderBy('id', 'DESC')->where('status', 'End')->get();
                                     @endphp
-                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
+                                    <table class="table table-separate table-head-custom table-sm table-striped teacher-report mobile-table" id="kt_datatable">
                                         <thead>
                                         <tr>
                                             <th>{{__('Date')}}</th>
@@ -137,7 +137,7 @@
                                     @php
                                         $purchase = $table->purchase()->orderBy('id', 'DESC')->get();
                                     @endphp
-                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable2">
+                                    <table class="table table-separate table-head-custom table-sm table-striped purchase-reports mobile-table" id="kt_datatable2">
                                         <thead>
                                         <tr>
                                             <th>{{__('Date')}}</th>

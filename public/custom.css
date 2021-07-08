@@ -8,10 +8,447 @@
 /* Hide scrollbar for Chrome, Safari and Opera */
 .profile-details::-webkit-scrollbar {
     display: none;
-  }
+}
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .profile-details {
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
     scrollbar-width: none;
-  }
+}
+
+@media (max-width: 767px) {
+    #kt_datatable.mobile-table,
+    #kt_datatable.mobile-table thead,
+    #kt_datatable.mobile-table tbody,
+    #kt_datatable.mobile-table th,
+    #kt_datatable.mobile-table td,
+    #kt_datatable.mobile-table tr,
+    #kt_datatable2.mobile-table,
+    #kt_datatable2.mobile-table thead,
+    #kt_datatable2.mobile-table tbody,
+    #kt_datatable2.mobile-table th,
+    #kt_datatable2.mobile-table td,
+    #kt_datatable2.mobile-table tr,
+    #kt_datatableAs.mobile-table,
+    #kt_datatableAs.mobile-table thead,
+    #kt_datatableAs.mobile-table tbody,
+    #kt_datatableAs.mobile-table th,
+    #kt_datatableAs.mobile-table td,
+    #kt_datatableAs.mobile-table tr,
+    .mobile-table thead,
+    .mobile-table tbody,
+    .mobile-table th,
+    .mobile-table td,
+    .mobile-table tr {
+        display: block;
+    }
+
+    #kt_datatable.mobile-table thead tr,
+    #kt_datatable2.mobile-table thead tr,
+    #kt_datatableAs.mobile-table thead tr,
+    .mobile-table thead tr {
+        max-width: 100%;
+    }
+
+    #kt_datatable.mobile-table thead tr th,
+    #kt_datatable2.mobile-table thead tr th,
+    #kt_datatableAs.mobile-table thead tr th,
+    .mobile-table thead tr th {
+        max-width: 100%;
+        width: 100% !important;
+        text-align: center !important;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #kt_datatable.mobile-table td,
+    #kt_datatable2.mobile-table td,
+    #kt_datatableAs.mobile-table td,
+    .mobile-table td {
+        position: relative;
+        padding-left: 50% !important;
+    }
+
+    #kt_datatable.mobile-table td:before,
+    #kt_datatable2.mobile-table td:before,
+    #kt_datatableAs.mobile-table td:before,
+    .mobile-table td:before {
+        position: absolute;
+        top: 13px;
+        left: 12px;
+        width: 45%;
+        padding-right: 10px;
+    }
+
+    #kt_datatable.mobile-table td:last-child,
+    #kt_datatable2.mobile-table td:last-child,
+    #kt_datatableAs.mobile-table td:last-child,
+    .mobile-table td:last-child {
+        position: absolute;
+        top: -8px;
+        right: 0px;
+    }
+
+    #kt_datatable.mobile-table td.dataTables_empty:last-child,
+    #kt_datatable2.mobile-table td.dataTables_empty:last-child,
+    #kt_datatableAs.mobile-table td.dataTables_empty:last-child,
+    .mobile-table td.dataTables_empty:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+        padding-left: 0px !important;
+    }
+
+    #kt_datatable.mobile-table thead tr th:last-child,
+    #kt_datatable2.mobile-table thead tr th:last-child,
+    #kt_datatableAs.mobile-table thead tr th:last-child,
+    .mobile-table thead tr th:last-child {
+        display: none;
+    }
+
+    #kt_datatable.mobile-table tbody tr,
+    #kt_datatable2.mobile-table tbody tr,
+    #kt_datatableAs.mobile-table tbody tr,
+    .mobile-table tbody tr {
+        position: relative;
+    }
+
+    #kt_datatable.mobile-table td.dataTables_empty:nth-of-type(1):before,
+    #kt_datatable2.mobile-table td.dataTables_empty:nth-of-type(1):before,
+    #kt_datatableAs.mobile-table td.dataTables_empty:nth-of-type(1):before,
+    .mobile-table td.dataTables_empty:nth-of-type(1):before {
+        display: none;
+    }
+
+    /* Orders */
+    #kt_datatable.mobile-table.orders td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(2):before {
+        content: "ELEV";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(3):before {
+        content: "TIMEPAKKER";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(4):before {
+        content: "TIMER";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(5):before {
+        content: "BELØP";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(6):before {
+        content: "STATUS";
+    }
+    #kt_datatable.mobile-table.orders td:nth-of-type(7):before {
+        content: "DELBETALING";
+    }
+
+    #kt_datatable.mobile-table.orders td:nth-of-type(7) {
+        padding-bottom: 32px;
+    }
+    /* End of Orders */
+
+    /* Packages */
+    #kt_datatable.mobile-table.packages td:nth-of-type(1):before {
+        content: "NAVN";
+    }
+    #kt_datatable.mobile-table.packages td:nth-of-type(2):before {
+        content: "TIMER";
+    }
+    #kt_datatable.mobile-table.packages td:nth-of-type(3):before {
+        content: "PRIS";
+    }
+    #kt_datatable.mobile-table.packages td:nth-of-type(4):before {
+        content: "BESKRIVELSE";
+    }
+    /* End of Packages */
+
+    /* Teacher */
+    #kt_datatable.mobile-table.teacher td:nth-of-type(1):before {
+        top: 20px;
+        content: "FOTO";
+    }
+    #kt_datatable.mobile-table.teacher td:nth-of-type(2):before {
+        content: "NAVN";
+    }
+    #kt_datatable.mobile-table.teacher td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatable.mobile-table.teacher td:nth-of-type(4):before {
+        content: "KONTAKT";
+    }
+    #kt_datatable.mobile-table.teacher td:nth-of-type(5):before {
+        top: 5px;
+        content: "UBETALT REISETID";
+    }
+    #kt_datatable.mobile-table.teacher td:nth-of-type(6):before {
+        content: "UBETALT UNDERVISNING";
+        top: 5px;
+    }
+
+    #kt_datatable.mobile-table.teacher td:nth-of-type(6) {
+        padding-bottom: 15px;
+    }
+    /* End of Teacher */
+
+    /* Students */
+    #kt_datatable.mobile-table.students td:nth-of-type(1):before {
+        top: 20px;
+        content: "FOTO";
+    }
+    #kt_datatable.mobile-table.students td:nth-of-type(2):before {
+        content: "NAVN";
+    }
+    #kt_datatable.mobile-table.students td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatable.mobile-table.students td:nth-of-type(4):before {
+        content: "KONTAKT";
+    }
+    #kt_datatable.mobile-table.students td:nth-of-type(5):before {
+        content: "VARIGHET";
+    }
+    /* End of Students */
+
+    /* Teaching Report */
+    #kt_datatable.mobile-table.teacher-report td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable.mobile-table.teacher-report td:nth-of-type(2):before {
+        content: "LÆRER";
+    }
+    #kt_datatable.mobile-table.teacher-report td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatable.mobile-table.teacher-report td:nth-of-type(4):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.teacher-report td:nth-of-type(5):before {
+        content: "VARIGHET";
+    }
+    /* End of Teaching Report */
+
+    /* Purchase Report */
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(2):before {
+        content: "TIMEPAKKER";
+    }
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(3):before {
+        content: "VARIGHET";
+    }
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(4):before {
+        content: "KUPONG";
+    }
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(5):before {
+        content: "STATUS";
+    }
+
+    #kt_datatable2.mobile-table.purchase-reports td:nth-of-type(6):before {
+        content: "BELØP";
+    }
+
+    #kt_datatable2.mobile-table.purchase-reports thead tr th:last-child {
+        display: block;
+    }
+
+    #kt_datatable2.mobile-table.purchase-reports td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Purchase Report */
+
+    /* Users */
+    #kt_datatable.mobile-table.users td:nth-of-type(1):before {
+        content: "FOTO";
+    }
+    #kt_datatable.mobile-table.users td:nth-of-type(2):before {
+        content: "NAVN";
+    }
+    #kt_datatable.mobile-table.users td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatable.mobile-table.users td:nth-of-type(4):before {
+        content: "BRUKERROLLE";
+    }
+    /* End of Users */
+
+    /* Payment Reports */
+    #kt_datatable2.mobile-table.payment-reports td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable2.mobile-table.payment-reports td:nth-of-type(2):before {
+        content: "HVA";
+    }
+    #kt_datatable2.mobile-table.payment-reports td:nth-of-type(3):before {
+        content: "VARIGHET";
+    }
+    #kt_datatable2.mobile-table.payment-reports td:nth-of-type(4):before {
+        content: "BELØP";
+    }
+    #kt_datatable2.mobile-table.payment-reports td:nth-of-type(5):before {
+        content: "BESKRIVELSE";
+    }
+    /* End of Payment Reports */
+
+    /* Time Spend */
+    #kt_datatable.mobile-table.time-spend td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable.mobile-table.time-spend td:nth-of-type(2):before {
+        content: "ELEV";
+    }
+    #kt_datatable.mobile-table.time-spend td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatable.mobile-table.time-spend td:nth-of-type(4):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.time-spend td:nth-of-type(5):before {
+        content: "VARIGHET";
+    }
+    /* End of Time Spend */
+
+    /* Student Assign */
+    #kt_datatableAs.mobile-table.student-assign td:nth-of-type(1):before {
+        content: "FOTO";
+    }
+    #kt_datatableAs.mobile-table.student-assign td:nth-of-type(2):before {
+        content: "ELEV";
+    }
+    #kt_datatableAs.mobile-table.student-assign td:nth-of-type(3):before {
+        content: "E-POST";
+    }
+    #kt_datatableAs.mobile-table.student-assign td:nth-of-type(4):before {
+        content: "KONTAKT";
+    }
+    #kt_datatableAs.mobile-table.student-assign td:nth-of-type(5):before {
+        content: "GJENSTÅENDE";
+    }
+
+    #kt_datatableAs.mobile-table.student-assign thead tr th:last-child {
+        display: block;
+    }
+
+    #kt_datatableAs.mobile-table.student-assign td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Student Assign */
+
+    /* Payment History */
+    #kt_datatable.mobile-table.history td:nth-of-type(1):before {
+        content: "DATO";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(2):before {
+        content: "HVA";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(3):before {
+        content: "TIMER";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(4):before {
+        content: "BELØP";
+    }
+    #kt_datatable.mobile-table.history td:nth-of-type(5):before {
+        content: "BESKRIVELSE";
+    }
+
+    #kt_datatable.mobile-table.history thead tr th:last-child {
+        display: block;
+    }
+
+    #kt_datatable.mobile-table.history td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Payment History */
+
+    /* Events */
+    #kt_datatable.mobile-table.events td:nth-of-type(1):before {
+        content: "HENDELSESDATO";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(2):before {
+        content: "TITTEL";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(3):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(4):before {
+        content: "ELEV";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(5):before {
+        content: "START";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(6):before {
+        content: "SLUTT";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(7):before {
+        content: "VARIGHET";
+    }
+    #kt_datatable.mobile-table.events td:nth-of-type(8):before {
+        content: "REISETID";
+    }
+    /* End of Events */
+
+    /* Events Student */
+    #kt_datatable.mobile-table.events-student td:nth-of-type(1):before {
+        content: "HENDELSESDATO";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(2):before {
+        content: "TITTEL";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(3):before {
+        content: "FAG";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(4):before {
+        content: "LÆRER";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(5):before {
+        content: "START";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(6):before {
+        content: "SLUTT";
+    }
+    #kt_datatable.mobile-table.events-student td:nth-of-type(7):before {
+        content: "VARIGHET";
+    }
+    /* End of Events Student */
+
+    /* Order Student */
+    .mobile-table.order-student td:nth-of-type(1):before {
+        content: "Dato";
+    }
+    .mobile-table.order-student td:nth-of-type(2):before {
+        content: "Pakkens navn";
+    }
+    .mobile-table.order-student td:nth-of-type(3):before {
+        content: "Timer";
+    }
+    .mobile-table.order-student td:nth-of-type(4):before {
+        content: "Pris";
+    }
+    .mobile-table.order-student td:nth-of-type(5):before {
+        content: "Status";
+    }
+    .mobile-table.order-student td:nth-of-type(6):before {
+        content: "Delbetaling";
+    }
+    .mobile-table.order-student td:nth-of-type(6) {
+        min-height: 37px;
+    }
+
+    .mobile-table.order-student thead tr th:last-child {
+        display: block;
+    }
+
+    .mobile-table.order-student td:last-child {
+        position: relative;
+        top: 0px;
+        right: 0px;
+    }
+    /* End of Order Student */
+}

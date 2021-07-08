@@ -143,7 +143,7 @@
                                     @php
                                         $payments = $table->payment()->orderBy('id', 'DESC')->get();
                                     @endphp
-                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable2">
+                                    <table class="table table-separate table-head-custom table-sm table-striped payment-reports mobile-table" id="kt_datatable2">
                                         <thead>
                                         <tr>
                                             <th>{{__('Date')}}</th>
@@ -194,7 +194,7 @@
                                     @php
                                         $events = $table->time_log_teacher()->orderBy('id', 'DESC')->where('status', 'End')->get();
                                     @endphp
-                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatable">
+                                    <table class="table table-separate table-head-custom table-sm table-striped time-spend mobile-table" id="kt_datatable">
                                         <thead>
                                         <tr>
                                             <th>{{__('Date')}}</th>
@@ -238,7 +238,7 @@
 
                                     //dd($assign)
                                     @endphp
-                                    <table class="table table-separate table-head-custom table-sm table-striped" id="kt_datatableAs">
+                                    <table class="table table-separate table-head-custom table-sm table-striped student-assign mobile-table" id="kt_datatableAs">
                                         <thead>
                                         <tr>
                                             <th>{{__('Photo')}}</th>
